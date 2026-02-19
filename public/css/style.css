@@ -1,45 +1,56 @@
-html, body {
-    margin: 0;
-    padding: 0;
+*{
     box-sizing: border-box;
-    overflow-x: hidden;
-    max-width: 100%;
-    overflow-y: auto;   /* vertical scrollbar only if needed */
-    height: 100%;  
 }
 
-html {
+html, body{
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+
+html{
     scroll-behavior: smooth;
     scrollbar-width: none;
 }
 
-img, div, section {
+img, div, section{
     max-width: 100%;
     box-sizing: border-box;
 }
-*{
-    box-sizing: border-box;
-}
-  
+
+
+/* =========================
+   BODY STYLING
+   ========================= */
+
 body{
-   width: 2000px;
-   height: 2500px;
-   overflow-x:hidden;
-   /* overflow-y:hidden; */
-   background-color: rgb(3, 31, 3);
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgb(3, 31, 3);
+    overflow-x: hidden;
 }
+
+
+/* =========================
+   BACKGROUND MATRIX CONTAINER
+   ========================= */
+
 #background{
-    position: absolute;
+    position: fixed;
+    inset: 0;
     z-index: -1;
-    opacity: 1;
-    top: 0px;
     opacity: 0.2;
-    width: 2000px;
-    height: 2500px;
+
     display: flex;
     flex-direction: row;
-    animation:backgroundAnimation 6s ease-in 0s 1 normal;
+    justify-content: space-evenly;
+
+    animation: backgroundAnimation 6s ease-in forwards;
 }
+
 @keyframes backgroundAnimation{
     0%{
         top:-2500px;
