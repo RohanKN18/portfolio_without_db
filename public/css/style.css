@@ -123,6 +123,11 @@ body{
     position:absolute;
     display: inline-block;
 }
+#photo{
+    width: clamp(120px, 22vw, 200px);
+    height: clamp(120px, 22vw, 200px);
+}
+
 @keyframes photoContainerAnimation{
     0%{
         top: -50%;
@@ -153,14 +158,31 @@ body{
     justify-content: center;
     align-content: center;
 }
+#question{
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90vw, 900px);
+}
+
 .word {
     display: inline-block;
     color:rgb(107, 171, 107) ;
 }
+.word{
+    display:inline-block;
+    color:rgb(107,171,107);
+    font-size:clamp(14px,2.2vw,22px);
+    text-align:center;
+}
+
 .space {
     display: inline-block;
     width: 4px; /* Adjust width as needed */
 }
+.space{
+    width: clamp(3px,1vw,8px);
+}
+
 #Wone {
     visibility: visible;
     animation: Wone 6s ease-out 0s 1 normal;
@@ -558,6 +580,52 @@ body{
 }
 
 
+#bluePill,
+.redPill{
+    height:clamp(35px,6vw,50px);
+    width:clamp(70px,12vw,100px);
+}
+@media (max-width:600px){
+
+#photoContainer{
+    height:40%;
+}
+
+#questionContainer{
+    top:40%;
+    height:35%;
+}
+
+#pillsContainer{
+    top:75%;
+    flex-direction:column;
+    gap:20px;
+}
+
+#question{
+    width:90vw;
+}
+
+}
+@media (min-width:601px) and (max-width:1000px){
+
+#photoContainer{
+    height:45%;
+}
+
+#questionContainer{
+    top:45%;
+    height:30%;
+}
+
+#pillsContainer{
+    top:75%;
+}
+
+}
+body{
+    overflow-x:hidden;
+}
 
 
 
@@ -584,62 +652,140 @@ body{
 
 
 
+body{
+    padding-top: 12vh;
+}
 
 
 
 
-.navbar {
+
+
+
+
+/* =========================
+   NAVBAR CONTAINER
+   ========================= */
+
+.navbar{
     position: fixed;
-    top: 1vh;
+    top: clamp(6px,1vh,16px);
     left: 50%;
     transform: translateX(-50%);
-    
-    width: 80vw;
-    height: 8vh;
+
+    width: min(92vw,1200px);
+    height: clamp(50px,8vh,80px);
 
     background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
 
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0,255,0,0.3);
+    border-radius: 16px;
+    box-shadow: 0 0 18px rgba(0,255,0,0.25);
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    padding: 0 2rem;
+    padding: 0 clamp(12px,2vw,40px);
+
+    z-index: 999;
 }
 
-/* left links */
-.nav-left a {
+
+/* =========================
+   LEFT LINKS
+   ========================= */
+
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap: clamp(12px,2vw,36px);
+}
+
+.nav-left a{
     color: rgb(84,165,84);
-    text-decoration: none;
-    margin-right: 2rem;
-    font-weight: 500;
-    transition: 0.3s;
+    text-decoration:none;
+    font-weight:500;
+    font-size: clamp(14px,1.1vw,18px);
+    transition:.3s;
 }
 
-.nav-left a:hover {
+.nav-left a:hover{
     color: rgb(0,255,0);
-    text-shadow: 0 0 8px rgba(0,255,0,0.8);
+    text-shadow:0 0 10px rgba(0,255,0,.8);
 }
 
-/* right login button */
-.login-btn {
+
+/* =========================
+   LOGIN BUTTON
+   ========================= */
+
+.login-btn{
     background: transparent;
     border: 2px solid rgb(84,165,84);
     color: rgb(84,165,84);
-    padding: 6px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+
+    padding: clamp(4px,.5vw,8px) clamp(14px,1.5vw,24px);
+    border-radius: 999px;
+
+    font-size: clamp(13px,1vw,16px);
+    cursor:pointer;
+    transition:.3s;
 }
 
-.login-btn:hover {
+.login-btn:hover{
     background: rgb(0,255,0);
-    color: black;
-    box-shadow: 0 0 12px rgb(0,255,0);
+    color:black;
+    box-shadow:0 0 12px rgb(0,255,0);
 }
+
+
+
+/* =========================
+   TABLET BREAKPOINT
+   ========================= */
+
+@media (max-width:768px){
+
+    .nav-left{
+        gap:18px;
+    }
+
+    .nav-left a{
+        font-size:14px;
+    }
+}
+
+
+
+/* =========================
+   MOBILE BREAKPOINT
+   ========================= */
+
+@media (max-width:500px){
+
+    .navbar{
+        height:56px;
+        border-radius:12px;
+    }
+
+    .nav-left{
+        gap:12px;
+    }
+
+    .nav-left a{
+        font-size:13px;
+    }
+
+    .login-btn{
+        padding:5px 14px;
+        font-size:13px;
+    }
+}
+
+
+
+
 
 
 
@@ -654,63 +800,122 @@ body{
 }
 
 
- /* Page Two Box */
-#greetingBox {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =============================
+   GREETING BOX CONTAINER
+   ============================= */
+
+#greetingBox{
     position: relative;
-    top: 10vh;
-    width: 80vw;      /* 80% of viewport width */
-    height: 80vh;     /* 80% of viewport height */
-    margin: 5vh auto; /* center vertically with some top/bottom space */
-    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark overlay */
+    margin: clamp(20px,5vh,60px) auto;
+
+    width: min(90vw, 1100px);
+    min-height: 420px;
+
+    background-color: rgba(0,0,0,0.65);
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    color: rgb(84, 165, 84); /* Matrix green */
-    box-shadow: 0 0 20px rgba(0,255,0,0.3);
-}
+    padding: clamp(16px,2vw,32px);
 
-/* Each Row */
-.greetingRow {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 20px;
-    margin: 5px 0;
-}
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
 
-/* Row Heights Using Flex */
-#hiRow {
-    height: 20%; /* 30% of container */
-    font-size: 2.5vh; /* scales with viewport height */
-}
-
-#introRow {
-    height: 30%; /* 20% */
-    font-size: 3.5vh;
-}
-
-#extraIntroRow {
-    height: 20%; /* 20% */
-    font-size: 3vh;
-}
-
-#descriptionRow {
-    height: 30%; /* 30% */
-    font-size: 2.5vh;
-    line-height: 3vh;
-    overflow-y: auto; /* scroll if text overflows */
-    scrollbar-width: none;
+    color: rgb(84,165,84);
+    box-shadow: 0 0 25px rgba(0,255,0,0.25);
 }
 
 
-/* Highlight Name */
-#ron {
-    color: rgb(0, 255, 0);
+/* =============================
+   ROWS
+   ============================= */
+
+.greetingRow{
+    width:100%;
+    display:flex;
+    align-items:center;
+}
+
+
+/* =============================
+   TYPOGRAPHY (FLUID SCALING)
+   ============================= */
+
+#hiRow h1{
+    font-size: clamp(20px, 2.5vw, 36px);
+}
+
+#introRow h1{
+    font-size: clamp(26px, 3vw, 44px);
+}
+
+#extraIntroRow h1{
+    font-size: clamp(16px, 2vw, 26px);
+}
+
+#descriptionRow h4{
+    font-size: clamp(14px, 1.3vw, 18px);
+    line-height: 1.6;
+    color: rgb(150,210,150);
+}
+
+
+/* =============================
+   DESCRIPTION SCROLL (SAFE)
+   ============================= */
+
+#descriptionRow{
+    overflow-y:auto;
+    scrollbar-width:none;
+}
+
+#descriptionRow::-webkit-scrollbar{
+    display:none;
+}
+
+
+/* =============================
+   NAME HIGHLIGHT
+   ============================= */
+
+#ron{
+    color: rgb(0,255,0);
     margin-left: 10px;
+    text-shadow: 0 0 8px rgba(0,255,0,0.7);
 }
- 
+
+
+/* =============================
+   MOBILE OPTIMIZATION
+   ============================= */
+
+@media (max-width:600px){
+
+    #greetingBox{
+        border-radius:14px;
+        padding:18px;
+    }
+
+    .greetingRow{
+        text-align:left;
+    }
+}
+
 
 
 
@@ -800,34 +1005,67 @@ body{
   height: 10%;
   /* border:2px solid rgb(84,165,84); */
 }
-
 /* full content box */
 .specialbox{
   width:100%;
   height:100%;
   background:rgba(84,165,84,0.18);
+
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  border:1.5px solid #5fdc5f; 
-  padding:0.8vh;
+
+  border:1.5px solid #5fdc5f;
+  padding:clamp(6px,1vh,14px);
   box-sizing:border-box;
+
+  overflow:hidden;
 }
 
+/* text lines */
 .yoEducDetail{
-  margin:0.4vh 0;
-  color:#d6ffd6;        /* soft bright green-white */
-  font-size:1.9vh;
+  margin:clamp(2px,0.5vh,8px) 0;
+  color:#d6ffd6;
+
+  font-size:clamp(12px,1.5vw,16px);
   font-weight:500;
-  letter-spacing:0.4px;
+  letter-spacing:.4px;
   line-height:1.3;
+
+  word-break:break-word;
 }
+
+/* heading line */
 .yoEducDetail:first-child{
-  font-size:2.2vh;
+  font-size:clamp(14px,1.9vw,20px);
   font-weight:600;
 }
+.specialbox:hover{
+  box-shadow:0 0 15px #5fdc5f;
+  transform:scale(1.03);
+  transition:.3s;
+}
+@media (max-width:600px){
+
+  .specialbox{
+    padding:6px 4px;
+  }
+
+  .yoEducDetail{
+    font-size:12px;
+    line-height:1.2;
+    word-break:break-word;
+    hyphens:auto;
+  }
+
+  .yoEducDetail:first-child{
+    font-size:13px;
+    font-weight:600;
+  }
+}
+
 
 
 .evenboxthree .leftinnerbox{
@@ -871,32 +1109,7 @@ body{
 
 
 
-/* making responsive */
 
-/* Extra small devices (phones, less than 576px) */
-@media (max-width: 575.98px) {
-    /* your CSS here */
-  }
-  
-  /* Small devices (phones, 576px and up) */
-  @media (min-width: 576px) and (max-width: 767.98px) {
-    /* your CSS here */
-  }
-  
-  /* Medium devices (tablets, 768px and up) */
-  @media (min-width: 768px) and (max-width: 991.98px) {
-    /* your CSS here */
-  }
-  
-  /* Large devices (desktops, 992px and up) */
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-    /* your CSS here */
-  }
-  
-  /* Extra large devices (large desktops, 1200px and up) */
-  @media (min-width: 1200px) {
-    /* your CSS here */
-  }
   
 
 
