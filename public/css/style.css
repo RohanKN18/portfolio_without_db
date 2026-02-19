@@ -1,0 +1,1121 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    max-width: 100%;
+    overflow-y: auto;   /* vertical scrollbar only if needed */
+    height: 100%;  
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+img, div, section {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+*{
+    box-sizing: border-box;
+}
+  
+body{
+   width: 2000px;
+   height: 2500px;
+   overflow-x:hidden;
+   /* overflow-y:hidden; */
+   background-color: rgb(3, 31, 3);
+}
+#background{
+    position: absolute;
+    z-index: -1;
+    opacity: 1;
+    top: 0px;
+    opacity: 0.2;
+    width: 2000px;
+    height: 2500px;
+    display: flex;
+    flex-direction: row;
+    animation:backgroundAnimation 6s ease-in 0s 1 normal;
+}
+@keyframes backgroundAnimation{
+    0%{
+        top:-2500px;
+        opacity: 1;
+    }
+    27%{
+        top:0px;
+        opacity: 0.3;
+    }    
+    100%{
+        top: 0%;
+        opacity: 0.2;
+    }
+}
+.zerosAndOnesFaller{
+    position: relative;
+    width:14px;
+    display: flex;
+    flex-direction: column;
+}
+.zero{
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    align-self: center;
+    color: rgb(145, 196, 145);
+}
+.one{
+    display: inline-block;
+    width: 100%;
+    height: 15px;
+    align-self: center;
+    color: rgb(145, 196, 145);
+    text-shadow: rgb(191, 224, 191) 1px 1px 0px ;
+}
+.zerosAndOnesFaller div{
+    font-family:Consolas, Monaco, monospace;
+}
+.opaced{
+    opacity: 0.5;
+}
+.largeSize div{
+    font-size: larger;
+}
+.ExtraLargeSize div{
+    font-size: x-large;
+}
+
+
+#photoContainer{
+    position: absolute;
+    top: 0%;
+    height: 50%;
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation:photoContainerAnimation 4s ease-in 0s 1  normal; 
+}
+#photo{
+    /* box-shadow:4px 4px 8px rgb(151, 239, 151); */
+    color: rgb(84, 165, 84);
+    height: 200px;
+    width: 200px;
+    background-image: url(assets/resume.jpg);
+    background-size:cover;
+    border-radius: 50%;
+    border: solid rgb(26, 100, 26);
+    position:absolute;
+    display: inline-block;
+}
+@keyframes photoContainerAnimation{
+    0%{
+        top: -50%;
+    }
+    35%{
+        top: -50%;
+       
+    }
+    50%{
+        top:0%;
+    }
+}
+#questionContainer{
+    position: absolute;
+    top: 50%;
+    height: 25%;
+    width: 100%;
+    /* background-color: red; */
+}
+#question{
+    position: absolute;
+    left: 15%;
+    /* background-color: white; */
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-content: center;
+}
+.word {
+    display: inline-block;
+    color:rgb(107, 171, 107) ;
+}
+.space {
+    display: inline-block;
+    width: 4px; /* Adjust width as needed */
+}
+#Wone {
+    visibility: visible;
+    animation: Wone 6s ease-out 0s 1 normal;
+}
+#Wtwo {
+    visibility: visible;
+    animation: Wtwo 6s ease-out 0s 1 normal;
+}
+#Wthree {
+    visibility: visible;
+    animation: Wthree 6s ease-out 0s 1 normal;
+}
+#Wfour {
+    visibility: visible;
+    animation: Wfour 6s ease-in 0s 1 normal;
+}
+#Wfive {
+    visibility: visible;
+    animation: Wfive 6s ease-in 0s 1 normal;
+}
+#Wsix {
+    visibility: visible;
+    animation: Wsix 6s ease-in 0s 1 normal;
+}
+#Wseven {
+    visibility: visible;
+    animation: Wseven 6s ease-in 0s 1 normal;
+}
+#Weight {
+    visibility: visible;
+    animation: Weight 6s ease-in 0s 1 normal;
+}
+#Wnine {
+    visibility: visible;
+    animation: Wnine 6s ease-in 0s 1 normal;
+}
+#Wten {
+    visibility: visible;
+    animation: Wten 6s ease-in 0s 1 normal;
+}
+#Weleven {
+    visibility: visible;
+    animation: Weleven 6s ease-in 0s 1 normal;
+}
+#Wtwelve {
+    visibility: visible;
+    animation: Wtwelve 6s ease-in 0s 1 normal;
+}
+#Wthirteen {
+    visibility: visible;
+    animation: Wthirteen 6s ease-in 0s 1 normal;
+}
+#Wfourteen {
+    visibility: visible;
+    animation: Wfourteen 6s ease-in 0s 1 normal;
+}
+#Wfifteen {
+    visibility: visible;
+    animation: Wfifteen 6s ease-in 0s 1 normal;
+}
+#Wsixteen {
+    visibility: visible;
+    animation: Wsixteen 6s ease-in 0s 1 normal;
+}
+#Wseventeen {
+    visibility: visible;
+    animation: Wseventeen 6s ease-in 0s 1 normal;
+}
+#Weightteen {
+    visibility: visible;
+    animation: Weightteen 6s ease-in 0s 1 normal;
+}
+#Wnineteen {
+    visibility: visible;
+    animation: Wnineteen 6s ease-in 0s 1 normal;
+}
+#Wtwenty {
+    visibility: visible;
+    animation: Wtwenty 6s ease-in 0s 1 normal;
+}
+#Wtwentyone {
+    visibility: visible;
+    animation: Wtwentyone 6s ease-in 0s 1 normal;
+}
+#Wtwentytwo {
+    visibility: visible;
+    animation: Wtwentytwo 6s ease-in 0s 1 normal;
+}
+#Wtwentythree {
+    visibility: visible;
+    animation: Wtwentythree 6s ease-in 0s 1 normal;
+}
+#Wtwentyfour {
+    visibility: visible;
+    animation: Wtwentyfour 6s ease-in 0s 1 normal;
+}
+#Wtwentyfive {
+    visibility: visible;
+    animation: Wtwentyfive 6s ease-in 0s 1 normal;
+}
+#Wtwentysix {
+    visibility: visible;
+    animation: Wtwentysix 6s ease-in 0s 1 normal;
+}
+#Wtwentyseven {
+    visibility: visible;
+    animation: Wtwentyseven 6s ease-in 0s 1 normal;
+}
+#Wtwentyeight {
+    visibility: visible;
+    animation: Wtwentyeight 6s ease-in 0s 1 normal;
+}
+#Wtwentynine {
+    visibility: visible;
+    animation: Wtwentynine 6s ease-in 0s 1 normal;
+}
+#Wthirty {
+    visibility: visible;
+    animation: Wthirty 6s ease-in 0s 1 normal;
+}
+#Wthirtyone {
+    visibility: visible;
+    animation: Wthirtyone 6s ease-in 0s 1 normal;
+}
+#Wthirtytwo {
+    visibility: visible;
+    animation: Wthirtytwo 6s ease-in 0s 1 normal;
+}
+#Wthirtythree {
+    visibility: visible;
+    animation: Wthirtythree 6s ease-in 0s 1 normal;
+}
+#Wthirtyfour {
+    visibility: visible;
+    animation: Wthirtyfour 6s ease-in 0s 1 normal;
+}
+#Wthirtyfive {
+    visibility: visible;
+    animation: Wthirtyfive 6s ease-in 0s 1 normal;
+}
+#Wthirtysix {
+    visibility: visible;
+    animation: Wthirtysix 6s ease-in 0s 1 normal;
+}
+#Wthirtyseven {
+    visibility: visible;
+    animation: Wthirtyseven 6s ease-in 0s 1 normal;
+}
+#Wthirtyeight {
+    visibility: visible;
+    animation: Wthirtyeight 6s ease-in 0s 1 normal;
+}
+#Wthirtynine {
+    visibility: visible;
+    animation: Wthirtynine 6s ease-in 0s 1 normal;
+}
+
+
+
+@keyframes Wone {
+    0% { visibility: hidden; }
+    25% { visibility: hidden; }
+    27% { visibility: visible; }
+}
+@keyframes Wtwo {
+    0% { visibility: hidden; }
+    27% { visibility: hidden; }
+    28.5% { visibility: visible; }
+}
+@keyframes Wthree {
+    0% { visibility: hidden; }
+    28.5% { visibility: hidden; }
+    30% { visibility: visible; }
+}
+@keyframes Wfour {
+    0% { visibility: hidden; }
+    30% { visibility: hidden; }
+    31.5% { visibility: visible; }
+}
+@keyframes Wfive {
+    0% { visibility: hidden; }
+    31.5% { visibility: hidden; }
+    33% { visibility: visible; }
+}
+@keyframes Wsix {
+    0% { visibility: hidden; }
+    33% { visibility: hidden; }
+    34.5% { visibility: visible; }
+}
+@keyframes Wseven {
+    0% { visibility: hidden; }
+    34.5% { visibility: hidden; }
+    36% { visibility: visible; }
+}
+@keyframes Weight {
+    0% { visibility: hidden; }
+    36% { visibility: hidden; }
+    37.5% { visibility: visible; }
+}
+@keyframes Wnine {
+    0% { visibility: hidden; }
+    37.5% { visibility: hidden; }
+    39% { visibility: visible; }
+}
+@keyframes Wten {
+    0% { visibility: hidden; }
+    39% { visibility: hidden; }
+    40.5% { visibility: visible; }
+}
+@keyframes Weleven {
+    0% { visibility: hidden; }
+    40.5% { visibility: hidden; }
+    42% { visibility: visible; }
+}
+@keyframes Wtwelve {
+    0% { visibility: hidden; }
+    42% { visibility: hidden; }
+    43.5% { visibility: visible; }
+}
+@keyframes Wthirteen {
+    0% { visibility: hidden; }
+    43.5% { visibility: hidden; }
+    45% { visibility: visible; }
+}
+@keyframes Wfourteen {
+    0% { visibility: hidden; }
+    45% { visibility: hidden; }
+    46.5% { visibility: visible; }
+}
+@keyframes Wfifteen {
+    0% { visibility: hidden; }
+    46.5% { visibility: hidden; }
+    48% { visibility: visible; }
+}
+@keyframes Wsixteen {
+    0% { visibility: hidden; }
+    48% { visibility: hidden; }
+    49.5% { visibility: visible; }
+}
+@keyframes Wseventeen {
+    0% { visibility: hidden; }
+    49.5% { visibility: hidden; }
+    51% { visibility: visible; }
+}
+@keyframes Weightteen {
+    0% { visibility: hidden; }
+    51% { visibility: hidden; }
+    52.5% { visibility: visible; }
+}
+@keyframes Wnineteen {
+    0% { visibility: hidden; }
+    52.5% { visibility: hidden; }
+    54% { visibility: visible; }
+}
+@keyframes Wtwenty {
+    0% { visibility: hidden; }
+    54% { visibility: hidden; }
+    55.5% { visibility: visible; }
+}
+@keyframes Wtwentyone {
+    0% { visibility: hidden; }
+    55.5% { visibility: hidden; }
+    57% { visibility: visible; }
+}
+@keyframes Wtwentytwo {
+    0% { visibility: hidden; }
+    57% { visibility: hidden; }
+    58.5% { visibility: visible; }
+}
+@keyframes Wtwentythree {
+    0% { visibility: hidden; }
+    58.5% { visibility: hidden; }
+    60% { visibility: visible; }
+}
+@keyframes Wtwentyfour {
+    0% { visibility: hidden; }
+    60% { visibility: hidden; }
+    61.5% { visibility: visible; }
+}
+@keyframes Wtwentyfive {
+    0% { visibility: hidden; }
+    61.5% { visibility: hidden; }
+    63% { visibility: visible; }
+}
+@keyframes Wtwentysix {
+    0% { visibility: hidden; }
+    63% { visibility: hidden; }
+    64.5% { visibility: visible; }
+}
+@keyframes Wtwentyseven {
+    0% { visibility: hidden; }
+    64.5% { visibility: hidden; }
+    66% { visibility: visible; }
+}
+@keyframes Wtwentyeight {
+    0% { visibility: hidden; }
+    66% { visibility: hidden; }
+    67.5% { visibility: visible; }
+}
+@keyframes Wtwentynine {
+    0% { visibility: hidden; }
+    67.5% { visibility: hidden; }
+    69% { visibility: visible; }
+}
+@keyframes Wthirty {
+    0% { visibility: hidden; }
+    69% { visibility: hidden; }
+    70.5% { visibility: visible; }
+}
+@keyframes Wthirtyone {
+    0% { visibility: hidden; }
+    70.5% { visibility: hidden; }
+    72% { visibility: visible; }
+}
+@keyframes Wthirtytwo {
+    0% { visibility: hidden; }
+    72% { visibility: hidden; }
+    73.5% { visibility: visible; }
+}
+@keyframes Wthirtythree {
+    0% { visibility: hidden; }
+    73.5% { visibility: hidden; }
+    75% { visibility: visible; }
+}
+@keyframes Wthirtyfour {
+    0% { visibility: hidden; }
+    75% { visibility: hidden; }
+    76.5% { visibility: visible; }
+}
+@keyframes Wthirtyfive {
+    0% { visibility: hidden; }
+    76.5% { visibility: hidden; }
+    78% { visibility: visible; }
+}
+@keyframes Wthirtysix {
+    0% { visibility: hidden; }
+    78% { visibility: hidden; }
+    79.5% { visibility: visible; }
+}
+@keyframes Wthirtyseven {
+    0% { visibility: hidden; }
+    79.5% { visibility: hidden; }
+    81% { visibility: visible; }
+}
+@keyframes Wthirtyeight {
+    0% { visibility: hidden; }
+    81% { visibility: hidden; }
+    82.5% { visibility: visible; }
+}
+@keyframes Wthirtynine {
+    0% { visibility: hidden; }
+    82.5% { visibility: hidden; }
+    84% { visibility: visible; }
+}
+#pillsContainer{
+    position: absolute;
+    top:75% ;
+    height: 25%;
+    width: 100%;
+    /* background-color: orange; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#bluePill{
+    height:50px;
+    width:100px;
+    border-radius: 50%;
+    z-index: 1;
+    background-color: rgba(41, 190, 207, 0.911);
+    border-color: rgba(41, 190, 207, 0.911);
+    visibility: visible;
+    animation:bluePillAnimation 6s ease-in 0s 1  normal;
+}
+@keyframes bluePillAnimation{
+    0% { visibility: hidden; }
+    30% { visibility: hidden; }
+    33% { visibility: visible; }
+    
+}
+.redPill{
+    height:50px;
+    width:100px;
+    border-radius: 50%;
+    z-index: 1;
+    background-color:rgb(159, 64, 83,1);
+    border-color:rgb(159, 64, 83,1);
+    visibility: visible;
+    animation:redPillAnimation 6s ease-in 0s 1  normal;
+}
+@keyframes redPillAnimation {
+    0% { visibility: hidden; }
+    61.5% { visibility: hidden; }
+    64.5% { visibility: visible; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Page Two */
+#pageTwo {
+    display: block;
+    min-height: 100vh;  /* full viewport height */
+    overflow-x: hidden;  /* hide any accidental horizontal scroll */
+
+}
+
+
+ /* Page Two Box */
+#greetingBox {
+    width: 80vw;      /* 80% of viewport width */
+    height: 80vh;     /* 80% of viewport height */
+    margin: 5vh auto; /* center vertically with some top/bottom space */
+    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark overlay */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: rgb(84, 165, 84); /* Matrix green */
+    box-shadow: 0 0 20px rgba(0,255,0,0.3);
+}
+
+/* Each Row */
+.greetingRow {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+    margin: 5px 0;
+}
+
+/* Row Heights Using Flex */
+#hiRow {
+    height: 20%; /* 30% of container */
+    font-size: 2.5vh; /* scales with viewport height */
+}
+
+#introRow {
+    height: 30%; /* 20% */
+    font-size: 3.5vh;
+}
+
+#extraIntroRow {
+    height: 20%; /* 20% */
+    font-size: 3vh;
+}
+
+#descriptionRow {
+    height: 30%; /* 30% */
+    font-size: 2.5vh;
+    line-height: 3vh;
+    overflow-y: auto; /* scroll if text overflows */
+    scrollbar-width: none;
+}
+
+
+/* Highlight Name */
+#ron {
+    color: rgb(0, 255, 0);
+    margin-left: 10px;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+#outercoverEduc{
+  position: absolute;
+    top: 110%;
+    left: 10vw;
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-right: 2px solid rgb(84,165,84);
+    scrollbar-width: none;
+
+    box-shadow: 
+    inset -6px 0 12px rgba(106,220,106,0.6),
+    inset -12px 0 20px rgba(106,220,106,0.35);
+}
+/* #outercoverEduc::after{
+  content:'→';
+  position:sticky;
+  right:-1vw;
+  top:50%;
+  transform:translateY(-50%);
+  color:#6aff6a;
+  font-size:3vh;
+  opacity:0.7;
+  pointer-events:none;
+  animation: scrollHint 1.6s ease-in-out infinite;
+}
+@keyframes scrollHint{
+  0%,100%{ transform:translateY(-50%) translateX(0); }
+  50%{ transform:translateY(-50%) translateX(6px); }
+} */
+
+
+.columnodd,
+.columneven{
+  display:flex;
+  flex-direction:column;
+  min-width: 20%;
+  height: 100%;
+}
+
+.box{
+  height: 20%;
+  /* border:2px solid rgb(84,165,84); */
+  display:flex;
+}
+
+.innerBox{
+  width:50%;
+  height:100%;
+  /* border-right:2px solid rgb(84,165,84); */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#6aff6a;
+  font-size:1.8vh;
+  text-align:center;
+}
+
+
+
+.innerBox p{
+  margin:0;
+  line-height:1.3;
+}
+
+.leftinnerbox{
+ /* border-right:2px solid rgb(84,165,84);  */
+}
+.rightinnerbox{
+ /* border-left: 2px solid rgb(84,165,84); */
+}
+
+
+.topbottombox{
+  height: 10%;
+  /* border:2px solid rgb(84,165,84); */
+}
+
+/* full content box */
+.specialbox{
+  width:100%;
+  height:100%;
+  background:rgba(84,165,84,0.18);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  border:1.5px solid #5fdc5f; 
+  padding:0.8vh;
+  box-sizing:border-box;
+}
+
+.yoEducDetail{
+  margin:0.4vh 0;
+  color:#d6ffd6;        /* soft bright green-white */
+  font-size:1.9vh;
+  font-weight:500;
+  letter-spacing:0.4px;
+  line-height:1.3;
+}
+.yoEducDetail:first-child{
+  font-size:2.2vh;
+  font-weight:600;
+}
+
+
+.evenboxthree .leftinnerbox{
+    border-top:2px solid #5fdc5f;
+    border-right:2px solid #5fdc5f;
+}
+
+.evenboxfour .leftinnerbox{
+    border-right:2px solid #5fdc5f;
+}
+
+.evenboxfive .leftinnerbox{
+    border-right:2px solid #5fdc5f;
+}
+
+.evenboxfive .rightinnerbox{
+    border-bottom:2px solid #5fdc5f;
+}
+
+/* odd */
+
+.oddboxfive .leftinnerbox{
+    border-bottom:2px solid #5fdc5f;
+    border-right:2px solid #5fdc5f;
+}
+
+.oddboxfour .leftinnerbox{
+    border-right:2px solid #5fdc5f;
+}
+
+.oddboxthree .leftinnerbox{
+    border-right:2px solid #5fdc5f;
+}
+
+.oddboxthree .rightinnerbox{
+    border-top:2px solid #5fdc5f;
+}
+
+
+
+
+
+
+/* making responsive */
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+    /* your CSS here */
+  }
+  
+  /* Small devices (phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    /* your CSS here */
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    /* your CSS here */
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    /* your CSS here */
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    /* your CSS here */
+  }
+  
+
+
+
+
+
+/* Main rectangle */
+#skillsSection {
+    left: 10vw;
+    position: absolute;
+    top: 210%;
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    border: 2px solid rgb(152, 225, 157);
+}
+
+/* LEFT - 40% */
+#skills {
+    width: 40%;
+    height: 100%;
+    border-right: 2px solid rgb(152, 225, 157);
+}
+
+/* Top 20% of left */
+#skillsHead {
+    height: 20%;
+    border-bottom: 2px solid rgb(152, 225, 157);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-weight: bold;
+}
+#skillsHead span {
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: rgb(152, 225, 157);
+    text-transform: uppercase;
+}
+
+#skillsbody{
+    height: 80%;
+    /* border-bottom: 2px solid rgb(152, 225, 157); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-direction: column;
+
+    overflow-y: auto;   /* 👈 makes it scrollable */
+    scrollbar-width: thin;   /* Firefox */
+}
+#skillsbody::-webkit-scrollbar {
+    width: 6px;
+}
+
+#skillsbody::-webkit-scrollbar-thumb {
+    background: rgb(152, 225, 157);
+    border-radius: 10px;
+}
+
+#skillsbody::-webkit-scrollbar-track {
+    background: rgba(152, 225, 157, 0.1);
+}
+
+
+/* Wrapper for each skill + buttons */
+.skillItemWrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-bottom: 2px solid rgb(152, 225, 157);
+    gap: 10px;
+    margin-bottom: 8px;
+}
+/* Each skill box */
+.skillItem {
+    height: 20%;
+    width: 100%;
+    min-height: 70px;   /* or 60px */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    color: rgb(152, 225, 157);
+    text-transform: capitalize;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+/* Hover highlight */
+.skillItem:hover {
+    background: rgba(152, 225, 157, 0.1);
+    box-shadow: inset 0 0 10px rgba(152, 225, 157, 0.5);
+}
+
+/* Common button style */
+.skillBtn {
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+/* Edit button */
+.editBtn {
+    background-color: #007bff; /* blue */
+    color: #fff;
+}
+.editBtn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Delete button */
+.deleteBtn {
+    background-color: #dc3545; /* red */
+    color: #fff;
+}
+.deleteBtn:hover {
+    background-color: #a71d2a;
+    transform: scale(1.05);
+    color: #fff;
+}
+
+/* Form inline for delete button */
+.skillBtnForm {
+    display: inline-block;
+    margin: 0;
+}
+
+/* Proper button look */
+#addSkillBtn {
+    text-decoration: none;
+    background: rgb(152, 225, 157);
+    color: #003b1f;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 rgba(152, 225, 157, 0.6);
+}
+
+/* Shine / highlight on hover */
+#addSkillBtn:hover {
+    background: #b7f5bd;
+    box-shadow: 
+        0 0 8px rgba(152, 225, 157, 0.8),
+        0 0 20px rgba(152, 225, 157, 0.6);
+    transform: translateY(-1px);
+}
+#addSkillBtn {
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 5px rgba(152,225,157,0.4); }
+    to { box-shadow: 0 0 12px rgba(152,225,157,0.9); }
+}
+
+
+/* RIGHT PANEL LAYOUT */
+#skillsInDetail {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top 20% skill heading */
+#skillDetailHead {
+    height: 20%;
+    border-bottom: 2px solid rgb(152, 225, 157);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    font-size: 22px;
+    color: rgb(152, 225, 157);
+    font-weight: bold;
+    text-transform: capitalize;
+    text-shadow: 0 0 8px rgba(152,225,157,0.6);
+}
+
+/* Add Details button */
+#addDetailBtn {
+    text-decoration: none;
+    background: rgb(152, 225, 157);
+    color: #003b1f;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: 0 0 0 rgba(152, 225, 157, 0.6);
+}
+
+#addDetailBtn:hover {
+    background: #b7f5bd;
+    box-shadow: 
+        0 0 8px rgba(152, 225, 157, 0.8),
+        0 0 20px rgba(152, 225, 157, 0.6);
+    transform: translateY(-1px);
+}
+
+#addDetailBtn {
+    animation: glow 2s infinite alternate;
+}
+
+
+/* Scroll area */
+#skillDetailBody {
+    height: 80%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Topic section */
+.topicBox {
+    min-height: 20%;
+    border-bottom: 2px solid rgb(152, 225, 157);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    color: rgb(152, 225, 157);
+    font-weight: 600;
+    background: rgba(152,225,157,0.05);
+}
+/* Add Core Skill Button */
+#addcoreskillbtn {
+    display: inline-block;
+    margin-left: 15px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #4caf50, #2e7d32); /* green gradient */
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#addcoreskillbtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #81c784, #388e3c); /* lighter green on hover */
+}
+
+#addcoreskillbtn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Each core skill */
+.coreSkillBox {
+    min-height: 10%;
+    border-bottom: 1px solid rgba(152, 225, 157, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgb(152, 225, 157);
+    transition: 0.3s ease;
+}
+
+/* Hover glow */
+.coreSkillBox:hover {
+    background: rgba(152,225,157,0.15);
+    box-shadow: inset 0 0 10px rgba(152,225,157,0.6);
+}
+
+#skillDetailBody {
+    scroll-behavior: smooth;
+}

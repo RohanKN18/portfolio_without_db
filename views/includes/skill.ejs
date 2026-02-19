@@ -1,0 +1,35 @@
+<section id="skillsSection">
+
+    <div id="skills">
+        <div id="skillsHead">
+            <span>Skills</span>
+            <a href="/addskill" id="addSkillBtn">+ Add Skill</a>
+        </div>
+        <div id="skillsbody">
+            <% for (let skill of skills) { %>
+                <div class="skillItemWrapper">
+                    <a class="skillItem" href="/portfolio/<%= skill.skillName %>">
+                        <%= skill.skillName %>
+                    </a>
+
+                    <!-- Edit button -->
+                    <a href="/portfolio/<%= skill.skillName %>/edit" class="skillBtn editBtn">
+                        Edit
+                    </a>
+
+                    <!-- Delete button (POST with method-override) -->
+                    <form action="/portfolio/<%= skill.skillName %>?_method=DELETE" method="POST" class="skillBtnForm">
+                        <button type="submit" class="skillBtn deleteBtn">Delete</button>
+                    </form>
+                </div>
+                <% } %>
+        </div>
+
+    </div>
+
+    <div id="skillsInDetail">
+
+    </div>
+
+
+</section>

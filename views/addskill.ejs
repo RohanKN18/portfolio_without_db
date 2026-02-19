@@ -1,0 +1,28 @@
+<%- include("includes/head.ejs"); %>
+
+    <body>
+
+        <%- include("includes/background.ejs"); %>
+
+            <div id="pageTwo">
+                <%- include("includes/intro.ejs"); %>
+                <%- include("includes/education.ejs"); %>
+                    <section id="skillsSection">
+
+                        <%- include("includes/skillsleft.ejs"); %>
+
+                        <div id="skillsInDetail">
+                            <!-- form -->
+                            <form method="post" action="/portfolio">
+                                <textarea placeholder="write your skill" name="newskill"></textarea><br>
+                                <button>submit</button>
+                            </form>
+                        </div>
+
+                    </section>
+
+            </div>
+            <script src="app.js" type="module"></script>
+    </body>
+
+    </html>

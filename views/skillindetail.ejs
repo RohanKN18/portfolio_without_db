@@ -1,0 +1,58 @@
+<%- include("includes/head.ejs"); %>
+
+    <body>
+
+        <%- include("includes/background.ejs"); %>
+
+            <div id="pageTwo">
+                <%- include("includes/intro.ejs"); %>
+                <%- include("includes/education.ejs"); %>
+                    <section id="skillsSection">
+
+                        <%- include("includes/skillsleft.ejs"); %>
+
+                        <div id="skillsInDetail">
+                            <div id="skillDetailHead">
+                                <span>
+                                    <%= selectedSkill.skillName %>
+                                </span>
+                                <a href="/portfolio/<%= selectedSkill.skillName %>/addtopics" id="addDetailBtn">
+                                    + Add Details
+                                </a>
+                            </div>
+
+                            <div id="skillDetailBody">
+
+                                <% for (let topic of selectedSkill.topics) { %>
+                                    <div class="topicBox">
+                                        <%= topic.topicName || "Topics" %>
+                                            <!-- Link to add core skill page -->
+                                            <a href="/portfolio/<%= selectedSkill.skillName %>/<%= topic.topicName %>/addcoreskill" id="addcoreskillbtn">
+                                                + Add Core Skill
+                                            </a>
+                                    </div>
+
+                                    <% if (topic.coreSkills && topic.coreSkills.length> 0) { %>
+                                        <% for (let core of topic.coreSkills) { %>
+                                            <div class="coreSkillBox">
+                                                <%= core %>
+                                            </div>
+                                            <% } %>
+                                                <% } else { %>
+                                                    <div class="coreSkillBox">No core skills yet</div>
+                                                    <% } %>
+
+                                                        <% } %>
+
+                            </div>
+
+
+                        </div>
+
+                    </section>
+
+            </div>
+            <script src="app.js" type="module"></script>
+    </body>
+
+    </html>
