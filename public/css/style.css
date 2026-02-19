@@ -577,6 +577,58 @@ body{
 
 
 
+.navbar {
+    position: fixed;
+    top: 1vh;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 80vw;
+    height: 8vh;
+
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(6px);
+
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,255,0,0.3);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 2rem;
+}
+
+/* left links */
+.nav-left a {
+    color: rgb(84,165,84);
+    text-decoration: none;
+    margin-right: 2rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-left a:hover {
+    color: rgb(0,255,0);
+    text-shadow: 0 0 8px rgba(0,255,0,0.8);
+}
+
+/* right login button */
+.login-btn {
+    background: transparent;
+    border: 2px solid rgb(84,165,84);
+    color: rgb(84,165,84);
+    padding: 6px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: rgb(0,255,0);
+    color: black;
+    box-shadow: 0 0 12px rgb(0,255,0);
+}
 
 
 
@@ -593,6 +645,8 @@ body{
 
  /* Page Two Box */
 #greetingBox {
+    position: relative;
+    top: 10vh;
     width: 80vw;      /* 80% of viewport width */
     height: 80vh;     /* 80% of viewport height */
     margin: 5vh auto; /* center vertically with some top/bottom space */
