@@ -26,6 +26,8 @@ app.use(express.static(path.join(__dirname, "public")));
 import { faker } from '@faker-js/faker';
 import mysql from 'mysql2';
 
+let password="meoww";
+
 let education = [
   {
     id: 0,
