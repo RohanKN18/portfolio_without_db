@@ -1486,3 +1486,7 @@ copyright{
         font-size: 14px;
     }
 }
+.footerContent{
+    max-width: 500px;
+    width: 100%;
+}
