@@ -133,7 +133,23 @@ app.get("/addskill",(req,res)=>{
     res.render("addskill.ejs",{ skills, education, scrollTo: "skillsSection" });
 });
 
+app.get("/publicportfolio/:skillName", (req, res) => {
+    const { skillName } = req.params;
 
+    const selectedSkill = skills.find(
+        skill => skill.skillName === skillName
+    );
+
+    if (!selectedSkill) {
+        return res.status(404).send("Skill not found");
+    }
+
+    res.render("publicskillindetail.ejs", {
+        skills, education,
+        selectedSkill,
+        scrollTo: "skillsSection"
+    });
+});
 
 app.get("/portfolio/:skillName", (req, res) => {
     const { skillName } = req.params;

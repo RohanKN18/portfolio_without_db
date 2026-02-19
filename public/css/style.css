@@ -883,7 +883,7 @@ body{
     flex-direction: column;
 
     overflow-y: auto;   /* 👈 makes it scrollable */
-    scrollbar-width: thin;   /* Firefox */
+    scrollbar-width: none;   
 }
 #skillsbody::-webkit-scrollbar {
     width: 6px;
@@ -904,7 +904,7 @@ body{
     display: flex;
     width: 100%;
     align-items: center;
-    border-bottom: 2px solid rgb(152, 225, 157);
+    /* border-bottom: 2px solid rgb(152, 225, 157); */
     gap: 10px;
     margin-bottom: 8px;
 }
@@ -1056,6 +1056,7 @@ body{
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+
 }
 
 /* Topic section */
@@ -1117,5 +1118,6 @@ body{
 }
 
 #skillDetailBody {
+    scrollbar-width: none;
     scroll-behavior: smooth;
 }

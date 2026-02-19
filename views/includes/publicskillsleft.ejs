@@ -1,12 +1,12 @@
 <div id="skills">
-                            <div id="skillsHead">
-                                <span>Skills</span>
-                            </div>
-                            <div id="skillsbody">
-                                <% for (skill of skills) { %>
-                                    <a class="skillItem" href="/portfolio/<%= skill.skillName %>">
-                                        <%= skill.skillName %>
-                                    </a>
-                                    <% } %>
-                            </div>
-                        </div>
+    <div id="skillsHead">
+        <span>Skills</span>
+    </div>
+    <div id="skillsbody">
+        <% for (skill of skills) { %>
+            <a class="skillItem" href="/publicportfolio/<%= skill.skillName %>">
+                <%= skill.skillName %>
+            </a>
+            <% } %>
+    </div>
+</div>
