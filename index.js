@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, "public")));
 import { faker } from '@faker-js/faker';
 import mysql from 'mysql2';
 
-let password="meoww";
+let password="meow";
 
 let education = [
   {
@@ -119,6 +119,10 @@ app.listen("8080",()=>{
 
 app.get("/home",(req,res)=>{
     res.render("home.ejs");
+});
+
+app.get("/publicportfolio",(req,res)=>{
+    res.render("publicportfolio.ejs", { skills, education });
 });
 
 app.get("/portfolio",(req,res)=>{
