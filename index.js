@@ -113,6 +113,90 @@ let skills = [
 
 
 
+
+
+//adding new skill
+app.get("/portfolio/addskill",(req,res)=>{
+    res.render("addskill.ejs",{ skills, education, scrollTo: "skillsSection" });
+});
+app.post("/portfolio/addskill", (req, res) => {
+    let newskill  = req.body.skill;
+
+    skills.push({
+        skillName: newskill,
+        topics: []
+    });
+
+    res.redirect("/portfolio#skillsSection");
+});
+
+
+
+//adding new topic under the specific skill
+app.get("/portfolio/:skillName/addtopics",(req,res)=>{
+    const { skillName } = req.params;
+
+    const selectedSkill = skills.find(
+        skill => skill.skillName === skillName
+    );
+    if (!selectedSkill) {
+        return res.status(404).send("Skill not found");
+    }
+    res.render("addtopics.ejs", {
+        skills, education,
+        selectedSkill,
+        scrollTo: "skillsSection"
+    });
+});
+app.post("/portfolio/:skill/addtopics", (req,res)=>{
+    let skillName = req.params.skill;
+    let topicName = req.body.topic;
+    // find the correct skill
+    let selectedSkill = skills.find(s => s.skillName === skillName);
+
+    if(selectedSkill){
+        selectedSkill.topics.push({
+            topicName: topicName,
+            coreSkills: []
+        });
+    }
+
+    res.redirect(`/portfolio/${skillName}#skillsSection`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen("8080",()=>{
     console.log("server is listening to 8080")
 });
@@ -124,26 +208,6 @@ app.get("/home",(req,res)=>{
 app.get("/publicportfolio",(req,res)=>{
     res.render("publicportfolio.ejs", { skills, education });
 });
-app.get("/loginform",(req,res)=>{
-    res.render("loginpage.ejs", { skills, education });
-});
-app.post("/login", (req, res) => {
-    if (req.body.password === password) {
-        res.redirect("/portfolio");
-    } else {
-        res.send("Wrong password ❌");
-    }
-});
-
-
-app.get("/portfolio",(req,res)=>{
-    res.render("portfolio.ejs", { skills, education });
-});
-
-app.get("/addskill",(req,res)=>{
-    res.render("addskill.ejs",{ skills, education, scrollTo: "skillsSection" });
-});
-
 app.get("/publicportfolio/:skillName", (req, res) => {
     const { skillName } = req.params;
 
@@ -161,7 +225,19 @@ app.get("/publicportfolio/:skillName", (req, res) => {
         scrollTo: "skillsSection"
     });
 });
-
+app.get("/loginform",(req,res)=>{
+    res.render("loginpage.ejs", { skills, education });
+});
+app.post("/login", (req, res) => {
+    if (req.body.password === password) {
+        res.redirect("/portfolio");
+    } else {
+        res.send("Wrong password ❌");
+    }
+});
+app.get("/portfolio",(req,res)=>{
+    res.render("portfolio.ejs", { skills, education });
+});
 app.get("/portfolio/:skillName", (req, res) => {
     const { skillName } = req.params;
 
@@ -179,50 +255,4 @@ app.get("/portfolio/:skillName", (req, res) => {
         scrollTo: "skillsSection"
     });
 });
-app.post("/portfolio", (req, res) => {
-    let { newskill } = req.body;
-
-    skills.push({
-        skillName: newskill,
-        topics: []
-    });
-
-    res.redirect("/portfolio#skillsSection");
-});
-
-
-
-app.get("/portfolio/:skillName/addtopics",(req,res)=>{
-    const { skillName } = req.params;
-
-    const selectedSkill = skills.find(
-        skill => skill.skillName === skillName
-    );
-    if (!selectedSkill) {
-        return res.status(404).send("Skill not found");
-    }
-    res.render("addtopics.ejs", {
-        skills, education,
-        selectedSkill,
-        scrollTo: "skillsSection"
-    });
-});
-app.post("/portfolio/:skillName", (req, res) => {
-    const { skillName } = req.params;
-    const { newtopic } = req.body;
-    // Find the skill object
-    const skill = skills.find(
-        skill => skill.skillName === skillName
-    );
-
-    if (!skill) {
-        return res.status(404).send("Skill not found");
-    }
-
-    skill.topics.push({ topicName: newtopic, coreSkills: [] });
-
-    res.redirect(`/portfolio/${encodeURIComponent(skill.skillName)}#skillsSection`);
-});
-
-
 

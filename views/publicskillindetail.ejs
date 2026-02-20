@@ -48,6 +48,15 @@
 
             </div>
             <script src="app.js" type="module"></script>
+            <script>
+    const sectionId = "<%= scrollTo %>";
+    if(sectionId){
+        const el = document.getElementById(sectionId);
+        if(el){
+            el.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+</script>
             <%- include("includes/footer.ejs"); %>
     </body>
 

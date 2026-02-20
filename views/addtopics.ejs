@@ -1,40 +1,25 @@
 <%- include("includes/head.ejs"); %>
 <body >
 
-    <%- include("includes/background.ejs"); %>
+ <div class="formtopicBox">
 
-    <div id="pageTwo">
-        <%- include("includes/intro.ejs"); %>
-        <%- include("includes/education.ejs"); %>
-        <section id="skillsSection">
+    <form class="topicForm" method="POST" action="/portfolio/<%= selectedSkill.skillName %>/addtopics">
 
-                        <%- include("includes/skillsleft.ejs"); %>
+        <h1>Add details for <%= selectedSkill.skillName %></h1>
 
-                        <div id="skillsInDetail">
-                            <div id="skillDetailHead">
-                                <span>
-                                    <%= selectedSkill.skillName %>
-                                </span>
-                            </div>
+        <img src="/images/topic.png" alt="topic image" class="topicImg">
 
-                            <div id="skillDetailBody">
+        <input 
+            type="text" 
+            name="topic" 
+            placeholder="Enter new topic..."
+            required
+        >
 
-                               
-                                <form method="post" action="/portfolio/<%= selectedSkill.skillName %>">
-                                <textarea placeholder="write your topic" name="newtopic"></textarea><br>
-                                <button>submit</button>
-                            
-                                </form>
+        <button type="submit">Add Topic</button>
 
-                            </div>
+    </form>
 
-                        </div>
-
-                    </section>
-                    <%- include("includes/projects.ejs"); %>
-        
-    </div>
-    <script src="app.js" type="module"></script>
-    <%- include("includes/footer.ejs"); %>
+</div>
 </body>
-</html>
+</html> 

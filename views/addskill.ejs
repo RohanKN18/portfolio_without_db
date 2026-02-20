@@ -2,29 +2,21 @@
 
     <body>
 
-        <%- include("includes/background.ejs"); %>
+        <div class="skillBox">
 
-            <div id="pageTwo">
-                <%- include("includes/intro.ejs"); %>
-                <%- include("includes/education.ejs"); %>
-                    <section id="skillsSection">
+            <form class="skillForm" action="/portfolio/addskill" method="POST">
 
-                        <%- include("includes/skillsleft.ejs"); %>
+                <h1>What new u learn my boy?</h1>
 
-                        <div id="skillsInDetail">
-                            <!-- form -->
-                            <form method="post" action="/portfolio">
-                                <textarea placeholder="write your skill" name="newskill"></textarea><br>
-                                <button>submit</button>
-                            </form>
-                        </div>
+                <img src="" alt="skill image" class="skillImg">
 
-                    </section>
-                    <%- include("includes/projects.ejs"); %>
+                <input type="text" name="skill" placeholder="Enter new skill..." required>
 
-            </div>
-            <script src="app.js" type="module"></script>
-            <%- include("includes/footer.ejs"); %>
+                <button type="submit">Add Skill</button>
+
+            </form>
+
+        </div>
     </body>
 
     </html>

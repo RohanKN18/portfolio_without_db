@@ -2,9 +2,8 @@
 
     <body>
 
-        <%- include("includes/background.ejs"); %>
-
             <div id="pageTwo">
+                <%- include("includes/navbar.ejs"); %>
                 <%- include("includes/intro.ejs"); %>
                 <%- include("includes/education.ejs"); %>
                     <section id="skillsSection">
@@ -55,6 +54,15 @@
 
             </div>
             <script src="app.js" type="module"></script>
+            <script>
+    const sectionId = "<%= scrollTo %>";
+    if(sectionId){
+        const el = document.getElementById(sectionId);
+        if(el){
+            el.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+</script>
             <%- include("includes/footer.ejs"); %>
     </body>
 
