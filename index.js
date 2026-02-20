@@ -232,7 +232,7 @@ app.post("/login", (req, res) => {
     if (req.body.password === password) {
         res.redirect("/portfolio");
     } else {
-        res.send("Wrong password ❌");
+        res.render("loginfail.ejs");
     }
 });
 app.get("/portfolio",(req,res)=>{

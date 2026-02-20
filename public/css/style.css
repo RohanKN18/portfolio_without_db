@@ -133,19 +133,17 @@ body{
 
 
 /* home page */
-#photoContainer{
+/* #photoContainer{
     position: absolute;
     top: 0%;
     height: 50%;
     width: 100%;
-    /* background-color: blue; */
     display: flex;
     justify-content: center;
     align-items: center;
     animation:photoContainerAnimation 4s ease-in 0s 1  normal; 
 }
 #photo{
-    /* box-shadow:4px 4px 8px rgb(151, 239, 151); */
     color: rgb(84, 165, 84);
     height: 200px;
     width: 200px;
@@ -159,7 +157,38 @@ body{
 #photo{
     width: clamp(120px, 22vw, 200px);
     height: clamp(120px, 22vw, 200px);
+} */
+
+/* Centered and responsive photo container */
+#photoContainer {
+    position: fixed; /* stays relative to viewport */
+    top: 5vh;       /* distance from top, adjust as needed */
+    left: 50%;       /* center horizontally */
+    transform: translateX(-50%); 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 90%;           /* responsive width */
+    max-width: 700px;     /* optional limit */
+    aspect-ratio: 700 / 301; /* keeps original ratio */
+
+    animation: photoContainerAnimation 4s ease-in 0s 1 normal; 
+    z-index: 10;          /* ensures it’s above other content */
 }
+
+#photo {
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgb(26, 100, 26);
+    border-radius: 10px;  /* optional rounded corners */
+    background-image: url(assets/redblue.jpg);
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;    /* for fallback if using <img> */
+}
+
 
 @keyframes photoContainerAnimation{
     0%{
@@ -832,7 +861,7 @@ body{
 
 
 /* login form */
-.loginBox{
+/* .loginBox{
     position: relative;
     margin: 10vh auto;
 
@@ -851,6 +880,30 @@ body{
         inset 0 0 20px rgba(0,255,0,0.2);
 
     backdrop-filter: blur(6px);
+} */
+
+.loginBox {
+    position: relative;
+    margin: 10vh auto;
+
+    width: 80vw;
+    max-width: 800px; /* optional */
+    height: auto;      /* let content define height */
+
+    background: rgba(0,0,0,0.7);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column; /* stack content */
+    justify-content: flex-start; /* align to top */
+    align-items: center;
+
+    box-shadow:
+        0 0 20px rgba(0,255,0,0.4),
+        inset 0 0 20px rgba(0,255,0,0.2);
+
+    backdrop-filter: blur(6px);
+    padding: 20px; /* spacing */
 }
 
 .loginForm{
@@ -860,14 +913,39 @@ body{
     gap:25px;
 }
 
-.loginImg{
-    width:150px;
-    height:150px;
-    object-fit:cover;
-    border-radius:50%;
 
-    box-shadow:0 0 15px rgba(0,255,0,0.6);
+
+/* log in photo */
+#loginPhotocontainer {
+    width: 100%;
+    max-width: 800px; /* Optional: limits on very large screens */
+    margin: 0 auto; /* Center horizontally */
 }
+#loginPhoto {
+    width: 100%;
+    aspect-ratio: 1500 / 746; /* Maintains original aspect ratio */
+    background-image: url(assets/login.jpg); /* Set your image path here */
+    background-size: cover; /* Fill the div, crop if needed */
+    background-position: center; /* Center the image */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Optional shadow */
+}
+/* Fail login photo */
+#loginfailPhotocontainer {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+#loginfailPhoto {
+    width: 100%;
+    aspect-ratio: 1024 / 576; /* match real image */
+    background-image: url(assets/idareu.webp);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+
 
 .loginForm input{
     padding:15px 20px;
@@ -885,6 +963,9 @@ body{
 
     box-shadow:0 0 10px rgba(0,255,0,0.4) inset;
 }
+
+
+
 
 .loginForm button{
     padding:12px 40px;
@@ -904,7 +985,21 @@ body{
     transform:scale(1.08);
     box-shadow:0 0 20px #00ff00;
 }
+.loginMessage {
+    text-align: center;
+    font-size: 1rem; /* base size */
+    color: #546A40; /* nice greenish color, can adjust */
+    margin: 10px 0; /* spacing between image and input */
+    padding: 0 10px; /* small horizontal padding */
+    word-wrap: break-word; /* prevents overflow on small screens */
+}
 
+/* Optional: make font smaller on very small screens */
+@media (max-width: 400px) {
+    .loginMessage {
+        font-size: 0.9rem;
+    }
+}
 
 
 
@@ -1110,12 +1205,7 @@ body{
   line-height:1.3;
 }
 
-.leftinnerbox{
- /* border-right:2px solid rgb(84,165,84);  */
-}
-.rightinnerbox{
- /* border-left: 2px solid rgb(84,165,84); */
-}
+
 
 
 .topbottombox{

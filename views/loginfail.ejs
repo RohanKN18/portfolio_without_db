@@ -1,0 +1,33 @@
+<%- include("includes/head.ejs"); %>
+
+    <body>
+
+        <%- include("includes/background.ejs"); %>
+
+            <div id="pageTwo">
+                <div class="loginBox">
+                    <form class="loginForm" method="POST" action="/login">
+
+                        <div id="loginfailPhotocontainer">
+                            <div id="loginfailPhoto">
+
+                            </div>
+                        </div>
+
+                        <!-- Message div -->
+                        <div class="loginMessage">
+                            Say what again. SAY WHAT again! And I dare you, I double dare you motherfucker! Say what one
+                            more time.
+                        </div>
+
+                        <input type="password" name="password" placeholder="Enter Password" required>
+
+                        <button type="submit">Login</button>
+
+                    </form>
+                </div>
+            </div>
+            <script src="app.js" type="module"></script>
+    </body>
+
+    </html>
