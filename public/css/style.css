@@ -791,6 +791,24 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Page Two */
 #pageTwo {
     display: block;
@@ -798,7 +816,78 @@ body{
     overflow-x: hidden;  /* hide any accidental horizontal scroll */
 
 }
+.loginBox{
+    position: relative;
+    margin: 10vh auto;
 
+    width: 80vw;
+    height: 80vh;
+
+    background: rgba(0,0,0,0.7);
+    border-radius: 20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:
+        0 0 20px rgba(0,255,0,0.4),
+        inset 0 0 20px rgba(0,255,0,0.2);
+
+    backdrop-filter: blur(6px);
+}
+
+.loginForm{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+}
+
+.loginImg{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border-radius:50%;
+
+    box-shadow:0 0 15px rgba(0,255,0,0.6);
+}
+
+.loginForm input{
+    padding:15px 20px;
+    width:250px;
+
+    border:none;
+    outline:none;
+    border-radius:10px;
+
+    background:rgba(0,0,0,0.8);
+    color:#6aff6a;
+
+    font-size:18px;
+    text-align:center;
+
+    box-shadow:0 0 10px rgba(0,255,0,0.4) inset;
+}
+
+.loginForm button{
+    padding:12px 40px;
+    border:none;
+    border-radius:12px;
+
+    background:#00ff00;
+    color:black;
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.loginForm button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px #00ff00;
+}
 
 
 
@@ -926,9 +1015,37 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #outercoverEduc{
-  position: absolute;
-    top: 110%;
+    position: relative;
+    margin-top: 10vh;
     left: 10vw;
     width: 80vw;
     height: 80vh;
@@ -942,22 +1059,7 @@ body{
     inset -6px 0 12px rgba(106,220,106,0.6),
     inset -12px 0 20px rgba(106,220,106,0.35);
 }
-/* #outercoverEduc::after{
-  content:'→';
-  position:sticky;
-  right:-1vw;
-  top:50%;
-  transform:translateY(-50%);
-  color:#6aff6a;
-  font-size:3vh;
-  opacity:0.7;
-  pointer-events:none;
-  animation: scrollHint 1.6s ease-in-out infinite;
-}
-@keyframes scrollHint{
-  0%,100%{ transform:translateY(-50%) translateX(0); }
-  50%{ transform:translateY(-50%) translateX(6px); }
-} */
+
 
 
 .columnodd,
@@ -1116,11 +1218,36 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Main rectangle */
 #skillsSection {
     left: 10vw;
-    position: absolute;
-    top: 210%;
+    position: relative;
+    margin-top: 10vh;
     width: 80vw;
     height: 80vh;
     display: flex;
@@ -1403,39 +1530,97 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .projectBox{
-    
-    left: 50vw;
-    position: absolute;
-    top: 350%;
-    transform:translate(-50%,-50%);
+    position: relative;
 
-    width:80vw;
-    height:80vh;
+    margin: 10vh auto;
 
-    background:rgba(0,0,0,0.7);
-    border-radius:20px;
+    width: 80vw;
+    height: 80vh;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background: rgba(0,0,0,0.7);
+    border-radius: 20px;
 
-    color:#6aff6a;
-    font-size:clamp(20px,3vw,40px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #6aff6a;
+    font-size: clamp(20px,3vw,40px);
 
     box-shadow:
         0 0 20px rgba(0,255,0,0.4),
         inset 0 0 20px rgba(0,255,0,0.2);
 
-    backdrop-filter:blur(6px);
+    backdrop-filter: blur(6px);
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .footer{
-    position: absolute;
     width: 100%;
-    top: 390%;
+    position: relative;
+    margin-top: 10vh;
     background: rgba(0,0,0,0.6);
     color: #00ff88;
     display: flex;

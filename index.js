@@ -124,6 +124,17 @@ app.get("/home",(req,res)=>{
 app.get("/publicportfolio",(req,res)=>{
     res.render("publicportfolio.ejs", { skills, education });
 });
+app.get("/loginform",(req,res)=>{
+    res.render("loginpage.ejs", { skills, education });
+});
+app.post("/login", (req, res) => {
+    if (req.body.password === password) {
+        res.redirect("/portfolio");
+    } else {
+        res.send("Wrong password ❌");
+    }
+});
+
 
 app.get("/portfolio",(req,res)=>{
     res.render("portfolio.ejs", { skills, education });

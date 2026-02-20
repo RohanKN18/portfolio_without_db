@@ -2,15 +2,19 @@
 
     <body>
 
-        <%- include("includes/background.ejs"); %>
+        
 
             <div id="pageTwo">
+                <%- include("includes/navbar.ejs"); %>
                 <%- include("includes/intro.ejs"); %>
                 <%- include("includes/education.ejs"); %>
                 <%- include("includes/skill.ejs"); %>
+                <%- include("includes/projects.ejs"); %>
 
             </div>
             <script src="app.js" type="module"></script>
+
+            <%- include("includes/footer.ejs"); %>
     </body>
 
     </html>
