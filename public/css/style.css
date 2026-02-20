@@ -1812,36 +1812,230 @@ body{
 
 /* 
 project */
-.projectBox{
-    position: relative;
+/* MAIN CONTAINER */
+#projectsSection{
+    left:10vw;
+    position:relative;
+    margin-top:10vh;
 
-    margin: 10vh auto;
+    width:80vw;
+    height:80vh;
 
-    width: 80vw;
-    height: 80vh;
+    display:flex;
+    border:2px solid rgb(152,225,157);
+}
 
-    background: rgba(0,0,0,0.7);
-    border-radius: 20px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* LEFT PANEL */
+#projects{
+    width:40%;
+    height:100%;
+    border-right:2px solid rgb(152,225,157);
+}
 
-    color: #6aff6a;
-    font-size: clamp(20px,3vw,40px);
+/* HEADER */
+#projectsHead{
+    height:20%;
+    border-bottom:2px solid rgb(152,225,157);
 
-    box-shadow:
-        0 0 20px rgba(0,255,0,0.4),
-        inset 0 0 20px rgba(0,255,0,0.2);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+}
 
-    backdrop-filter: blur(6px);
+#projectsHead span{
+    font-size:22px;
+    color:rgb(152,225,157);
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+/* SCROLL BODY */
+#projectsBody{
+    height:80%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+
+    overflow-y:auto;
+    scrollbar-width:none;
+}
+
+/* ITEM WRAPPER */
+.projectItemWrapper{
+    display:flex;
+    align-items:center;
+    width:100%;
+    gap:10px;
+    margin-bottom:8px;
+}
+
+/* PROJECT ITEM */
+.projectItem{
+    width:100%;
+    min-height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:rgb(152,225,157);
+    font-size:18px;
+    text-transform:capitalize;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.projectItem:hover{
+    background:rgba(152,225,157,0.1);
+    box-shadow: inset 0 0 10px rgba(152,225,157,0.6);
+}
+
+
+/* RIGHT PANEL */
+#projectsInDetail{
+    width:60%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+/* ADD BUTTON */
+#addProjectBtn{
+    text-decoration:none;
+    background:rgb(152,225,157);
+    color:#003b1f;
+    padding:8px 16px;
+    border-radius:6px;
+    font-weight:600;
+    transition:.3s;
+}
+
+#addProjectBtn:hover{
+    background:#b7f5bd;
+    box-shadow:0 0 20px rgba(152,225,157,.6);
 }
 
 
 
 
 
+/* RIGHT PANEL */
+#projectsInDetail{
+    width:60%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
 
+
+/* HEADER */
+#projectDetailHead{
+    height:20%;
+    border-bottom:2px solid rgb(152,225,157);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+
+    font-size:clamp(18px,2vw,24px);
+    color:rgb(152,225,157);
+    font-weight:bold;
+    text-transform:capitalize;
+    text-shadow:0 0 8px rgba(152,225,157,0.6);
+}
+
+
+/* BODY */
+#projectDetailBody{
+    height:80%;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    scrollbar-width:none;
+}
+
+#projectDetailBody::-webkit-scrollbar{
+    width:6px;
+}
+
+#projectDetailBody::-webkit-scrollbar-thumb{
+    background:rgb(152,225,157);
+    border-radius:10px;
+}
+
+
+/* SECTION TITLES (same as topicBox) */
+#projectsInDetail .topicBox{
+    min-height:60px;
+    border-bottom:2px solid rgb(152,225,157);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:clamp(16px,1.6vw,20px);
+    color:rgb(152,225,157);
+    font-weight:600;
+    background:rgba(152,225,157,0.05);
+}
+
+
+/* ITEMS (same as coreSkillBox) */
+#projectsInDetail .coreSkillBox{
+    min-height:50px;
+    border-bottom:1px solid rgba(152,225,157,0.4);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0 15px;
+    text-align:center;
+
+    font-size:clamp(14px,1.4vw,18px);
+    color:rgb(152,225,157);
+
+    transition:.3s ease;
+}
+
+/* HOVER GLOW */
+#projectsInDetail .coreSkillBox:hover{
+    background:rgba(152,225,157,0.15);
+    box-shadow: inset 0 0 10px rgba(152,225,157,0.6);
+}
+
+
+/* LINKS STYLE */
+#projectsInDetail a.coreSkillBox{
+    text-decoration:none;
+    font-weight:bold;
+}
+
+
+/* EDIT BUTTON */
+#projectsInDetail #addDetailBtn{
+    text-decoration:none;
+    background:rgb(152,225,157);
+    color:#003b1f;
+    padding:8px 16px;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s ease;
+}
+
+#projectsInDetail #addDetailBtn:hover{
+    background:#b7f5bd;
+    box-shadow:
+        0 0 8px rgba(152,225,157,0.8),
+        0 0 20px rgba(152,225,157,0.6);
+    transform:translateY(-1px);
+}
 
 
 

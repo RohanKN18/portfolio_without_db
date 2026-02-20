@@ -112,12 +112,106 @@ let skills = [
 ];
 
 
+let projects = [
+  {
+    projectName: "Portfolio Website",
+    githubLink: "https://github.com/yourname/portfolio",
+    liveLink: "https://yourportfolio.com",
+    description: "Personal portfolio website to showcase projects, skills, and contact information.",
+
+    techStack: {
+      languages: ["HTML", "CSS", "JavaScript"],
+      frameworks: [],
+      databases: [],
+      tools: ["VS Code", "Git", "GitHub"]
+    },
+
+    features: [
+      "Responsive design",
+      "Dynamic project filtering",
+      "Contact form integration"
+    ],
+
+    role: "Full Stack Developer",
+    startDate: "2025-01",
+    endDate: "2025-02",
+    status: "Completed",
+
+    highlights: [
+      "Optimized loading speed",
+      "Clean UI/UX design",
+      "Reusable components"
+    ]
+  },
+
+  {
+    projectName: "Machine Learning Price Predictor",
+    githubLink: "https://github.com/yourname/ml-project",
+    liveLink: null,
+    description: "A regression model that predicts prices based on input features.",
+
+    techStack: {
+      languages: ["Python"],
+      frameworks: ["Scikit-learn"],
+      databases: [],
+      tools: ["Jupyter Notebook", "Git"]
+    },
+
+    features: [
+      "Data preprocessing pipeline",
+      "Model comparison",
+      "Evaluation metrics dashboard"
+    ],
+
+    role: "ML Developer",
+    startDate: "2024-11",
+    endDate: "2024-12",
+    status: "Completed",
+
+    highlights: [
+      "Achieved high prediction accuracy",
+      "Implemented feature engineering",
+      "Visualized model performance"
+    ]
+  },
+
+  {
+    projectName: "Task Manager API",
+    githubLink: "https://github.com/yourname/task-api",
+    liveLink: null,
+    description: "RESTful API for managing tasks with authentication and CRUD operations.",
+
+    techStack: {
+      languages: ["JavaScript"],
+      frameworks: ["Node.js", "Express.js"],
+      databases: ["MongoDB"],
+      tools: ["Postman", "Git"]
+    },
+
+    features: [
+      "JWT Authentication",
+      "Secure routes",
+      "REST API architecture"
+    ],
+
+    role: "Backend Developer",
+    startDate: "2025-03",
+    endDate: "2025-04",
+    status: "Completed",
+
+    highlights: [
+      "Secure authentication system",
+      "Scalable backend architecture"
+    ]
+  }
+];
+
 
 
 
 //adding new skill
 app.get("/portfolio/addskill",(req,res)=>{
-    res.render("addskill.ejs",{ skills, education, scrollTo: "skillsSection" });
+    res.render("addskill.ejs",{ projects,skills, education, scrollTo: "skillsSection" });
 });
 app.post("/portfolio/addskill", (req, res) => {
     let newskill  = req.body.skill;
@@ -143,7 +237,7 @@ app.get("/portfolio/:skillName/addtopics",(req,res)=>{
         return res.status(404).send("Skill not found");
     }
     res.render("addtopics.ejs", {
-        skills, education,
+        projects,skills, education,
         selectedSkill,
         scrollTo: "skillsSection"
     });
@@ -206,7 +300,7 @@ app.get("/home",(req,res)=>{
 });
 
 app.get("/publicportfolio",(req,res)=>{
-    res.render("publicportfolio.ejs", { skills, education });
+    res.render("publicportfolio.ejs", { projects,skills, education });
 });
 app.get("/publicportfolio/:skillName", (req, res) => {
     const { skillName } = req.params;
@@ -220,7 +314,7 @@ app.get("/publicportfolio/:skillName", (req, res) => {
     }
 
     res.render("publicskillindetail.ejs", {
-        skills, education,
+        projects,skills, education,
         selectedSkill,
         scrollTo: "skillsSection"
     });
@@ -236,7 +330,7 @@ app.post("/login", (req, res) => {
     }
 });
 app.get("/portfolio",(req,res)=>{
-    res.render("portfolio.ejs", { skills, education });
+    res.render("portfolio.ejs", { skills, education,projects });
 });
 app.get("/portfolio/:skillName", (req, res) => {
     const { skillName } = req.params;
@@ -250,9 +344,50 @@ app.get("/portfolio/:skillName", (req, res) => {
     }
 
     res.render("skillindetail.ejs", {
-        skills, education,
+        skills, education,projects,
         selectedSkill,
         scrollTo: "skillsSection"
     });
 });
 
+app.get("/portfolio/projects/:projectName", (req, res) => {
+
+    const { projectName } = req.params;
+
+    const selectedProject = projects.find(
+        project => project.projectName === projectName
+    );
+
+    if (!selectedProject) {
+        return res.status(404).send("Project not found");
+    }
+
+    res.render("projectindetail.ejs", {
+        projects,
+        skills,
+        education,
+        selectedProject,
+        scrollTo: "projectsSection"
+    });
+});
+
+app.get("/publicportfolio/projects/:projectName", (req, res) => {
+
+    const { projectName } = req.params;
+
+    const selectedProject = projects.find(
+        project => project.projectName === projectName
+    );
+
+    if (!selectedProject) {
+        return res.status(404).send("Project not found");
+    }
+
+    res.render("publicprojectindetail.ejs", {
+        projects,
+        skills,
+        education,
+        selectedProject,
+        scrollTo: "projectsSection"
+    });
+});
