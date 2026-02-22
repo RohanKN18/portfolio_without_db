@@ -4,14 +4,13 @@
 
     <div class="columnodd">
 
-      <% for(let i=1; i <=6; i++) { %>
+      <% for(let i=1; i <=5; i++) { %>
 
-        <% let boxClass=i===1 ? 'boxone' : i===2 ? 'boxtwo' : i===3 ? 'boxthree' : i===4 ? 'boxfour' : i===5 ? 'boxfive'
-          : 'boxsix' ; %>
+        <% let boxClass=i===1 ? 'boxone' : i===2 ? 'boxtwo' : i===3 ? 'boxthree' : i===4 ? 'boxfour' : i===5 ? 'boxfive' : ''; %>
 
           <div class="box <%= boxClass %>">
 
-            <% if ( (index % 2===0 && i===2) || (index % 2 !==0 && i===5) ) { %>
+            <% if ( (index % 2===0 && i===2) || (index % 2 !==0 && i===4) ) { %>
 
               <!-- FULL content box -->
               <div class="specialbox">
@@ -43,12 +42,12 @@
 
     <div class="columneven">
 
-      <% for(let i=1; i <=7; i++) { %>
+      <% for(let i=1; i <=6; i++) { %>
 
         <% let orderClass=i===1 ? 'one' : i===2 ? 'two' : i===3 ? 'three' : i===4 ? 'four' : i===5 ? 'five' : i===6
-          ? 'six' : 'seven' ; let zigzagClass=(index % 2===0 ? 'evenbox' : 'oddbox' ) + orderClass; %>
+          ? 'six'  : '' ; let zigzagClass=(index % 2===0 ? 'evenbox' : 'oddbox' ) + orderClass; %>
 
-          <div class="box <%= zigzagClass %> <%= (i === 1 || i === 7) ? 'topbottombox' : '' %>">
+          <div class="box <%= zigzagClass %> <%= (i === 1 || i === 6) ? 'topbottombox' : '' %>">
             <div class="leftinnerbox innerBox"></div>
             <div class="rightinnerbox innerBox"></div>
           </div>

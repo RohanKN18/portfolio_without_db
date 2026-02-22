@@ -1324,28 +1324,28 @@ education and carrer */
     border-right:2px solid #5fdc5f;
 }
 
+/* .evenboxfour .leftinnerbox{
+    border-right:2px solid #5fdc5f;
+} */
+
 .evenboxfour .leftinnerbox{
     border-right:2px solid #5fdc5f;
 }
 
-.evenboxfive .leftinnerbox{
-    border-right:2px solid #5fdc5f;
-}
-
-.evenboxfive .rightinnerbox{
+.evenboxfour .rightinnerbox{
     border-bottom:2px solid #5fdc5f;
 }
 
 /* odd */
 
-.oddboxfive .leftinnerbox{
+.oddboxfour .leftinnerbox{
     border-bottom:2px solid #5fdc5f;
     border-right:2px solid #5fdc5f;
 }
 
-.oddboxfour .leftinnerbox{
+/* .oddboxfour .leftinnerbox{
     border-right:2px solid #5fdc5f;
-}
+} */
 
 .oddboxthree .leftinnerbox{
     border-right:2px solid #5fdc5f;
