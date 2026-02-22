@@ -1193,11 +1193,14 @@ education and carrer */
     inset -12px 0 20px rgba(106,220,106,0.35);
 } */
 #outercoverEduc{
+    background-color: rgba(0,0,0,0.65);
     position:relative;
     margin:10vh auto;
     width:90vw;
     max-width:1400px;
     min-height:60vh;
+
+    /* max-height:75vh; */
 
     display:flex;
     overflow-x:auto;
@@ -1635,7 +1638,9 @@ education and carrer */
     font-size:clamp(15px,1.6vw,20px);
     color: rgb(152, 225, 157);
     font-weight: 600;
-    background: rgba(152,225,157,0.05);
+
+    background: rgba(152, 225, 157, 0.1);
+    box-shadow: inset 0 0 10px rgba(152, 225, 157, 0.5);
 }
 /* Add Core Skill Button */
 #addcoreskillbtn {
@@ -1908,6 +1913,7 @@ education and carrer */
 
 /* MAIN CONTAINER */
 #projectsSection{
+    background-color: rgba(0,0,0,0.65);
     position:relative;
     margin:10vh auto;
     width:90vw;
@@ -2039,7 +2045,9 @@ education and carrer */
     font-size:clamp(15px,1.6vw,20px);
     color:rgb(152,225,157);
     font-weight:600;
-    background:rgba(152,225,157,0.05);
+
+    background: rgba(152, 225, 157, 0.1);
+    box-shadow: inset 0 0 10px rgba(152, 225, 157, 0.5);
 }
 
 /* ITEMS */
