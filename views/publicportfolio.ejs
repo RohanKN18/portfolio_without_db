@@ -12,9 +12,34 @@
                 <%- include("includes/publicprojects.ejs"); %>
 
             </div>
-            <script src="app.js" type="module"></script>
-
             <%- include("includes/footer.ejs"); %>
+            <%- include("includes/jsscript.ejs"); %>
+            <script>
+const toggle = document.getElementById("themeToggle");
+
+const targets = [
+  document.querySelector(".navbar"),
+  document.getElementById("greetingBox"),
+  document.getElementById("outercoverEduc"),
+  document.getElementById("skillsSection"),
+  document.getElementById("projectsSection"),
+  document.querySelector("footer")
+];
+
+toggle.addEventListener("change", ()=>{
+
+  if(toggle.checked){
+      targets.forEach(el=>{
+          if(el) el.style.backgroundColor="rgba(0,0,0,0.65)";
+      });
+  } else {
+      targets.forEach(el=>{
+          if(el) el.style.backgroundColor="";
+      });
+  }
+
+});
+</script>
     </body>
 
     </html>

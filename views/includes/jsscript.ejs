@@ -1,0 +1,300 @@
+<!-- <script>
+const digits = document.querySelectorAll('.zero, .one');
+
+document.addEventListener('mousemove', e => {
+
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    digits.forEach(el => {
+        const rect = el.getBoundingClientRect();
+
+        const centerX = rect.left + rect.width/2;
+        const centerY = rect.top + rect.height/2;
+
+        const dx = mouseX - centerX;
+        const dy = mouseY - centerY;
+        const distance = Math.sqrt(dx*dx + dy*dy);
+
+        if(distance < 80){
+            el.classList.add('cursorGlow');
+        } else {
+            el.classList.remove('cursorGlow');
+        }
+    });
+
+});
+</script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<script>
+const digits = document.querySelectorAll('.zero, .one');
+
+document.addEventListener('mousemove', e => {
+
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    digits.forEach(el => {
+        const rect = el.getBoundingClientRect();
+
+        const centerX = rect.left + rect.width/2;
+        const centerY = rect.top + rect.height/2;
+
+        const dx = mouseX - centerX;
+        const dy = mouseY - centerY;
+        const distance = Math.hypot(dx, dy);
+
+        const maxDist = 150; // glow radius
+
+        let intensity = 1 - (distance / maxDist);
+
+        if(intensity > 0){
+
+            intensity = Math.min(intensity,1);
+
+            const blur = 20 * intensity;
+            const brightness = 300 + (155 * intensity);
+
+            el.style.color = `rgb(${brightness},255,${brightness})`;
+
+            el.style.textShadow = `
+                0 0 ${4*intensity}px #8cff8c,
+                0 0 ${10*intensity}px #6aff6a,
+                0 0 ${blur}px #6aff6a
+            `;
+
+        } else {
+            el.style.color = "";
+            el.style.textShadow = "";
+        }
+
+    });
+
+});
+</script> -->
+
+
+
+
+
+
+
+
+
+<!-- fucking crazy -->
+
+<script>
+const digits = document.querySelectorAll('.zero, .one');
+
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener("mousemove", e=>{
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+document.addEventListener("click", e=>{
+    ripple(e.clientX,e.clientY);
+});
+
+function ripple(x,y){
+    digits.forEach(el=>{
+        const rect = el.getBoundingClientRect();
+        const cx = rect.left + rect.width/2;
+        const cy = rect.top + rect.height/2;
+
+        const dist = Math.hypot(x-cx,y-cy);
+
+        if(dist < 200){
+            el.animate([
+                { transform:"scale(1)", textShadow:"0 0 0px #6aff6a"},
+                { transform:"scale(1.8)", textShadow:"0 0 25px #6aff6a"},
+                { transform:"scale(1)", textShadow:"0 0 0px #6aff6a"}
+            ],{
+                duration:500,
+                easing:"ease-out"
+            });
+        }
+    });
+}
+
+function animate(){
+
+    digits.forEach(el=>{
+        const rect = el.getBoundingClientRect();
+
+        const cx = rect.left + rect.width/2;
+        const cy = rect.top + rect.height/2;
+
+        const dx = mouseX - cx;
+        const dy = mouseY - cy;
+        const dist = Math.hypot(dx,dy);
+
+        const max = 180;
+        let intensity = 1 - dist/max;
+
+        if(intensity > 0){
+
+            /* glow */
+            const glow = 25*intensity;
+            el.style.textShadow = `0 0 ${glow}px #6aff6a`;
+
+            /* brightness */
+            const bright = 180 + 75*intensity;
+            el.style.color = `rgb(${bright},255,${bright})`;
+
+            /* magnetic pull */
+            const pull = 12*intensity;
+            el.style.transform =
+                `translate(${dx/dist * pull}px, ${dy/dist * pull}px)`;
+
+        } else {
+            el.style.textShadow = "";
+            el.style.color = "";
+            el.style.transform = "";
+        }
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+
+
+
+
+
+
+
+<!-- 
+<script>
+const digits = [...document.querySelectorAll('.zero, .one')];
+
+const particles = digits.map(el => ({
+    el,
+    x: Math.random()*window.innerWidth,
+    y: Math.random()*window.innerHeight,
+    vx:(Math.random()-0.5)*2,
+    vy:0,
+    size:14
+}));
+
+let mouseX=0, mouseY=0;
+
+document.addEventListener("mousemove",e=>{
+    mouseX=e.clientX;
+    mouseY=e.clientY;
+});
+
+const gravity = 0.35;
+const friction = 0.999;
+const bounce = 0.7;
+const cursorForceRadius = 120;
+
+function physics(){
+
+    particles.forEach(p=>{
+
+        /* gravity */
+        p.vy += gravity;
+
+        /* cursor repulsion */
+        const dx = p.x - mouseX;
+        const dy = p.y - mouseY;
+        const dist = Math.hypot(dx,dy);
+
+        if(dist < cursorForceRadius){
+            const force = (cursorForceRadius-dist)/cursorForceRadius;
+            p.vx += dx/dist * force * 2;
+            p.vy += dy/dist * force * 2;
+        }
+
+        /* movement */
+        p.x += p.vx;
+        p.y += p.vy;
+
+        /* floor collision */
+        if(p.y > window.innerHeight - p.size){
+            p.y = window.innerHeight - p.size;
+            p.vy *= -bounce;
+        }
+
+        /* walls */
+        if(p.x < 0 || p.x > window.innerWidth){
+            p.vx *= -bounce;
+        }
+
+        /* friction */
+        p.vx *= friction;
+        p.vy *= friction;
+    });
+
+    /* particle collisions */
+    for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+
+            const a=particles[i];
+            const b=particles[j];
+
+            const dx=b.x-a.x;
+            const dy=b.y-a.y;
+            const dist=Math.hypot(dx,dy);
+
+            if(dist < 12){
+
+                const angle=Math.atan2(dy,dx);
+                const force=0.5;
+
+                a.vx -= Math.cos(angle)*force;
+                a.vy -= Math.sin(angle)*force;
+                b.vx += Math.cos(angle)*force;
+                b.vy += Math.sin(angle)*force;
+            }
+        }
+    }
+
+}
+
+function render(){
+    particles.forEach(p=>{
+        p.el.style.transform=`translate(${p.x}px,${p.y}px)`;
+    });
+}
+
+function loop(){
+    physics();
+    render();
+    requestAnimationFrame(loop);
+}
+
+loop();
+</script> -->

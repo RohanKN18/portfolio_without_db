@@ -54,12 +54,13 @@
 </div>
     <%- include("includes/background.ejs"); %>
  
-    <script src="app.js" type="module"></script>
+    
     <script>
 document.getElementById("bluePill").addEventListener("click", () => {
     document.body.classList.add("matrixExit");
 });
 </script>
+<%- include("includes/jsscript.ejs"); %>
 </body>
 </html>
 
