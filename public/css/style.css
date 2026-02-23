@@ -769,7 +769,7 @@ body{
     width: min(92vw,1200px);
     height: clamp(50px,8vh,80px);
 
-    background: rgba(0,0,0,0.7);
+    /* background: rgba(0,0,0,0.7); */
     backdrop-filter: blur(8px);
 
     border-radius: 16px;
@@ -923,7 +923,7 @@ body{
     max-width: 800px; /* optional */
     height: auto;      /* let content define height */
 
-    background: rgba(0,0,0,0.7);
+    /* background: rgba(0,0,0,0.7); */
     border-radius: 20px;
 
     display: flex;
@@ -1431,7 +1431,7 @@ education and carrer */
     min-height:70vh;
 
     display:flex;
-    border:2px solid rgb(152,225,157);
+    /* border:2px solid rgb(152,225,157); */
 }
 
 /* LEFT PANEL */
@@ -1704,6 +1704,10 @@ education and carrer */
     scroll-behavior: smooth;
 }
 
+
+
+
+
 /* forms related to skills */
 /* add skill */
 .skillBox{
@@ -1713,7 +1717,7 @@ education and carrer */
     width: 80vw;
     height: 80vh;
 
-    background: rgba(0,0,0,0.7);
+    /* background: rgba(0,0,0,0.7); */
     border-radius: 20px;
 
     display:flex;
@@ -2299,10 +2303,7 @@ input:checked + .slider::before{
 
 
 
-/* #pageTwo > div,
-#pageTwo > section{
-  margin:25vh 0;
-} */
+
 
 .themeSwitch{
   position:relative;

@@ -1,112 +1,3 @@
-<!-- <script>
-const digits = document.querySelectorAll('.zero, .one');
-
-document.addEventListener('mousemove', e => {
-
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-
-    digits.forEach(el => {
-        const rect = el.getBoundingClientRect();
-
-        const centerX = rect.left + rect.width/2;
-        const centerY = rect.top + rect.height/2;
-
-        const dx = mouseX - centerX;
-        const dy = mouseY - centerY;
-        const distance = Math.sqrt(dx*dx + dy*dy);
-
-        if(distance < 80){
-            el.classList.add('cursorGlow');
-        } else {
-            el.classList.remove('cursorGlow');
-        }
-    });
-
-});
-</script> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-<script>
-const digits = document.querySelectorAll('.zero, .one');
-
-document.addEventListener('mousemove', e => {
-
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-
-    digits.forEach(el => {
-        const rect = el.getBoundingClientRect();
-
-        const centerX = rect.left + rect.width/2;
-        const centerY = rect.top + rect.height/2;
-
-        const dx = mouseX - centerX;
-        const dy = mouseY - centerY;
-        const distance = Math.hypot(dx, dy);
-
-        const maxDist = 150; // glow radius
-
-        let intensity = 1 - (distance / maxDist);
-
-        if(intensity > 0){
-
-            intensity = Math.min(intensity,1);
-
-            const blur = 20 * intensity;
-            const brightness = 300 + (155 * intensity);
-
-            el.style.color = `rgb(${brightness},255,${brightness})`;
-
-            el.style.textShadow = `
-                0 0 ${4*intensity}px #8cff8c,
-                0 0 ${10*intensity}px #6aff6a,
-                0 0 ${blur}px #6aff6a
-            `;
-
-        } else {
-            el.style.color = "";
-            el.style.textShadow = "";
-        }
-
-    });
-
-});
-</script> -->
-
-
-
-
-
-
-
-
-
 <!-- fucking crazy -->
 
 <script>
@@ -298,3 +189,79 @@ function loop(){
 
 loop();
 </script> -->
+
+<!-- 
+<script>
+const toggle = document.getElementById("themeToggle");
+
+const targets = [
+  document.querySelector(".navbar"),
+  document.getElementById("greetingBox"),
+  document.getElementById("outercoverEduc"),
+  document.getElementById("skillsSection"),
+  document.getElementById("projectsSection"),
+  document.querySelector("footer")
+];
+
+toggle.addEventListener("change", ()=>{
+
+  if(toggle.checked){
+      targets.forEach(el=>{
+          if(el) el.style.backgroundColor="rgba(0,0,0,0.65)";
+      });
+  } else {
+      targets.forEach(el=>{
+          if(el) el.style.backgroundColor="";
+      });
+  }
+
+});
+</script> -->
+
+<script>
+const toggle = document.getElementById("themeToggle");
+
+const targets = [
+  document.querySelector(".navbar"),
+  document.querySelector(".skillBox"),
+  document.querySelector(".formtopicBox"),
+  document.querySelector(".loginBox"),
+  document.getElementById("greetingBox"),
+  document.getElementById("outercoverEduc"),
+  document.getElementById("skillsSection"),
+  document.getElementById("projectsSection"),
+  document.querySelector("footer")
+];
+
+// ---------- LOAD SAVED THEME ----------
+const savedTheme = localStorage.getItem("theme");
+
+if(savedTheme === "dark"){
+    toggle.checked = true;
+    applyDark();
+}
+
+// ---------- TOGGLE EVENT ----------
+toggle.addEventListener("change", () => {
+  if(toggle.checked){
+      applyDark();
+      localStorage.setItem("theme","dark");
+  } else {
+      applyLight();
+      localStorage.setItem("theme","light");
+  }
+});
+
+// ---------- FUNCTIONS ----------
+function applyDark(){
+    targets.forEach(el=>{
+        if(el) el.style.backgroundColor="rgba(0,0,0,0.65)";
+    });
+}
+
+function applyLight(){
+    targets.forEach(el=>{
+        if(el) el.style.backgroundColor="";
+    });
+}
+</script>
