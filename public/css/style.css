@@ -16,6 +16,7 @@ html{
     scrollbar-width: none;
 }
 
+
 img, div, section{
     max-width: 100%;
     box-sizing: border-box;
@@ -751,15 +752,31 @@ body{
     padding-top: 12vh;
 }
 #pageTwo {
-    display: block;
+    /* display: block; */
     min-height: 100vh;  /* full viewport height */
     overflow-x: hidden;  /* hide any accidental horizontal scroll */
 
+    
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+
 }
+/* =========================
+   GLOBAL BODY OFFSET
+   ========================= */
+body{
+  padding-top:100px;
+}
+
+
 /* =========================
    NAVBAR CONTAINER
    ========================= */
-
 .navbar{
     position: fixed;
     top: clamp(6px,1vh,16px);
@@ -769,28 +786,28 @@ body{
     width: min(92vw,1200px);
     height: clamp(50px,8vh,80px);
 
-    /* background: rgba(0,0,0,0.7); */
     backdrop-filter: blur(8px);
-
     border-radius: 16px;
     box-shadow: 0 0 18px rgba(0,255,0,0.25);
 
     display:flex;
     justify-content:space-between;
     align-items:center;
+    flex-wrap:wrap;
 
     padding: 0 clamp(12px,2vw,40px);
-
-    z-index: 999;
+    z-index:999;
 }
-/* =========================
-   LEFT LINKS
-   ========================= */
 
+
+/* =========================
+   LEFT NAV LINKS
+   ========================= */
 .nav-left{
     display:flex;
     align-items:center;
     gap: clamp(12px,2vw,36px);
+    flex-wrap:wrap;
 }
 
 .nav-left a{
@@ -798,6 +815,7 @@ body{
     text-decoration:none;
     font-weight:500;
     font-size: clamp(14px,1.1vw,18px);
+    white-space:nowrap;
     transition:.3s;
 }
 
@@ -805,9 +823,15 @@ body{
     color: rgb(0,255,0);
     text-shadow:0 0 10px rgba(0,255,0,.8);
 }
+
+
 /* =========================
-   LOGIN BUTTON
+   RIGHT SIDE (LOGIN BUTTON)
    ========================= */
+.nav-right{
+    display:flex;
+    align-items:center;
+}
 
 .login-btn{
     background: transparent;
@@ -827,10 +851,11 @@ body{
     color:black;
     box-shadow:0 0 12px rgb(0,255,0);
 }
+
+
 /* =========================
    TABLET BREAKPOINT
    ========================= */
-
 @media (max-width:768px){
 
     .nav-left{
@@ -841,9 +866,31 @@ body{
         font-size:14px;
     }
 }
+
+
 /* =========================
    MOBILE BREAKPOINT
    ========================= */
+@media (max-width:600px){
+
+    .navbar{
+        flex-direction:column;
+        height:auto;
+        gap:10px;
+        padding:12px;
+    }
+
+    .nav-left{
+        width:100%;
+        justify-content:center;
+        gap:14px;
+    }
+
+    .nav-right{
+        width:100%;
+        justify-content:center;
+    }
+}
 
 @media (max-width:500px){
 
@@ -864,6 +911,50 @@ body{
         padding:5px 14px;
         font-size:13px;
     }
+}
+
+
+
+.menuToggle{
+  display:none;
+  font-size:26px;
+  background:none;
+  border:none;
+  color:#6aff6a;
+  cursor:pointer;
+}
+@media (max-width:700px){
+
+  .menuToggle{
+    display:block;
+  }
+
+  .nav-left{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+
+    background:rgba(0,0,0,0.9);
+    backdrop-filter:blur(10px);
+
+    padding:20px 0;
+
+    transform:translateY(-200%);
+    opacity:0;
+    pointer-events:none;
+    transition:.4s;
+  }
+
+  .nav-left.active{
+    transform:translateY(0);
+    opacity:1;
+    pointer-events:auto;
+  }
+
 }
 
 
@@ -917,7 +1008,7 @@ body{
 
 .loginBox {
     position: relative;
-    margin: 10vh auto;
+    /* margin: 10vh auto; */
 
     width: 80vw;
     max-width: 800px; /* optional */
@@ -928,7 +1019,7 @@ body{
 
     display: flex;
     flex-direction: column; /* stack content */
-    justify-content: flex-start; /* align to top */
+    justify-content: center; /* align to top */
     align-items: center;
 
     box-shadow:
@@ -936,7 +1027,7 @@ body{
         inset 0 0 20px rgba(0,255,0,0.2);
 
     backdrop-filter: blur(6px);
-    padding: 20px; /* spacing */
+    padding: 10px; /* spacing */
 }
 
 .loginForm{
@@ -967,9 +1058,11 @@ body{
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    display:flex;
+    justify-content:center;
 }
 #loginfailPhoto {
-    width: 100%;
+    width: 50%;
     aspect-ratio: 1024 / 576; /* match real image */
     background-image: url(assets/idareu.webp);
     background-size: cover;
@@ -1022,7 +1115,7 @@ body{
     text-align: center;
     font-size: 1rem; /* base size */
     color: #546A40; /* nice greenish color, can adjust */
-    margin: 10px 0; /* spacing between image and input */
+    margin: 0 0; /* spacing between image and input */
     padding: 0 10px; /* small horizontal padding */
     word-wrap: break-word; /* prevents overflow on small screens */
 }
@@ -1207,8 +1300,8 @@ education and carrer */
 #outercoverEduc{
     /* background-color: rgba(0,0,0,0.65); */
     position:relative;
-    margin:10vh auto;
-    width:90vw;
+    margin:15vh auto;
+    width:80vw;
     max-width:1400px;
     min-height:60vh;
 
@@ -1226,6 +1319,28 @@ education and carrer */
     inset -12px 0 20px rgba(106,220,106,0.35);
 }
 
+#outercoverEduc{
+  scroll-margin-top:15vh;
+}
+
+/* 
+sider */
+#outercoverEduc > *{
+    opacity:0;
+    transform:translateX(120px);
+    transition:
+        transform .8s cubic-bezier(.22,.61,.36,1),
+        opacity .8s ease;
+}
+#outercoverEduc.show > *{
+    opacity:1;
+    transform:translateX(0);
+}
+#outercoverEduc.show > *:nth-child(1){ transition-delay:.1s }
+#outercoverEduc.show > *:nth-child(2){ transition-delay:.2s }
+#outercoverEduc.show > *:nth-child(3){ transition-delay:.3s }
+#outercoverEduc.show > *:nth-child(4){ transition-delay:.4s }
+#outercoverEduc.show > *:nth-child(5){ transition-delay:.5s }
 
 .columnodd,
 .columneven{
@@ -1420,491 +1535,712 @@ education and carrer */
 
 
 
-
-
-/* MAIN CONTAINER */
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
 #skillsSection{
-    /* background-color: rgba(0,0,0,0.65); */
-    margin:10vh auto;
-    width:90vw;
-    max-width:1400px;
-    min-height:70vh;
-
-    display:flex;
-    /* border:2px solid rgb(152,225,157); */
-}
-
-/* LEFT PANEL */
-#skills{
-    width:40%;
-    border-right:2px solid rgb(152,225,157);
-    display:flex;
-    flex-direction:column;
-}
-
-/* HEADER */
-#skillsHead{
-    min-height:70px;
-    border-bottom:2px solid rgb(152,225,157);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:0 20px;
-}
-#skillsHead span{
-    font-size:clamp(16px,2vw,22px);
-    color:rgb(152,225,157);
-    text-transform:uppercase;
-}
-
-/* BODY */
-#skillsbody{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    overflow-y:auto;
-    scrollbar-width:none;
-}
-#skillsbody::-webkit-scrollbar {
-    width: 6px;
-}
-
-#skillsbody::-webkit-scrollbar-thumb {
-    background: rgb(152, 225, 157);
-    border-radius: 10px;
-}
-
-#skillsbody::-webkit-scrollbar-track {
-    background: rgba(152, 225, 157, 0.1);
-}
-
-
-/* Wrapper for each skill + buttons */
-.skillItemWrapper {
+    margin: 50vh auto;
+    width: 90vw;
+    max-width: 1400px;
+    min-height: 70vh;
     display: flex;
-    width: 100%;
-    align-items: center;
-    /* border-bottom: 2px solid rgb(152, 225, 157); */
-    gap: 10px;
-    margin-bottom: 8px;
+    scroll-margin-top:15vh;
 }
-/* Each skill box */
-.skillItem {
-    width:100%;
-    min-height:60px;   
-    
+
+
+/* =========================================================
+   LEFT PANEL
+========================================================= */
+#skills{
+    width: 40%;
+    border-right: 2px solid rgb(152,225,157);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+#skillsHead{
+    min-height: 70px;
+    width: 100%;
+    /* border-bottom: 2px solid rgb(152,225,157); */
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 1vw;
+}
 
-    font-size:clamp(14px,1.5vw,18px);
+#skillsHead span{
+    font-size: clamp(16px,2vw,22px);
+    color: rgb(152,225,157);
+    text-transform: uppercase;
+}
+
+#headingskills{
+    margin-right: 1vw;
+}
+
+
+/* =========================================================
+   SKILLS BODY
+========================================================= */
+#skillsbody{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+/* scrollbar */
+#skillsbody::-webkit-scrollbar{
+    width: 6px;
+}
+
+#skillsbody::-webkit-scrollbar-thumb{
+    background: rgb(152,225,157);
+    border-radius: 10px;
+}
+
+#skillsbody::-webkit-scrollbar-track{
+    background: rgba(152,225,157,0.1);
+}
+
+
+/* =========================================================
+   SKILL ITEM
+========================================================= */
+.skillItemWrapper{
+     display:flex;
+    align-items:center;
+    width:100%;
+    gap:10px;
+    margin-bottom:8px;
+
+    
+}
+
+
+.skillItem{
+    width:100%;
+    min-height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     color:rgb(152,225,157);
-    text-transform: capitalize;
-    cursor: pointer;
+    font-size:clamp(14px,1.5vw,18px);
+    text-transform:capitalize;
+    text-decoration: none;
 
-    transition: all 0.3s ease;
+    cursor:pointer;
+    transition:.3s;
 }
-/* Hover highlight */
-.skillItem:hover {
-    background: rgba(152, 225, 157, 0.1);
-    box-shadow: inset 0 0 10px rgba(152, 225, 157, 0.5);
+/* .skillItem:hover{
+    background:rgba(152,225,157,0.1);
+    box-shadow: inset 0 0 10px rgba(152,225,157,0.6);
+} */
+
+
+.skillItemWrapper{
+    transition:.3s;
 }
 
-/* Common button style */
-.skillBtn {
+
+
+
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+.skillBtn{
     padding: 4px 10px;
     border-radius: 6px;
     border: none;
     cursor: pointer;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.2s;
     font-size: 0.9rem;
-}
-/* Edit button */
-.editBtn {
-    background-color: #007bff; /* blue */
-    color: #fff;
-}
-.editBtn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+    transition: all 0.2s;
 }
 
-/* Delete button */
-.deleteBtn {
-    background-color: #dc3545; /* red */
-    color: #fff;
-}
-.deleteBtn:hover {
-    background-color: #a71d2a;
-    transform: scale(1.05);
+/* edit */
+.editBtn{
+    background: #007bff;
     color: #fff;
 }
 
-/* Form inline for delete button */
-.skillBtnForm {
+.editBtn:hover{
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* delete */
+.deleteBtn{
+    background: #dc3545;
+    margin-right: 1vw;
+    color: #fff;
+}
+
+.deleteBtn:hover{
+    background: #a71d2a;
+    transform: scale(1.05);
+}
+
+
+/* delete form */
+.skillBtnForm{
     display: inline-block;
     margin: 0;
 }
 
-/* Proper button look */
-#addSkillBtn {
+
+/* =========================================================
+   ADD SKILL BUTTON
+========================================================= */
+#addSkillBtn{
     text-decoration: none;
-    background: rgb(152, 225, 157);
+    background: rgb(152,225,157);
     color: #003b1f;
     padding: 8px 16px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
+    margin-right: 1vw;
     transition: all 0.3s ease;
-    box-shadow: 0 0 0 rgba(152, 225, 157, 0.6);
-}
-
-/* Shine / highlight on hover */
-#addSkillBtn:hover {
-    background: #b7f5bd;
-    box-shadow: 
-        0 0 8px rgba(152, 225, 157, 0.8),
-        0 0 20px rgba(152, 225, 157, 0.6);
-    transform: translateY(-1px);
-}
-#addSkillBtn {
     animation: glow 2s infinite alternate;
 }
 
-@keyframes glow {
-    from { box-shadow: 0 0 5px rgba(152,225,157,0.4); }
-    to { box-shadow: 0 0 12px rgba(152,225,157,0.9); }
+#addSkillBtn:hover{
+    background: #b7f5bd;
+    box-shadow:
+        0 0 8px rgba(152,225,157,0.8),
+        0 0 20px rgba(152,225,157,0.6);
+    transform: translateY(-1px);
 }
 
 
-/* RIGHT PANEL LAYOUT */
-#skillsInDetail {
+/* =========================================================
+   RIGHT PANEL
+========================================================= */
+#skillsInDetail{
     width: 60%;
     display: flex;
     flex-direction: column;
 }
 
-/* Top 20% skill heading */
-#skillDetailHead {
-    min-height:70px;
-    border-bottom: 2px solid rgb(152, 225, 157);
+
+/* =========================================================
+   DETAIL HEADER
+========================================================= */
+#skillDetailHead{
+    min-height: 70px;
+    /* border-bottom: 2px solid rgb(152,225,157); */
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-
-    font-size:clamp(18px,2vw,24px);
-    color:rgb(152,225,157);
+    justify-content: center;
+    padding: 0 1vw;
+    font-size: clamp(18px,2vw,24px);
+    color: rgb(152,225,157);
     font-weight: bold;
     text-transform: capitalize;
     text-shadow: 0 0 8px rgba(152,225,157,0.6);
 }
 
-/* Add Details button */
-#addDetailBtn {
+.skillNameHeading{
+    margin-right: 1vw;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ADD DETAIL BUTTON
+========================================================= */
+#addDetailBtn{
     text-decoration: none;
-    background: rgb(152, 225, 157);
+    background: rgb(152,225,157);
     color: #003b1f;
     padding: 8px 16px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
     transition: 0.3s ease;
-    box-shadow: 0 0 0 rgba(152, 225, 157, 0.6);
-}
-
-#addDetailBtn:hover {
-    background: #b7f5bd;
-    box-shadow: 
-        0 0 8px rgba(152, 225, 157, 0.8),
-        0 0 20px rgba(152, 225, 157, 0.6);
-    transform: translateY(-1px);
-}
-
-#addDetailBtn {
     animation: glow 2s infinite alternate;
 }
 
-
-/* Scroll area */
-#skillDetailBody {
-    flex:1;
-    overflow-y:auto;
-    display:flex;
-    flex-direction:column;
-    scrollbar-width:none;
-
+#addDetailBtn:hover{
+    background: #b7f5bd;
+    box-shadow:
+        0 0 8px rgba(152,225,157,0.8),
+        0 0 20px rgba(152,225,157,0.6);
+    transform: translateY(-1px);
 }
 
-/* Topic section */
-.topicBox {
-    min-height:60px;
-    border-bottom: 2px solid rgb(152, 225, 157);
+
+/* =========================================================
+   DETAIL BODY
+========================================================= */
+#skillDetailBody{
+    flex: 1;
+    overflow-y: auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size:clamp(15px,1.6vw,20px);
-    color: rgb(152, 225, 157);
-    font-weight: 600;
-
-    background: rgba(152, 225, 157, 0.1);
-    box-shadow: inset 0 0 10px rgba(152, 225, 157, 0.5);
-}
-/* Add Core Skill Button */
-#addcoreskillbtn {
-    display: inline-block;
-    margin-left: 15px;
-    padding: 6px 12px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #4caf50, #2e7d32); /* green gradient */
-    border: none;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-#addcoreskillbtn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, #81c784, #388e3c); /* lighter green on hover */
-}
-
-#addcoreskillbtn:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Each core skill */
-.coreSkillBox {
-    min-height:50px;
-    border-bottom: 1px solid rgba(152, 225, 157, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: rgb(152, 225, 157);
-    transition: 0.3s ease;
-}
-
-/* Hover glow */
-.coreSkillBox:hover {
-    background: rgba(152,225,157,0.15);
-    box-shadow: inset 0 0 10px rgba(152,225,157,0.6);
-}
-
-#skillDetailBody {
+    flex-direction: column;
     scrollbar-width: none;
     scroll-behavior: smooth;
 }
 
 
-
-
-
-/* forms related to skills */
-/* add skill */
-.skillBox{
-    position: relative;
-    margin: 10vh auto;
-
-    width: 80vw;
-    height: 80vh;
-
-    /* background: rgba(0,0,0,0.7); */
-    border-radius: 20px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    box-shadow:
-        0 0 20px rgba(0,255,0,0.4),
-        inset 0 0 20px rgba(0,255,0,0.2);
-
-    backdrop-filter: blur(6px);
+/* =========================================================
+   TOPIC
+========================================================= */
+.topicBox{
+    min-height: 60px;
+    width: fit-content;
+    /* border-bottom: 2px solid rgb(152,225,157); */
+    border-top: 2px solid rgb(152,225,157);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(15px,1.6vw,20px);
+    color: rgb(152,225,157);
+    font-weight: 600;
+}
+#skillDetailBody > div:first-child {
+    border-top: none;
 }
 
-.skillForm{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:25px;
-    text-align:center;
+.topicName{
+    margin-left: 1vw;
+    text-transform: uppercase;
 }
 
-.skillForm h1{
-    color:#6aff6a;
-    font-size: clamp(20px,3vw,40px);
+
+/* =========================================================
+   ADD CORE SKILL BUTTON
+========================================================= */
+#addcoreskillbtn{
+    margin-left: 15px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg,#4caf50,#2e7d32);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.skillImg{
-    width:160px;
-    height:160px;
-    object-fit:cover;
-    border-radius:50%;
-
-    box-shadow:0 0 20px rgba(0,255,0,0.6);
+#addcoreskillbtn:hover{
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg,#81c784,#388e3c);
 }
 
-.skillForm input{
-    padding:15px 20px;
-    width:260px;
-
-    border:none;
-    outline:none;
-    border-radius:12px;
-
-    background:rgba(0,0,0,0.8);
-    color:#6aff6a;
-    font-size:18px;
-    text-align:center;
-
-    box-shadow:0 0 10px rgba(0,255,0,0.4) inset;
+#addcoreskillbtn:active{
+    transform: scale(0.95);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-.skillForm button{
-    padding:12px 45px;
-    border:none;
-    border-radius:12px;
 
-    background:#00ff00;
-    color:black;
-    font-size:18px;
-    font-weight:bold;
-
-    cursor:pointer;
-    transition:0.3s;
+/* =========================================================
+   CORE SKILL BOX
+========================================================= */
+.coreSkillBox{
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(152,225,157);
+    transition: 0.3s ease;
 }
 
-.skillForm button:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 20px #00ff00;
+
+/* =========================================================
+   GLOW ANIMATION
+========================================================= */
+@keyframes glow{
+    from{ box-shadow: 0 0 5px rgba(152,225,157,0.4); }
+    to{   box-shadow: 0 0 12px rgba(152,225,157,0.9); }
 }
 
-/* add topic form */
+
+/* =========================================================
+   FORM CONTAINERS
+========================================================= */
+.skillBox,
 .formtopicBox{
     position: relative;
     margin: 10vh auto;
-
     width: 80vw;
     height: 80vh;
-
-    background: rgba(0,0,0,0.7);
-    /* border-radius: 20px; */
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(6px);
     box-shadow:
         0 0 20px rgba(0,255,0,0.4),
         inset 0 0 20px rgba(0,255,0,0.2);
-
-    backdrop-filter: blur(6px);
 }
 
+.formtopicBox{
+    background: rgba(0,0,0,0.7);
+}
+
+
+/* =========================================================
+   FORM CONTENT
+========================================================= */
+.skillForm,
 .topicForm{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:25px;
-    text-align:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
 }
 
+.skillForm h1,
 .topicForm h1{
-    color:#6aff6a;
+    color: #6aff6a;
     font-size: clamp(20px,3vw,40px);
 }
 
+
+/* images */
+.skillImg{
+    width:50%;
+    max-width:500px;
+    aspect-ratio:500/281;
+    background:url(assets/bigbrain.jpg) center/cover no-repeat;
+    border-radius:10px;
+}
+
 .topicImg{
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    object-fit:cover;
-    box-shadow:0 0 15px rgba(0,255,0,0.6);
+    width:50%;
+    max-width:500px;
+    aspect-ratio:500/281;
+    background:url(assets/bigbrain.jpg) center/cover no-repeat;
+    border-radius:10px;
 }
 
+
+/* inputs */
+.skillForm input,
 .topicForm input{
-    padding:15px 20px;
-    width:260px;
-    border:none;
-    outline:none;
-    border-radius:12px;
-
-    background:rgba(0,0,0,0.8);
-    color:#6aff6a;
-    font-size:18px;
-    text-align:center;
-
-    box-shadow:0 0 10px rgba(0,255,0,0.4) inset;
+    padding: 15px 20px;
+    width: 260px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.8);
+    color: #6aff6a;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,255,0,0.4) inset;
 }
 
+
+/* buttons */
+.skillForm button,
 .topicForm button{
-    padding:12px 45px;
-    border:none;
-    border-radius:12px;
-
-    background:#00ff00;
-    color:black;
-    font-size:18px;
-    font-weight:bold;
-
-    cursor:pointer;
-    transition:0.3s;
+    padding: 12px 45px;
+    border: none;
+    border-radius: 12px;
+    background: #00ff00;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+.skillForm button:hover,
 .topicForm button:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 20px #00ff00;
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #00ff00;
 }
 
 
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 @media (max-width:900px){
+    #skillDetailBody{
+    align-items: center;
+}
+#skillDetailHead{
+   
+    border-bottom: 2px solid rgb(152,225,157);
+   
+}
 
     #skillsSection{
-        flex-direction:column;
-        height:auto;
+        flex-direction: column;
+        height: auto;
+         border: 2px solid rgb(152,225,157);
+    }
+    #skillsHead{
+        border-bottom: 2px solid rgb(152,225,157);
     }
 
     #skills{
-        width:100%;
-        border-right:none;
-        border-bottom:2px solid rgb(152,225,157);
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid rgb(152,225,157);
     }
 
     #skillsInDetail{
-        width:100%;
+        width: 100%;
     }
+    .topicBox{
+        width:fit-content;
+    }
+
+    
 }
 
 @media (max-width:500px){
 
+    #skillDetailBody{
+    align-items: center;
+}
+#skillDetailHead{
+   
+    border-bottom: 2px solid rgb(152,225,157);
+   
+}
     #skillsSection{
-        width:95vw;
-        margin:5vh auto;
+        width: 95vw;
+        margin: 5vh auto;
+    }
+    #skillsHead{
+        border-bottom: 2px solid rgb(152,225,157);
     }
 
     .skillItem{
-        min-height:50px;
+        min-height: 50px;
     }
 
     #skillsHead,
     #skillDetailHead{
-        padding:0 10px;
+        padding: 0 10px;
+    }
+    .topicBox{
+        width:fit-content;
     }
 }
 
+@media (min-width: 901px) {
+
+    #skillsSection{
+    padding: 20vh;
+}
+    #skills{
+        align-items: flex-end;
+        /* box-shadow:0 0 10px rgb(152,225,157); */
+    }
+
+    #skillsHead{
+        padding:0 0;
+        width: fit-content;
+    }
+
+    #headingskills{
+        margin-right: 1vw;
+    }
+
+    .skillItem{
+        justify-content:flex-end;
+        position:relative;
+        overflow:hidden;
+    }
+
+    .skillsName{
+        text-underline-offset:unset;
+        margin-right:2vw;
+    }
+
+    /* glow layer */
+    .skillItem::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:linear-gradient(
+            to left,
+            rgba(152,225,157,0.35),
+            rgba(152,225,157,0.15),
+            rgba(152,225,157,0.05),
+            transparent
+        );
+        opacity:0;
+        transition:.35s ease;
+        pointer-events:none;
+    }
+
+    .skillItem:hover::before{
+        opacity:1;
+    }
+
+    .deleteBtn{ margin-right:1vw; }
+    #addSkillBtn{ margin-right:1vw; }
+
+    #skillDetailHead{
+        width:fit-content;
+        justify-content:flex-start;
+        padding:0 1vw;
+    }
+
+    .skillNameHeading{
+        margin-right:1vw;
+        text-transform:uppercase;
+    }
+
+    .topicBox{
+        width:fit-content;
+        justify-content:flex-start;
+    }
+
+    .topicName{
+        margin-left:1vw;
+        text-transform:uppercase;
+    }
+
+    .coreSkillBox{
+        justify-content:flex-start;
+        position:relative;
+        overflow:hidden;
+    }
+    .coreSkillName{
+        margin-left:2vw;
+    }
 
 
+    /* slider */
+    #skillsHead{
+    position:relative;
+    overflow:hidden;
+}
+
+/* animated bottom border */
+#skillsHead::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    right:0;
+    height:2px;
+    width:0;
+    background:rgb(152,225,157);
+    transition:width .7s ease;
+}
+
+/* initial hidden states */
+#skillsHead span{
+    transform:translateY(40px); /* start below border */
+    opacity:0;
+}
+
+.skillItemWrapper{
+    transform:translateY(-40px); /* start above border */
+    opacity:0;
+}
+
+/* smooth animation */
+#skillsHead span,
+.skillItemWrapper{
+    transition: all .7s cubic-bezier(.22,.61,.36,1);
+}
+
+/* when activated */
+#skillsSection.animate #skillsHead::after{
+    width:100%;
+    box-shadow:0 0 12px rgb(152,225,157);
+}
+
+#skillsSection.animate #skillsHead span,
+#skillsSection.animate .skillItemWrapper{
+    transform:translateY(0);
+    opacity:1;
+}
+/* #skillsSection.animate .skillItemWrapper:nth-child(1){transition-delay:.1s}
+#skillsSection.animate .skillItemWrapper:nth-child(2){transition-delay:.2s}
+#skillsSection.animate .skillItemWrapper:nth-child(3){transition-delay:.3s}
+#skillsSection.animate .skillItemWrapper:nth-child(4){transition-delay:.4s} */
 
 
+/* ================= RIGHT PANEL SLIDER ================= */
+
+#skillDetailHead{
+    position:relative;
+    overflow:hidden;
+}
+
+/* border line */
+#skillDetailHead::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;   /* changed */
+    height:2px;
+    width:0;
+    background:rgb(152,225,157);
+    transition:width .7s ease;
+}
+
+/* initial hidden */
+#skillDetailHead{
+    transform:translateY(40px);
+    opacity:0;
+}
+
+.topicBox,
+.coreSkillBox{
+    transform:translateY(-40px);
+    opacity:0;
+}
+
+/* smooth */
+#skillDetailHead,
+.topicBox,
+.coreSkillBox{
+    transition:all .7s cubic-bezier(.22,.61,.36,1);
+}
+
+/* activate */
+#skillsSection.animate #skillDetailHead::after{
+    width:100%;
+    box-shadow:0 0 12px rgb(152,225,157);
+}
+
+#skillsSection.animate #skillDetailHead,
+#skillsSection.animate .topicBox,
+#skillsSection.animate .coreSkillBox{
+    transform:translateY(0);
+    opacity:1;
+}
+
+
+#skillsSection.animate{
+    animation:sectionGlow .8s ease forwards;
+}
+
+@keyframes sectionGlow{
+    from{filter:brightness(.8)}
+    to{filter:brightness(1)}
+}
+
+
+#skillsSection.animate #skillDetailHead::after{
+    transition-delay:.15s;
+}
+
+}
 
 
 
@@ -1932,226 +2268,15 @@ education and carrer */
     /* background-color: rgba(0,0,0,0.65); */
     position:relative;
     margin:10vh auto;
-    width:90vw;
+    width:80vw;
     max-width:1400px;
     min-height:70vh;
 
     display:flex;
     border:2px solid rgb(152,225,157);
+    scroll-margin-top:15vh;
 }
 
-/* LEFT PANEL */
-#projects{
-    width:40%;
-    border-right:2px solid rgb(152,225,157);
-    display:flex;
-    flex-direction:column;
-}
-
-/* HEADER */
-#projectsHead{
-    min-height:70px;
-    border-bottom:2px solid rgb(152,225,157);
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 20px;
-}
-
-#projectsHead span{
-    font-size:clamp(16px,2vw,22px);
-    color:rgb(152,225,157);
-    font-weight:bold;
-    text-transform:uppercase;
-}
-
-/* SCROLL BODY */
-#projectsBody{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    overflow-y:auto;
-    scrollbar-width:none;
-}
-
-/* ITEM WRAPPER */
-.projectItemWrapper{
-    display:flex;
-    align-items:center;
-    width:100%;
-    gap:10px;
-    margin-bottom:8px;
-}
-
-/* PROJECT ITEM */
-.projectItem{
-    width:100%;
-    min-height:60px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:rgb(152,225,157);
-    font-size:clamp(14px,1.5vw,18px);
-    text-transform:capitalize;
-
-    cursor:pointer;
-    transition:.3s;
-}
-
-.projectItem:hover{
-    background:rgba(152,225,157,0.1);
-    box-shadow: inset 0 0 10px rgba(152,225,157,0.6);
-}
-
-/* RIGHT PANEL */
-#projectsInDetail{
-    width:60%;
-    display:flex;
-    flex-direction:column;
-}
-
-/* HEADER */
-#projectDetailHead{
-    min-height:70px;
-    border-bottom:2px solid rgb(152,225,157);
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 20px;
-
-    font-size:clamp(18px,2vw,24px);
-    color:rgb(152,225,157);
-    font-weight:bold;
-    text-transform:capitalize;
-    text-shadow:0 0 8px rgba(152,225,157,0.6);
-}
-
-/* BODY */
-#projectDetailBody{
-    flex:1;
-    overflow-y:auto;
-    display:flex;
-    flex-direction:column;
-    scrollbar-width:none;
-}
-
-#projectDetailBody::-webkit-scrollbar{
-    width:6px;
-}
-
-#projectDetailBody::-webkit-scrollbar-thumb{
-    background:rgb(152,225,157);
-    border-radius:10px;
-}
-
-/* SECTION TITLES */
-#projectsInDetail .topicBox{
-    min-height:60px;
-    border-bottom:2px solid rgb(152,225,157);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:clamp(15px,1.6vw,20px);
-    color:rgb(152,225,157);
-    font-weight:600;
-
-    background: rgba(152, 225, 157, 0.1);
-    box-shadow: inset 0 0 10px rgba(152, 225, 157, 0.5);
-}
-
-/* ITEMS */
-#projectsInDetail .coreSkillBox{
-    min-height:50px;
-    border-bottom:1px solid rgba(152,225,157,0.4);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:0 15px;
-    text-align:center;
-
-    font-size:clamp(13px,1.4vw,18px);
-    color:rgb(152,225,157);
-
-    transition:.3s ease;
-}
-
-#projectsInDetail .coreSkillBox:hover{
-    background:rgba(152,225,157,0.15);
-    box-shadow: inset 0 0 10px rgba(152,225,157,0.6);
-}
-
-/* LINKS */
-#projectsInDetail a.coreSkillBox{
-    text-decoration:none;
-    font-weight:bold;
-}
-
-/* BUTTON */
-#addProjectBtn,
-#projectsInDetail #addDetailBtn{
-    text-decoration:none;
-    background:rgb(152,225,157);
-    color:#003b1f;
-    padding:8px 16px;
-    border-radius:6px;
-    font-weight:600;
-    transition:.3s;
-}
-
-#addProjectBtn:hover,
-#projectsInDetail #addDetailBtn:hover{
-    background:#b7f5bd;
-    box-shadow:0 0 20px rgba(152,225,157,.6);
-}
-
-/* ============================= */
-/* 📱 MOBILE RESPONSIVE */
-/* ============================= */
-
-@media (max-width:900px){
-
-    #projectsSection{
-        flex-direction:column;
-        height:auto;
-    }
-
-    #projects{
-        width:100%;
-        border-right:none;
-        border-bottom:2px solid rgb(152,225,157);
-    }
-
-    #projectsInDetail{
-        width:100%;
-    }
-
-}
-
-@media (max-width:500px){
-
-    #projectsHead,
-    #projectDetailHead{
-        padding:0 10px;
-    }
-
-    .projectItem{
-        min-height:50px;
-    }
-
-    #projectsSection{
-        width:95vw;
-        margin:5vh auto;
-    }
-}
 
 
 
@@ -2176,6 +2301,8 @@ footer */
     padding: 40px 0;
     margin-top: 150px;
     border-top: 1px solid #00ff88;
+
+    scroll-margin-top:15vh;
 }
 
 .footerContent{
@@ -2380,3 +2507,7 @@ input:checked + .slider .sun{
 input:checked + .slider .moon{
   opacity:1;
 }
+
+
+
+

@@ -218,6 +218,13 @@ toggle.addEventListener("change", ()=>{
 });
 </script> -->
 
+
+
+
+
+
+
+<!-- theme switch -->
 <script>
 const toggle = document.getElementById("themeToggle");
 
@@ -264,4 +271,69 @@ function applyLight(){
         if(el) el.style.backgroundColor="";
     });
 }
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+const section = document.querySelector("#outercoverEduc");
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            section.classList.add("show");
+        }
+    });
+},{ threshold:0.25 });
+
+observer.observe(section);
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+const skillsSection = document.querySelector("#skillsSection");
+
+const observer1 = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            skillsSection.classList.add("animate");
+        }
+    });
+},{ threshold:.4 });
+
+observer1.observe(skillsSection);
+</script>
+
+
+
+<script>
+    const menuBtn = document.getElementById("menuToggle");
+const navLeft = document.querySelector(".nav-left");
+
+menuBtn.addEventListener("click",()=>{
+  navLeft.classList.toggle("active");
+});
+</script>
+
+
+<script>
+    document.querySelectorAll(".nav-left a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    navLeft.classList.remove("active");
+  });
+});
 </script>

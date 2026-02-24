@@ -8,14 +8,14 @@
                 <%- include("includes/publicnavbar.ejs"); %>
                 <%- include("includes/publicintro.ejs"); %>
                 <%- include("includes/publiceducation.ejs"); %>
-                    <section id="skillsSection">
+                <section id="skillsSection">
 
-                        <%- include("includes/publicskillsleft.ejs"); %>
+                    <%- include("includes/publicskillsleft.ejs"); %>
 
                         <div id="skillsInDetail">
                             <div id="skillDetailHead">
-                                <span>
-                                    <%= selectedSkill.skillName %>
+                                <span class="skillNameHeading">
+                                            <%= selectedSkill.skillName %>
                                 </span>
                             </div>
 
@@ -23,17 +23,17 @@
 
                                 <% for (let topic of selectedSkill.topics) { %>
                                     <div class="topicBox">
-                                        <%= topic.topicName || "Topics" %>
+                                       <div class="topicName"><%= topic.topicName || "Topics" %></div>
                                     </div>
 
                                     <% if (topic.coreSkills && topic.coreSkills.length> 0) { %>
                                         <% for (let core of topic.coreSkills) { %>
                                             <div class="coreSkillBox">
-                                                <%= core %>
+                                                <div class="coreSkillName"><%= core %> </div>
                                             </div>
                                             <% } %>
                                                 <% } else { %>
-                                                    <div class="coreSkillBox">No core skills yet</div>
+                                                    <div class="coreSkillBox"><div class="coreSkillName">No core skills yet</div></div>
                                                     <% } %>
 
                                                         <% } %>

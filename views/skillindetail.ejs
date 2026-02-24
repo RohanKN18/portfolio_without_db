@@ -6,13 +6,13 @@
             <%- include("includes/navbar.ejs"); %>
                 <%- include("includes/intro.ejs"); %>
                     <%- include("includes/education.ejs"); %>
-                        <section id="skillsSection">
+                        <section id="skillsSection" >
 
                             <%- include("includes/skillsleft.ejs"); %>
 
                                 <div id="skillsInDetail">
                                     <div id="skillDetailHead">
-                                        <span>
+                                        <span class="skillNameHeading">
                                             <%= selectedSkill.skillName %>
                                         </span>
                                         <a href="/portfolio/<%= selectedSkill.skillName %>/addtopics" id="addDetailBtn">
@@ -24,22 +24,29 @@
 
                                         <% for (let topic of selectedSkill.topics) { %>
                                             <div class="topicBox">
-                                                <%= topic.topicName || "Topics" %>
-                                                    <!-- Link to add core skill page -->
-                                                    <a href="/portfolio/<%= selectedSkill.skillName %>/<%= topic.topicName %>/addcoreskill"
-                                                        id="addcoreskillbtn">
-                                                        + Add Core Skill
-                                                    </a>
+                                                <div class="topicName">
+                                                    <%= topic.topicName || "Topics" %>
+                                                </div>
+
+                                                <!-- Link to add core skill page -->
+                                                <a href="/portfolio/<%= selectedSkill.skillName %>/<%= topic.topicName %>/addcoreskill"
+                                                    id="addcoreskillbtn">
+                                                    + Add Core Skill
+                                                </a>
                                             </div>
 
                                             <% if (topic.coreSkills && topic.coreSkills.length> 0) { %>
                                                 <% for (let core of topic.coreSkills) { %>
                                                     <div class="coreSkillBox">
-                                                        <%= core %>
+                                                        <div class="coreSkillName">
+                                                            <%= core %>
+                                                        </div>
                                                     </div>
                                                     <% } %>
                                                         <% } else { %>
-                                                            <div class="coreSkillBox">No core skills yet</div>
+                                                            <div class="coreSkillBox">
+                                                                <div class="coreSkillName">No core skills yet</div>
+                                                            </div>
                                                             <% } %>
 
                                                                 <% } %>
@@ -64,8 +71,9 @@
                 }
             }
         </script>
+        
         <%- include("includes/footer.ejs"); %>
-        <%- include("includes/jsscript.ejs"); %>
+            <%- include("includes/jsscript.ejs"); %>
     </body>
 
     </html>
