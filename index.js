@@ -111,12 +111,13 @@ let skills = [
   }
 ];
 
-
 let projects = [
   {
     projectName: "Portfolio Website",
+    projectSlug: "portfolio-website",
     githubLink: "https://github.com/yourname/portfolio",
     liveLink: "https://yourportfolio.com",
+    image: "images/portfolio.png",   // 👈 add image here
     description: "Personal portfolio website to showcase projects, skills, and contact information.",
 
     techStack: {
@@ -146,8 +147,10 @@ let projects = [
 
   {
     projectName: "Machine Learning Price Predictor",
+    projectSlug: "machine-learning-price-predictor",
     githubLink: "https://github.com/yourname/ml-project",
     liveLink: null,
+    image: "images/ml.png",
     description: "A regression model that predicts prices based on input features.",
 
     techStack: {
@@ -177,8 +180,10 @@ let projects = [
 
   {
     projectName: "Task Manager API",
+    projectSlug: "task-manager-api",
     githubLink: "https://github.com/yourname/task-api",
     liveLink: null,
+    image: "images/taskapi.png",
     description: "RESTful API for managing tasks with authentication and CRUD operations.",
 
     techStack: {
@@ -248,7 +253,7 @@ app.post("/portfolio/:skill/edit",(req,res)=>{
 
     res.redirect(`/portfolio/${newName}#skillsSection`);
 });
-//delete
+//delete skill
 app.delete("/portfolio/:skill/delete",(req,res)=>{
     const { skill } = req.params;
 
@@ -290,9 +295,51 @@ app.post("/portfolio/:skill/addtopics", (req,res)=>{
 
     res.redirect(`/portfolio/${skillName}#skillsSection`);
 });
+// deleting topic
+app.delete("/portfolio/:skill/:topic",(req,res)=>{
+    const { skill, topic } = req.params;
+
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    if(!selectedSkill) return res.send("Skill not found");
+
+    selectedSkill.topics =
+        selectedSkill.topics.filter(t=>t.topicName!==topic);
+
+    res.redirect(`/portfolio/${skill}#skillsSection`);
+});
+//editing topic
+app.get("/portfolio/:skill/:topic/edit",(req,res)=>{
+    const { skill, topic } = req.params;
+
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    const selectedTopic = selectedSkill?.topics.find(t=>t.topicName===topic);
+
+    if(!selectedSkill || !selectedTopic)
+        return res.send("Not found");
+
+    res.render("edittopic.ejs",{
+        selectedSkill,
+        selectedTopic
+    });
+});
+app.put("/portfolio/:skill/:topic",(req,res)=>{
+    const { skill, topic } = req.params;
+    const newName = req.body.topicName;
+
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    const selectedTopic = selectedSkill?.topics.find(t=>t.topicName===topic);
+
+    if(selectedTopic){
+        selectedTopic.topicName = newName;
+    }
+
+    res.redirect(`/portfolio/${skill}#skillsSection`);
+});
 
 
 
+
+//core skill
 
 //adding new core skill under specific topic
 app.get("/portfolio/:skill/:topic/addcoreskill", (req,res)=>{
@@ -325,54 +372,6 @@ app.post("/portfolio/:skill/:topic/addcoreskill",(req,res)=>{
 
     res.redirect(`/portfolio/${skill}#skillsSection`);
 });
-// deleting topic
-app.delete("/portfolio/:skill/:topic",(req,res)=>{
-    const { skill, topic } = req.params;
-
-    const selectedSkill = skills.find(s=>s.skillName===skill);
-    if(!selectedSkill) return res.send("Skill not found");
-
-    selectedSkill.topics =
-        selectedSkill.topics.filter(t=>t.topicName!==topic);
-
-    res.redirect(`/portfolio/${skill}#skillsSection`);
-});
-
-//editing topic
-app.get("/portfolio/:skill/:topic/edit",(req,res)=>{
-    const { skill, topic } = req.params;
-
-    const selectedSkill = skills.find(s=>s.skillName===skill);
-    const selectedTopic = selectedSkill?.topics.find(t=>t.topicName===topic);
-
-    if(!selectedSkill || !selectedTopic)
-        return res.send("Not found");
-
-    res.render("edittopic.ejs",{
-        selectedSkill,
-        selectedTopic
-    });
-});
-
-app.put("/portfolio/:skill/:topic",(req,res)=>{
-    const { skill, topic } = req.params;
-    const newName = req.body.topicName;
-
-    const selectedSkill = skills.find(s=>s.skillName===skill);
-    const selectedTopic = selectedSkill?.topics.find(t=>t.topicName===topic);
-
-    if(selectedTopic){
-        selectedTopic.topicName = newName;
-    }
-
-    res.redirect(`/portfolio/${skill}#skillsSection`);
-});
-
-
-
-
-//core skill
-
 //edit 
 app.get("/portfolio/:skill/:topic/:core/edit",(req,res)=>{
     const { skill, topic, core } = req.params;
@@ -430,6 +429,16 @@ app.delete("/portfolio/:skill/:topic/:core/delete",(req,res)=>{
 
 
 
+////////projects////////////
+app.get("/publicportfolio/projects/:slug", (req, res) => {
+    const slug = req.params.slug;
+
+    const project = projects.find(p => p.projectSlug === slug);
+
+    if (!project) return res.status(404).send("Project not found");
+
+    res.render("publicprojectdetails.ejs", { project });
+});
 
 
 
@@ -501,47 +510,5 @@ app.get("/portfolio/:skillName", (req, res) => {
         skills, education,projects,
         selectedSkill,
         scrollTo: "skillsSection"
-    });
-});
-
-app.get("/portfolio/projects/:projectName", (req, res) => {
-
-    const { projectName } = req.params;
-
-    const selectedProject = projects.find(
-        project => project.projectName === projectName
-    );
-
-    if (!selectedProject) {
-        return res.status(404).send("Project not found");
-    }
-
-    res.render("projectindetail.ejs", {
-        projects,
-        skills,
-        education,
-        selectedProject,
-        scrollTo: "projectsSection"
-    });
-});
-
-app.get("/publicportfolio/projects/:projectName", (req, res) => {
-
-    const { projectName } = req.params;
-
-    const selectedProject = projects.find(
-        project => project.projectName === projectName
-    );
-
-    if (!selectedProject) {
-        return res.status(404).send("Project not found");
-    }
-
-    res.render("publicprojectindetail.ejs", {
-        projects,
-        skills,
-        education,
-        selectedProject,
-        scrollTo: "projectsSection"
     });
 });

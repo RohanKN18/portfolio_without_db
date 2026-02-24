@@ -1,40 +1,37 @@
-<section id="projectsSection">
+<div id="projectsContainer">
 
-    <div id="projects">
+    <div id="projectsHeading">Projects</div>
 
-        <div id="projectsHead">
-            <span>Projects</span>
-            <a href="/portfolio/addproject" id="addProjectBtn">+ Add Project</a>
-        </div>
+    <div id="projectsGrid">
 
-        <div id="projectsBody">
-            <% for (let project of projects) { %>
+        <% projects.forEach(project => { %>
 
-                <div class="projectItemWrapper">
+            <a href="/portfolio/projects/<%= project.projectName %>" class="projectCard">
 
-                    <a class="projectItem" href="/portfolio/projects/<%= project.projectName %>">
-                        <%= project.projectName %>
-                    </a>
+                <!-- TOP MEDIA -->
+                <div class="projectMedia">
+                    <img src="/images/project-placeholder.jpg" alt="">
+                </div>
 
-                    <a href="/portfolio/projects/<%= project.projectName %>/edit" class="projectBtn editBtn">
-                        Edit
-                    </a>
+                <!-- BOTTOM DETAILS -->
+                <div class="projectInfo">
 
-                    <form action="/portfolio/projects/<%= project.projectName %>?_method=DELETE" method="POST" class="projectBtnForm">
-                        <button class="projectBtn deleteBtn">Delete</button>
-                    </form>
+                    <h3><%= project.projectName %></h3>
+
+                    <p><%= project.description %></p>
+
+                    <div class="projectTags">
+                        <% project.techStack.languages.forEach(lang=>{ %>
+                            <span><%= lang %></span>
+                        <% }) %>
+                    </div>
 
                 </div>
 
-            <% } %>
-        </div>
+            </a>
+
+        <% }) %>
 
     </div>
 
-
-    <!-- RIGHT PANEL -->
-    <div id="projectsInDetail">
-        <!-- Selected project details will render here -->
-    </div>
-
-</section>
+</div>
