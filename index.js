@@ -223,6 +223,39 @@ app.post("/portfolio/addskill", (req, res) => {
 
     res.redirect("/portfolio#skillsSection");
 });
+//edit route skill
+app.get("/portfolio/:skill/edit",(req,res)=>{
+    const { skill } = req.params;
+
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    if(!selectedSkill) return res.send("Skill not found");
+
+    res.render("editskill.ejs",{
+        selectedSkill,
+        projects,
+        skills,
+        education
+    });
+});
+app.post("/portfolio/:skill/edit",(req,res)=>{
+    const { skill } = req.params;
+    const newName = req.body.skillName;
+
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    if(!selectedSkill) return res.send("Skill not found");
+
+    selectedSkill.skillName = newName;
+
+    res.redirect(`/portfolio/${newName}#skillsSection`);
+});
+//delete
+app.delete("/portfolio/:skill/delete",(req,res)=>{
+    const { skill } = req.params;
+
+    skills = skills.filter(s => s.skillName !== skill);
+
+    res.redirect("/portfolio");
+});
 
 
 
@@ -260,6 +293,7 @@ app.post("/portfolio/:skill/addtopics", (req,res)=>{
 
 
 
+
 //adding new core skill under specific topic
 app.get("/portfolio/:skill/:topic/addcoreskill", (req,res)=>{
     const { skill, topic } = req.params;
@@ -291,17 +325,104 @@ app.post("/portfolio/:skill/:topic/addcoreskill",(req,res)=>{
 
     res.redirect(`/portfolio/${skill}#skillsSection`);
 });
+// deleting topic
+app.delete("/portfolio/:skill/:topic",(req,res)=>{
+    const { skill, topic } = req.params;
+
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    if(!selectedSkill) return res.send("Skill not found");
+
+    selectedSkill.topics =
+        selectedSkill.topics.filter(t=>t.topicName!==topic);
+
+    res.redirect(`/portfolio/${skill}#skillsSection`);
+});
+
+//editing topic
+app.get("/portfolio/:skill/:topic/edit",(req,res)=>{
+    const { skill, topic } = req.params;
+
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    const selectedTopic = selectedSkill?.topics.find(t=>t.topicName===topic);
+
+    if(!selectedSkill || !selectedTopic)
+        return res.send("Not found");
+
+    res.render("edittopic.ejs",{
+        selectedSkill,
+        selectedTopic
+    });
+});
+
+app.put("/portfolio/:skill/:topic",(req,res)=>{
+    const { skill, topic } = req.params;
+    const newName = req.body.topicName;
+
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    const selectedTopic = selectedSkill?.topics.find(t=>t.topicName===topic);
+
+    if(selectedTopic){
+        selectedTopic.topicName = newName;
+    }
+
+    res.redirect(`/portfolio/${skill}#skillsSection`);
+});
 
 
 
 
+//core skill
 
+//edit 
+app.get("/portfolio/:skill/:topic/:core/edit",(req,res)=>{
+    const { skill, topic, core } = req.params;
 
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    const selectedTopic = selectedSkill?.topics.find(t=>t.topicName===topic);
 
+    if(!selectedSkill || !selectedTopic)
+        return res.send("Not found");
 
+    res.render("editcore.ejs",{
+        selectedSkill,
+        selectedTopic,
+        core
+    });
+});
 
+app.post("/portfolio/:skill/:topic/:core/edit",(req,res)=>{
+    const { skill, topic, core } = req.params;
+    const newName = req.body.coreName;
 
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    const selectedTopic = selectedSkill?.topics.find(t=>t.topicName===topic);
 
+    if(!selectedSkill || !selectedTopic)
+        return res.send("Not found");
+
+    const index = selectedTopic.coreSkills.indexOf(core);
+    if(index !== -1){
+        selectedTopic.coreSkills[index] = newName;
+    }
+
+    res.redirect(`/portfolio/${skill}#skillsSection`);
+});
+
+//delete
+app.delete("/portfolio/:skill/:topic/:core/delete",(req,res)=>{
+    const { skill, topic, core } = req.params;
+
+    const selectedSkill = skills.find(s=>s.skillName===skill);
+    const selectedTopic = selectedSkill?.topics.find(t=>t.topicName===topic);
+
+    if(!selectedSkill || !selectedTopic)
+        return res.send("Not found");
+
+    selectedTopic.coreSkills =
+        selectedTopic.coreSkills.filter(c=>c!==core);
+
+    res.redirect(`/portfolio/${skill}#skillsSection`);
+});
 
 
 

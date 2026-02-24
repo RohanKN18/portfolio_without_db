@@ -1620,9 +1620,8 @@ sider */
     width:100%;
     gap:10px;
     margin-bottom:8px;
-
-    
 }
+
 
 
 .skillItem{
@@ -1848,6 +1847,29 @@ sider */
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+/* topic buttons */
+.topicActions{
+    display:flex;
+    gap:10px;
+}
+
+.actionBtn{
+    padding:4px 10px;
+    border:1px solid rgb(152,225,157);
+    background:transparent;
+    color:rgb(152,225,157);
+    cursor:pointer;
+    font-size:14px;
+}
+
+.deleteBtn{
+    border-color:#ff5c5c;
+    color:#ff5c5c;
+}
+
+.inlineForm{
+    display:inline;
+}
 
 /* =========================================================
    CORE SKILL BOX
@@ -2051,6 +2073,11 @@ sider */
         padding:0 0;
         width: fit-content;
     }
+    .skillItemWrapper{
+   
+    justify-content:flex-end;
+
+}
 
     #headingskills{
         margin-right: 1vw;

@@ -1,0 +1,25 @@
+<%- include("includes/head.ejs"); %>
+<body>
+
+<div class="formtopicBox">
+
+<form method="POST"
+      action="/portfolio/<%= selectedSkill.skillName %>/<%= selectedTopic.topicName %>?_method=PUT">
+
+    <h1>Edit Topic</h1>
+
+    <input
+        type="text"
+        name="topicName"
+        value="<%= selectedTopic.topicName %>"
+        required
+    >
+
+    <button type="submit">Save</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

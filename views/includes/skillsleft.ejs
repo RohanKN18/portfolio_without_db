@@ -16,8 +16,10 @@
                 </a>
 
                 <!-- Delete button (POST with method-override) -->
-                <form action="/portfolio/<%= skill.skillName %>?_method=DELETE" method="POST" class="skillBtnForm ">
-                    <button type="submit" class="skillBtn deleteBtn">Delete</button>
+                <form action="/portfolio/<%= skill.skillName %>/delete?_method=DELETE" method="POST" class="skillBtnForm">
+                    <button type="submit" class="skillBtn deleteBtn" onclick="return confirm('Delete this skill?')">
+                        Delete
+                    </button>
                 </form>
             </div>
             <% } %>

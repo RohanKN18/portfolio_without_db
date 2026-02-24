@@ -24,29 +24,71 @@
 
                                         <% for (let topic of selectedSkill.topics) { %>
                                             <div class="topicBox">
-                                                <div class="topicName">
-                                                    <%= topic.topicName || "Topics" %>
-                                                </div>
 
-                                                <!-- Link to add core skill page -->
-                                                <a href="/portfolio/<%= selectedSkill.skillName %>/<%= topic.topicName %>/addcoreskill"
-                                                    id="addcoreskillbtn">
-                                                    + Add Core Skill
-                                                </a>
-                                            </div>
+    <div class="topicName">
+        <%= topic.topicName || "Topics" %>
+    </div>
+
+    <div class="topicActions">
+
+        <!-- Add Core Skill -->
+        <a href="/portfolio/<%= selectedSkill.skillName %>/<%= topic.topicName %>/addcoreskill"
+           class="actionBtn addBtn">
+           + Add
+        </a>
+
+        <!-- Edit Topic -->
+        <a href="/portfolio/<%= selectedSkill.skillName %>/<%= topic.topicName %>/edit"
+           class="actionBtn editBtn">
+           Edit
+        </a>
+
+        <!-- Delete Topic -->
+        <form method="POST"
+              action="/portfolio/<%= selectedSkill.skillName %>/<%= topic.topicName %>?_method=DELETE"
+              class="inlineForm">
+
+            <button type="submit" class="actionBtn deleteBtn" onclick="return confirm('Delete this topic?')">
+                Delete
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
 
                                             <% if (topic.coreSkills && topic.coreSkills.length> 0) { %>
                                                 <% for (let core of topic.coreSkills) { %>
                                                     <div class="coreSkillBox">
-                                                        <div class="coreSkillName">
-                                                            <%= core %>
-                                                        </div>
-                                                    </div>
-                                                    <% } %>
-                                                        <% } else { %>
-                                                            <div class="coreSkillBox">
-                                                                <div class="coreSkillName">No core skills yet</div>
-                                                            </div>
+
+    <div class="coreSkillName">
+        <%= core %>
+    </div>
+
+    <div class="coreSkillActions">
+
+        <!-- Edit -->
+        <a href="/portfolio/<%= selectedSkill.skillName %>/<%= topic.topicName %>/<%= core %>/edit"
+           class="coreBtn editBtn">
+           Edit
+        </a>
+
+        <!-- Delete -->
+        <form method="POST"
+              action="/portfolio/<%= selectedSkill.skillName %>/<%= topic.topicName %>/<%= core %>/delete?_method=DELETE">
+
+            <button class="coreBtn deleteBtn">
+                Delete
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+<% } %>
                                                             <% } %>
 
                                                                 <% } %>
