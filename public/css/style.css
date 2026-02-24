@@ -51,8 +51,17 @@ body{
 /* =========================
    BACKGROUND MATRIX CONTAINER
    ========================= */
+#backgroundnoanimation{
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.2;
 
-#background{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+/* #background{
     position: fixed;
     inset: 0;
     z-index: -1;
@@ -62,10 +71,22 @@ body{
     flex-direction: row;
     justify-content: space-evenly;
 
-    animation: backgroundAnimation 6s ease-in forwards;
-}
+    animation: backgroundAnimation 8s ease-in forwards;
+} */
+#background{
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
 
-@keyframes backgroundAnimation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    transform: translateY(-200%);
+    animation: backgroundAnimation 4s cubic-bezier(.22,1,.36,1) forwards;/*2.2s*/
+}
+/* @keyframes backgroundAnimation{
     0%{
         top:-2500px;
         opacity: 1;
@@ -77,6 +98,27 @@ body{
     100%{
         top: 0%;
         opacity: 0.2;
+    }
+} */
+ @keyframes backgroundAnimation{
+
+    0%{
+        transform: translateY(-250%);
+        opacity:0;
+    }
+
+    60%{
+        transform: translateY(8%);
+        opacity:.35;
+    }
+
+    80%{
+        transform: translateY(-3%);
+    }
+
+    100%{
+        transform: translateY(0%);
+        opacity:.2;
     }
 }
 .zerosAndOnesFaller{
@@ -132,7 +174,14 @@ body{
 
 
 
+/* .zero, .one{
+    animation: glow 2s ease-in-out infinite alternate;
+}
 
+@keyframes glow{
+    from{ text-shadow: 0 0 2px rgb(145,196,145); }
+    to{ text-shadow: 0 0 10px rgb(191,224,191); }
+} */
 
 
 
@@ -187,7 +236,7 @@ body{
     max-width: 700px;     /* optional limit */
     aspect-ratio: 700 / 301; /* keeps original ratio */
 
-    animation: photoContainerAnimation 4s ease-in 0s 1 normal; 
+    animation: photoContainerAnimation 8s ease-in 0s 1 normal; 
     z-index: 10;          /* ensures it’s above other content */
 }
 
@@ -203,21 +252,31 @@ body{
 }
 
 
-@keyframes photoContainerAnimation{
+@keyframes photoContainerAnimation {
+
     0%{
-        top: -50%;
+        transform: translate(-50%, -200%) scale(.95);
+        opacity:0;
+        filter: blur(12px);
     }
-    35%{
-        top: -50%;
-       
+
+    60%{
+        transform: translate(-50%, 8%) scale(1.02);
+        opacity:1;
+        filter: blur(0);
     }
-    50%{
-        top:0%;
+
+    80%{
+        transform: translate(-50%, -3%) scale(.995);
+    }
+
+    100%{
+        transform: translate(-50%, 0%) scale(1);
     }
 }
 #questionContainer{
     position: absolute;
-    top: 50%;
+    top: 60%;
     height: 25%;
     width: 100%;
     /* background-color: red; */
@@ -748,9 +807,6 @@ body{
 
 
 
-body{
-    padding-top: 12vh;
-}
 #pageTwo {
     /* display: block; */
     min-height: 100vh;  /* full viewport height */
@@ -770,7 +826,7 @@ body{
    GLOBAL BODY OFFSET
    ========================= */
 body{
-  padding-top:100px;
+  padding-top:50px;
 }
 
 
@@ -779,7 +835,8 @@ body{
    ========================= */
 .navbar{
     position: fixed;
-    top: clamp(6px,1vh,16px);
+    /* top: clamp(6px,1vh,16px); */
+    top: 0%;
     left: 50%;
     transform: translateX(-50%);
 
@@ -1028,6 +1085,7 @@ body{
 
     backdrop-filter: blur(6px);
     padding: 10px; /* spacing */
+     scroll-margin-top:15vh;
 }
 
 .loginForm{
@@ -1075,7 +1133,7 @@ body{
 
 .loginForm input{
     padding:15px 20px;
-    width:250px;
+    width:fit-content;
 
     border:none;
     outline:none;
@@ -2062,7 +2120,7 @@ sider */
 @media (min-width: 901px) {
 
     #skillsSection{
-    padding: 20vh;
+    padding: 10vh;
 }
     #skills{
         align-items: flex-end;
@@ -2741,3 +2799,65 @@ input:checked + .slider .moon{
 
 
 
+
+
+
+
+#outercoverEduc,
+#skillsSection,
+#projectsContainer{
+    margin: clamp(60px, 10vh, 140px) auto;
+}
+
+/* 
+#projectsContainer{
+    margin-bottom: clamp(60px, 10vh, 140px) auto;
+} */
+
+
+
+
+#projectsContainer
+{
+    opacity: 0;
+    transform: translateY(80px) scale(0.95);
+    transition: all 0.8s cubic-bezier(.17,.67,.32,1.34);
+}
+.showSection{
+    opacity: 1 !important;
+    transform: translateY(0) scale(1);
+}
+
+
+
+
+
+/* 
+.typing{
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+    border-right:2px solid rgb(0,255,0);
+
+    width:0;
+    animation:
+        typing var(--time) steps(var(--chars)) forwards,
+        blink .8s infinite;
+}
+
+@keyframes typing{
+    to{
+        width: calc(var(--chars) * 1ch);
+    }
+}
+
+@keyframes blink{
+    50%{ border-color:transparent }
+} */
+
+#pageTwo{
+    scrollbar-width: none;
+}
+body{
+    scrollbar-width: none;
+}

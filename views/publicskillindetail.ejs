@@ -2,7 +2,7 @@
 
     <body>
 
-        <%- include("includes/background.ejs"); %>
+        <%- include("includes/backgroundnoanimation.ejs"); %>
 
             <div id="pageTwo">
                 <%- include("includes/publicnavbar.ejs"); %>
@@ -49,14 +49,14 @@
             </div>
             <script src="app.js" type="module"></script>
             <script>
-    const sectionId = "<%= scrollTo %>";
-    if(sectionId){
-        const el = document.getElementById(sectionId);
-        if(el){
-            el.scrollIntoView({ behavior: "smooth" });
-        }
-    }
-</script>
+                const sectionId = "<%= scrollTo %>";
+                if (sectionId) {
+                    const el = document.getElementById(sectionId);
+                    if (el) {
+                        el.scrollIntoView({ behavior: "smooth" });
+                    }
+                }
+            </script>
             <%- include("includes/footer.ejs"); %>
             <%- include("includes/jsscript.ejs"); %>
     </body>

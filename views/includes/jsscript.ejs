@@ -86,140 +86,6 @@ animate();
 
 
 
-<!-- 
-<script>
-const digits = [...document.querySelectorAll('.zero, .one')];
-
-const particles = digits.map(el => ({
-    el,
-    x: Math.random()*window.innerWidth,
-    y: Math.random()*window.innerHeight,
-    vx:(Math.random()-0.5)*2,
-    vy:0,
-    size:14
-}));
-
-let mouseX=0, mouseY=0;
-
-document.addEventListener("mousemove",e=>{
-    mouseX=e.clientX;
-    mouseY=e.clientY;
-});
-
-const gravity = 0.35;
-const friction = 0.999;
-const bounce = 0.7;
-const cursorForceRadius = 120;
-
-function physics(){
-
-    particles.forEach(p=>{
-
-        /* gravity */
-        p.vy += gravity;
-
-        /* cursor repulsion */
-        const dx = p.x - mouseX;
-        const dy = p.y - mouseY;
-        const dist = Math.hypot(dx,dy);
-
-        if(dist < cursorForceRadius){
-            const force = (cursorForceRadius-dist)/cursorForceRadius;
-            p.vx += dx/dist * force * 2;
-            p.vy += dy/dist * force * 2;
-        }
-
-        /* movement */
-        p.x += p.vx;
-        p.y += p.vy;
-
-        /* floor collision */
-        if(p.y > window.innerHeight - p.size){
-            p.y = window.innerHeight - p.size;
-            p.vy *= -bounce;
-        }
-
-        /* walls */
-        if(p.x < 0 || p.x > window.innerWidth){
-            p.vx *= -bounce;
-        }
-
-        /* friction */
-        p.vx *= friction;
-        p.vy *= friction;
-    });
-
-    /* particle collisions */
-    for(let i=0;i<particles.length;i++){
-        for(let j=i+1;j<particles.length;j++){
-
-            const a=particles[i];
-            const b=particles[j];
-
-            const dx=b.x-a.x;
-            const dy=b.y-a.y;
-            const dist=Math.hypot(dx,dy);
-
-            if(dist < 12){
-
-                const angle=Math.atan2(dy,dx);
-                const force=0.5;
-
-                a.vx -= Math.cos(angle)*force;
-                a.vy -= Math.sin(angle)*force;
-                b.vx += Math.cos(angle)*force;
-                b.vy += Math.sin(angle)*force;
-            }
-        }
-    }
-
-}
-
-function render(){
-    particles.forEach(p=>{
-        p.el.style.transform=`translate(${p.x}px,${p.y}px)`;
-    });
-}
-
-function loop(){
-    physics();
-    render();
-    requestAnimationFrame(loop);
-}
-
-loop();
-</script> -->
-
-<!-- 
-<script>
-const toggle = document.getElementById("themeToggle");
-
-const targets = [
-  document.querySelector(".navbar"),
-  document.getElementById("greetingBox"),
-  document.getElementById("outercoverEduc"),
-  document.getElementById("skillsSection"),
-  document.getElementById("projectsSection"),
-  document.querySelector("footer")
-];
-
-toggle.addEventListener("change", ()=>{
-
-  if(toggle.checked){
-      targets.forEach(el=>{
-          if(el) el.style.backgroundColor="rgba(0,0,0,0.65)";
-      });
-  } else {
-      targets.forEach(el=>{
-          if(el) el.style.backgroundColor="";
-      });
-  }
-
-});
-</script> -->
-
-
-
 
 
 
@@ -282,17 +148,17 @@ function applyLight(){
 <!-- 
  appering late animation -->
 <script>
-const section = document.querySelector("#outercoverEduc");
+const educsection = document.querySelector("#outercoverEduc");
 
 const observer = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
         if(entry.isIntersecting){
-            section.classList.add("show");
+            educsection.classList.add("show");
         }
     });
 },{ threshold:0.25 });
 
-observer.observe(section);
+observer.observe(educsection);
 </script>
 
 
@@ -312,6 +178,24 @@ const observer1 = new IntersectionObserver(entries=>{
 observer1.observe(skillsSection);
 </script>
 
+<!-- late animation for all -->
+<script>
+const sections = document.querySelectorAll(
+    " #projectsContainer "
+);
+
+const observerall = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("showSection");
+    }
+  });
+},{
+  threshold: 0.15
+});
+
+sections.forEach(section=>observerall.observe(section));
+</script>
 
 <!-- navbar buger animation -->
 <script>
