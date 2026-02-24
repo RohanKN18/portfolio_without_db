@@ -260,6 +260,39 @@ app.post("/portfolio/:skill/addtopics", (req,res)=>{
 
 
 
+//adding new core skill under specific topic
+app.get("/portfolio/:skill/:topic/addcoreskill", (req,res)=>{
+    const { skill, topic } = req.params;
+
+    const selectedSkill = skills.find(s => s.skillName === skill);
+    if(!selectedSkill) return res.send("Skill not found");
+
+    const selectedTopic = selectedSkill.topics.find(t => t.topicName === topic);
+    if(!selectedTopic) return res.send("Topic not found");
+
+    res.render("addcoreskill.ejs",{
+        selectedSkill,
+        selectedTopic,
+        projects, skills, education,
+        scrollTo:"skillsSection"
+    });
+});
+app.post("/portfolio/:skill/:topic/addcoreskill",(req,res)=>{
+    const { skill, topic } = req.params;
+    const coreSkillName = req.body.coreSkill;
+
+    const selectedSkill = skills.find(s => s.skillName === skill);
+    if(!selectedSkill) return res.send("Skill not found");
+
+    const selectedTopic = selectedSkill.topics.find(t => t.topicName === topic);
+    if(!selectedTopic) return res.send("Topic not found");
+
+    selectedTopic.coreSkills.push(coreSkillName);
+
+    res.redirect(`/portfolio/${skill}#skillsSection`);
+});
+
+
 
 
 

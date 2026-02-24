@@ -1,0 +1,26 @@
+<%- include("includes/head.ejs"); %>
+<body>
+
+<div class="formtopicBox">
+
+<form class="topicForm"
+      method="POST"
+      action="/portfolio/<%= selectedSkill.skillName %>/<%= selectedTopic.topicName %>/addcoreskill">
+
+    <h1>Add Core Skill</h1>
+
+    <input
+        type="text"
+        name="coreSkill"
+        placeholder="Enter core skill..."
+        required
+    >
+
+    <button type="submit">Add</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
