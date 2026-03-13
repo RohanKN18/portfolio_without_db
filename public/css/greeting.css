@@ -1,0 +1,104 @@
+
+
+
+
+
+
+/* =============================
+   GREETING BOX CONTAINER
+   ============================= */
+#greetingBox{
+    position: relative;
+    margin: clamp(20px,5vh,60px) auto;
+
+    width: min(90vw, 1100px);
+    min-height: 420px;
+
+    /* background-color: rgba(0,0,0,0.65); */
+    border-radius: 20px;
+    padding: clamp(16px,2vw,32px);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+
+    color: rgb(84,165,84);
+    box-shadow: 0 0 25px rgba(0,255,0,0.25);
+}
+
+
+/* =============================
+   ROWS
+   ============================= */
+
+.greetingRow{
+    width:100%;
+    display:flex;
+    align-items:center;
+}
+
+
+/* =============================
+   TYPOGRAPHY (FLUID SCALING)
+   ============================= */
+
+#hiRow h1{
+    font-size: clamp(20px, 2.5vw, 36px);
+}
+
+#introRow h1{
+    font-size: clamp(26px, 3vw, 44px);
+}
+
+#extraIntroRow h1{
+    font-size: clamp(16px, 2vw, 26px);
+}
+
+#descriptionRow h4{
+    font-size: clamp(14px, 1.3vw, 18px);
+    line-height: 1.6;
+    color: rgb(150,210,150);
+}
+
+
+/* =============================
+   DESCRIPTION SCROLL (SAFE)
+   ============================= */
+
+#descriptionRow{
+    overflow-y:auto;
+    scrollbar-width:none;
+}
+
+#descriptionRow::-webkit-scrollbar{
+    display:none;
+}
+
+
+/* =============================
+   NAME HIGHLIGHT
+   ============================= */
+
+#ron{
+    color: rgb(0,255,0);
+    margin-left: 10px;
+    text-shadow: 0 0 8px rgba(0,255,0,0.7);
+}
+
+
+/* =============================
+   MOBILE OPTIMIZATION
+   ============================= */
+
+@media (max-width:600px){
+
+    #greetingBox{
+        border-radius:14px;
+        padding:18px;
+    }
+
+    .greetingRow{
+        text-align:left;
+    }
+}
+

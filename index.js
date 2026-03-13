@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 
 const app=express();
-const port=8080;
+const port = process.env.PORT || 8080;
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -51,6 +51,12 @@ let education = [
     id: 3,
     level: "job",
     school: "google",
+    score: "100"
+  },
+  {
+    id: 4,
+    level: "job",
+    school: "boww",
     score: "100"
   }
 ];
@@ -454,10 +460,9 @@ app.get("/publicportfolio/projects/:slug", (req, res) => {
 
 
 
-app.listen("8080",()=>{
-    console.log("server is listening to 8080")
+app.get("/", (req,res)=>{
+    res.redirect("/publicportfolio");
 });
-
 app.get("/home",(req,res)=>{
     res.render("home.ejs");
 });

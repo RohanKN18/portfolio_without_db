@@ -1,0 +1,147 @@
+
+
+
+/* login form */
+/* .loginBox{
+    position: relative;
+    margin: 10vh auto;
+
+    width: 80vw;
+    height: 80vh;
+
+    background: rgba(0,0,0,0.7);
+    border-radius: 20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:
+        0 0 20px rgba(0,255,0,0.4),
+        inset 0 0 20px rgba(0,255,0,0.2);
+
+    backdrop-filter: blur(6px);
+} */
+
+.loginBox {
+    position: relative;
+    /* margin: 10vh auto; */
+
+    width: 80vw;
+    max-width: 800px; /* optional */
+    height: auto;      /* let content define height */
+
+    /* background: rgba(0,0,0,0.7); */
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column; /* stack content */
+    justify-content: center; /* align to top */
+    align-items: center;
+
+    box-shadow:
+        0 0 20px rgba(0,255,0,0.4),
+        inset 0 0 20px rgba(0,255,0,0.2);
+
+    backdrop-filter: blur(6px);
+    padding: 10px; /* spacing */
+     scroll-margin-top:15vh;
+}
+
+.loginForm{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+}
+
+
+
+/* log in photo */
+#loginPhotocontainer {
+    width: 100%;
+    max-width: 800px; /* Optional: limits on very large screens */
+    margin: 0 auto; /* Center horizontally */
+}
+#loginPhoto {
+    width: 100%;
+    aspect-ratio: 1500 / 746; /* Maintains original aspect ratio */
+    background-image: url(assets/login.jpg); /* Set your image path here */
+    background-size: cover; /* Fill the div, crop if needed */
+    background-position: center; /* Center the image */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Optional shadow */
+}
+/* Fail login photo */
+#loginfailPhotocontainer {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display:flex;
+    justify-content:center;
+}
+#loginfailPhoto {
+    width: 50%;
+    aspect-ratio: 1024 / 576; /* match real image */
+    background-image: url(assets/idareu.webp);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+
+
+.loginForm input{
+    padding:15px 20px;
+    width:fit-content;
+
+    border:none;
+    outline:none;
+    border-radius:10px;
+
+    background:rgba(0,0,0,0.8);
+    color:#6aff6a;
+
+    font-size:18px;
+    text-align:center;
+
+    box-shadow:0 0 10px rgba(0,255,0,0.4) inset;
+}
+
+
+
+
+.loginForm button{
+    padding:12px 40px;
+    border:none;
+    border-radius:12px;
+
+    background:#00ff00;
+    color:black;
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.loginForm button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px #00ff00;
+}
+.loginMessage {
+    text-align: center;
+    font-size: 1rem; /* base size */
+    color: #546A40; /* nice greenish color, can adjust */
+    margin: 0 0; /* spacing between image and input */
+    padding: 0 10px; /* small horizontal padding */
+    word-wrap: break-word; /* prevents overflow on small screens */
+}
+
+/* Optional: make font smaller on very small screens */
+@media (max-width: 400px) {
+    .loginMessage {
+        font-size: 0.9rem;
+    }
+}
+

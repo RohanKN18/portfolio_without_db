@@ -33,14 +33,14 @@
     <div class="projectCardDetail">
 
         <!-- DESCRIPTION -->
-        <section>
+        <section class="description">
             <h2>Description</h2>
             <p><%= project.description %></p>
         </section>
 
 
         <!-- TECH STACK -->
-        <section>
+        <section class="techStack">
             <h2>Tech Stack</h2>
 
             <div class="tags">
@@ -66,7 +66,7 @@
 
 
         <!-- FEATURES -->
-        <section>
+        <section class="features">
             <h2>Features</h2>
             <ul>
                 <% project.features.forEach(f=>{ %>
@@ -77,7 +77,7 @@
 
 
         <!-- HIGHLIGHTS -->
-        <section>
+        <section class="highlights">
             <h2>Highlights</h2>
             <ul>
                 <% project.highlights.forEach(h=>{ %>

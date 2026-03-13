@@ -1,0 +1,295 @@
+
+
+
+
+/* MAIN CONTAINER */
+/* #projectsSection{
+    display:flex;
+    justify-content:center;
+    margin:15vh 0;
+} */
+
+#projectsContainer{
+    width:80vw;
+    max-width:1400px;
+}
+#projectsContainer{
+  scroll-margin-top:15vh;
+}
+
+/* heading */
+#projectsHeading{
+    height:10vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:clamp(28px,3vw,42px);
+    color:rgb(152,225,157);
+    border-bottom:2px solid rgb(152,225,157);
+    margin-bottom:40px;
+}
+
+/* grid */
+#projectsGrid{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:40px;
+}
+
+/* card */
+.projectCard{
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    border:2px solid rgb(152,225,157);
+    transition:.3s;
+}
+
+.projectCard:hover{
+    transform:scale(1.02);
+    box-shadow:0 0 20px rgb(152,225,157);
+}
+
+/* top */
+.projectMedia{
+    height:40vh;
+    overflow:hidden;
+}
+
+.projectMedia img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* bottom */
+.projectInfo{
+    height:40vh;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    gap:15px;
+}
+
+.projectInfo h3{
+    color:rgb(152,225,157);
+}
+
+.projectInfo p{
+    color:#b9f3c0;   /* soft green */
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* tags */
+.projectTags{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.projectTags span{
+    border:1px solid rgb(152,225,157);
+    padding:4px 10px;
+    font-size:12px;
+
+    color:#98e19d;      /* green text */
+    background:rgba(152,225,157,0.08);  /* subtle green background */
+}
+
+.projectTags span:hover{
+    box-shadow:0 0 8px rgb(152,225,157);
+}
+
+/* mobile */
+@media(max-width:900px){
+    #projectsGrid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#projectPage{
+    width:80vw;
+    margin:10vh auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:40px;
+}
+
+/* title */
+.projectTitle{
+    font-size:clamp(32px,4vw,56px);
+    color:rgb(152,225,157);
+    text-align:center;
+    animation:fadeDown .8s ease;
+}
+
+/* media */
+.mediaWrapper{
+    width:100%;
+    max-width:900px;
+    height:50vh;
+    border:2px solid rgb(152,225,157);
+    overflow:hidden;
+    animation:fadeUp 1s ease;
+}
+
+.mediaWrapper img,
+.mediaWrapper video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* card */
+.projectCardDetail{
+    width:100%;
+    border:2px solid rgb(152,225,157);
+    padding:40px;
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+    animation:fadeUp 1.2s ease;
+}
+
+.projectCardDetail section{
+    text-align:center;
+}
+
+.projectCardDetail h2{
+    color:rgb(152,225,157);
+    margin-bottom:10px;
+}
+
+/* tags */
+.tags{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.tags span{
+    border:1px solid rgb(152,225,157);
+    padding:6px 14px;
+    font-size:14px;
+}
+
+/* lists */
+ul{
+    list-style:none;
+    padding:0;
+}
+
+li{
+    margin:6px 0;
+}
+
+/* meta */
+.meta{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+/* links */
+.links{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+}
+
+.links a{
+    border:1px solid rgb(152,225,157);
+    padding:10px 20px;
+    text-decoration:none;
+    color:rgb(152,225,157);
+    transition:.3s;
+}
+
+.links a:hover{
+    box-shadow:0 0 15px rgb(152,225,157);
+}
+
+/* animations */
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeDown{
+    from{opacity:0; transform:translateY(-40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+
+
+
+/* DESCRIPTION */
+.description p{
+    color:#b9f3c0;   /* soft green */
+}
+
+/* TECH STACK TAGS */
+.techStack span{
+    color:#98e19d;
+    border:1px solid #98e19d;
+    padding:5px 12px;
+    background:rgba(152,225,157,0.08);
+}
+
+/* FEATURES LIST */
+.features li{
+    color:#b9f3c0;
+}
+
+/* HIGHLIGHTS LIST */
+.highlights li{
+    color:#b9f3c0;
+}
+
+/* META INFORMATION */
+.meta{
+    color:#98e19d;
+}
+.features li::before,
+.highlights li::before{
+    content:"▹ ";
+    color:#98e19d;
+}
