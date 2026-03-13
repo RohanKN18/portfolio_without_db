@@ -458,10 +458,12 @@ app.get("/publicportfolio/projects/:slug", (req, res) => {
 
 
 
-
-
 app.get("/", (req,res)=>{
     res.redirect("/publicportfolio");
+});
+
+app.listen(port, ()=>{
+    console.log(`server running on port ${port}`);
 });
 app.get("/home",(req,res)=>{
     res.render("home.ejs");
