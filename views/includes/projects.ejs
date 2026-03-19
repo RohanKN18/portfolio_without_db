@@ -1,34 +1,46 @@
 <div id="projectsContainer">
 
-    <div id="projectsHeading">Projects</div>
+    <div id="projectsHeadingWrapper">
+        <div id="projectsHeading">Projects</div>
+        <a href="/portfolio/projects/addproject" id="addProjectBtn">+ Add</a>
+    </div>
 
     <div id="projectsGrid">
 
-        <% projects.forEach(project => { %>
+        <% projects.forEach((project, index) => { %>
 
-            <a href="/portfolio/projects/<%= project.projectName %>" class="projectCard">
+            <div class="projectCardWrapper">
 
-                <!-- TOP MEDIA -->
-                <div class="projectMedia">
-                    <img src="/images/project-placeholder.jpg" alt="">
-                </div>
+                <!-- DELETE BUTTON -->
+                <a href="/portfolio/projects/deleteproject/<%= index %>" 
+                   class="deleteProjectBtn"
+                   onclick="return confirm('Delete this project?')">✖</a>
 
-                <!-- BOTTOM DETAILS -->
-                <div class="projectInfo">
+                <a href="/portfolio/projects/<%= project.projectSlug %>" class="projectCard">
 
-                    <h3><%= project.projectName %></h3>
-
-                    <p><%= project.description %></p>
-
-                    <div class="projectTags">
-                        <% project.techStack.languages.forEach(lang=>{ %>
-                            <span><%= lang %></span>
-                        <% }) %>
+                    <!-- TOP MEDIA -->
+                    <div class="projectMedia">
+                        <img src="/images/project-placeholder.jpg" alt="">
                     </div>
 
-                </div>
+                    <!-- BOTTOM DETAILS -->
+                    <div class="projectInfo">
 
-            </a>
+                        <h3><%= project.projectName %></h3>
+
+                        <p><%= project.description %></p>
+
+                        <div class="projectTags">
+                            <% project.techStack.languages.forEach(lang => { %>
+                                <span><%= lang %></span>
+                            <% }) %>
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
 
         <% }) %>
 

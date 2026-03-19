@@ -1,128 +1,111 @@
-*{
+/* =========================
+   RESET & GLOBAL
+   ========================= */
+
+* {
     box-sizing: border-box;
 }
 
-html, body{
+html,
+body {
     margin: 0;
     padding: 0;
     max-width: 100%;
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 100%;
 }
 
-html{
+html {
     scroll-behavior: smooth;
     scrollbar-width: none;
 }
 
 
-img, div, section{
+body {
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgb(3, 31, 3);
+    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
+    scrollbar-width: none;
+}
+
+h1, h2 {
+    font-family: 'Fira Code', monospace;
+}
+
+/* Prevent overflow issues */
+img,
+div,
+section {
     max-width: 100%;
     box-sizing: border-box;
 }
 
 
 /* =========================
-   BODY STYLING
+   SECTION SPACING
    ========================= */
-
-body{
-    min-height: 100vh;
-    width: 100%;
-    background-color: rgb(3, 31, 3);
-    overflow-x: hidden;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #outercoverEduc,
 #skillsSection,
-#projectsContainer{
+#projectsContainer {
     margin: clamp(60px, 10vh, 140px) auto;
 }
 
-/* 
-#projectsContainer{
-    margin-bottom: clamp(60px, 10vh, 140px) auto;
-} */
 
+/* =========================
+   PROJECTS ANIMATION
+   ========================= */
 
-
-
-#projectsContainer
-{
+#projectsContainer {
     opacity: 0;
     transform: translateY(80px) scale(0.95);
-    transition: all 0.8s cubic-bezier(.17,.67,.32,1.34);
+    transition: all 0.8s cubic-bezier(.17, .67, .32, 1.34);
 }
-.showSection{
+
+.showSection {
     opacity: 1 !important;
     transform: translateY(0) scale(1);
 }
 
 
+/* =========================
+   SCROLLBAR (HIDDEN)
+   ========================= */
 
-
-
-/* 
-.typing{
-    display:inline-block;
-    overflow:hidden;
-    white-space:nowrap;
-    border-right:2px solid rgb(0,255,0);
-
-    width:0;
-    animation:
-        typing var(--time) steps(var(--chars)) forwards,
-        blink .8s infinite;
+#pageTwo {
+    scrollbar-width: none;
 }
 
-@keyframes typing{
-    to{
+
+/* =========================
+   OPTIONAL: TYPING EFFECT
+   ========================= */
+
+/*
+.typing {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid rgb(0,255,0);
+
+    width: 0;
+    animation:
+        typing var(--time) steps(var(--chars)) forwards,
+        blink 0.8s infinite;
+}
+
+@keyframes typing {
+    to {
         width: calc(var(--chars) * 1ch);
     }
 }
 
-@keyframes blink{
-    50%{ border-color:transparent }
-} */
-
-#pageTwo{
-    scrollbar-width: none;
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 }
-body{
-    scrollbar-width: none;
-}
+*/

@@ -235,3 +235,95 @@ sider */
 }
 
 
+
+
+
+
+
+
+
+
+
+
+#outercoverEduc {
+  position: relative; /* important for absolute button positioning */
+}
+
+/* Container for button */
+#educEditBtnContainer {
+  position: sticky;
+  left: 10px;
+  height: fit-content;
+  top: 10px;
+  z-index: 10;
+}
+
+/* Edit Button */
+#editEducBtn {
+  text-decoration: none;
+  background: rgb(3, 31, 3);
+  color: rgb(84,165,84);
+  border: 1px solid rgb(84,165,84);
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: sans-serif;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+
+  
+  /* backdrop-filter: blur(6px); */
+
+}
+
+/* Hover Effect */
+#editEducBtn:hover {
+  background: rgb(84,165,84);
+  color: rgb(3, 31, 3);
+  box-shadow: 0 0 10px rgb(84,165,84);
+  transform: scale(1.05);
+}
+
+.formCard {
+    position: relative;
+}
+
+#addEntryBtn {
+    padding: 8px 14px;
+    border: 1px solid rgb(84,165,84);
+    color: rgb(84,165,84);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+#addEntryBtn:hover {
+    background: rgb(84,165,84);
+    color: rgb(3,31,3);
+}
+.edeleteBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    padding: 4px 10px;
+    border: 1px solid rgb(255, 80, 80);
+    border-radius: 5px;
+
+    background: rgba(255, 80, 80, 0.08);
+    color: rgb(255, 80, 80);
+
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.edeleteBtn:hover {
+    background: rgb(255, 80, 80);
+    color: rgb(3, 31, 3);
+
+    box-shadow: 0 0 8px rgb(255, 80, 80);
+    transform: scale(1.08);
+}

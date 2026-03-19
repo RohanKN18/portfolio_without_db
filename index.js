@@ -21,6 +21,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
 
 // ================= VIEW ENGINE =================
 app.set("view engine", "ejs");
@@ -33,6 +34,13 @@ uuidv4(); // (only call when needed)
 
 
 let password="meow";
+
+let greeting = {
+  hi: "Hi",
+  name: "ROHAN K N",
+  title: "Software Developer / Full-Stack & Data Science Enthusiast",
+  description: `Passionate software developer with expertise in full-stack web development and data science/AI. Skilled in building efficient, scalable, and user-centric web applications using HTML, CSS, JavaScript, React, Node.js, Express, and databases (MySQL & MongoDB). Experienced in Python-based data analysis, machine learning, and deep learning, with hands-on knowledge of NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, and neural network models. Strong foundation in problem-solving and data structures & algorithms, eager to contribute to innovative projects that bridge web development and AI-driven solutions. Thrives in collaborative environments and committed to delivering high-quality, impactful software.`
+};
 
 let education = [
   {
@@ -71,6 +79,7 @@ let education = [
 let skills = [
   {
     skillName: "Programming Languages",
+    slug: "programming-lang",
     topics: [
       {
         topicName: "tadaa",
@@ -80,6 +89,7 @@ let skills = [
   },
   {
     skillName: "Web Development (Full Stack)",
+    slug: "web-dev",
     topics: [
       {
         topicName: "Frontend",
@@ -97,6 +107,7 @@ let skills = [
   },
   {
     skillName: "Data Science & Machine Learning",
+    slug: "ds-ml",
     topics: [
       {
         topicName: "Python for Data Analysis",
@@ -114,6 +125,7 @@ let skills = [
   },
   {
     skillName: "Tools & Platforms",
+    slug: "tools-platforms",
     topics: [
       {
         topicName: "tadaa",
@@ -223,46 +235,50 @@ let projects = [
   }
 ];
 
+
+
+
+// ✅ GLOBAL DATA (locals)
 app.use((req, res, next) => {
     res.locals.skills = skills;
     res.locals.education = education;
     res.locals.projects = projects;
-    res.locals.password = password; 
+    res.locals.password = password;
+    res.locals.greeting = greeting;
     next();
 });
 
-
-
+// ================= ROUTES =================
 import AdminRouter from "./routes/admin.js";
 import PublicportfolioRouter from "./routes/publicportfolio.js";
 import PortfolioRouter from "./routes/portfolio.js";
 import portfolioskillRouter from "./routes/portfolioskill.js";
-app.use("/",AdminRouter)
+import portfolioprojectRouter from "./routes/portfolioproject.js";
+
+// ✅ ROOT ROUTES
+app.use("/", AdminRouter);
 app.use("/", PublicportfolioRouter);
+
+// ✅ PORTFOLIO BASE
 app.use("/portfolio", PortfolioRouter);
-app.use("/portfolio/:skill", portfolioskillRouter);
+
+// ✅ PROJECT ROUTES (PUT FIRST ⚠️)
+app.use("/portfolio/projects", portfolioprojectRouter);
 
 
+// ✅ SKILL ROUTES (PUT AFTER ⚠️)
+app.use("/portfolio/:skillSlug", portfolioskillRouter);
 
-
-app.get("/", (req,res)=>{
+// ================= DEFAULT ROUTES =================
+app.get("/", (req, res) => {
     res.redirect("/home");
 });
 
-app.get("/home",(req,res)=>{
+app.get("/home", (req, res) => {
     res.render("home.ejs");
 });
 
-app.listen(port, ()=>{
+// ================= SERVER =================
+app.listen(port, () => {
     console.log(`server running on port ${port}`);
 });
-
-
-
-
-
-
-
-
-
-

@@ -1,15 +1,21 @@
 import express from "express";
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
+
+// helper function (VERY IMPORTANT - avoids repetition)
+function getSkillAndTopic(res, skillSlug, topic) {
+    const selectedSkill = res.locals.skills.find(s => s.slug === skillSlug);
+    const selectedTopic = selectedSkill?.topics.find(t => t.topicName === topic);
+    return { selectedSkill, selectedTopic };
+}
 
 
 // ================= CORE SKILL =================
 
 // edit core skill
 router.get("/:topic/:core/edit", (req, res) => {
-    const { skill, topic, core } = req.params;
+    const { skillSlug, topic, core } = req.params;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
-    const selectedTopic = selectedSkill?.topics.find(t => t.topicName === topic);
+    const { selectedSkill, selectedTopic } = getSkillAndTopic(res, skillSlug, topic);
 
     if (!selectedSkill || !selectedTopic) return res.send("Not found");
 
@@ -21,11 +27,10 @@ router.get("/:topic/:core/edit", (req, res) => {
 });
 
 router.post("/:topic/:core/edit", (req, res) => {
-    const { skill, topic, core } = req.params;
+    const { skillSlug, topic, core } = req.params;
     const newName = req.body.coreName;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
-    const selectedTopic = selectedSkill?.topics.find(t => t.topicName === topic);
+    const { selectedSkill, selectedTopic } = getSkillAndTopic(res, skillSlug, topic);
 
     if (!selectedSkill || !selectedTopic) return res.send("Not found");
 
@@ -34,31 +39,29 @@ router.post("/:topic/:core/edit", (req, res) => {
         selectedTopic.coreSkills[index] = newName;
     }
 
-    res.redirect(`/portfolio/${skill}#skillsSection`);
+    res.redirect(`/portfolio/${skillSlug}#skillsSection`);
 });
 
 // delete core skill
 router.delete("/:topic/:core/delete", (req, res) => {
-    const { skill, topic, core } = req.params;
+    const { skillSlug, topic, core } = req.params;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
-    const selectedTopic = selectedSkill?.topics.find(t => t.topicName === topic);
+    const { selectedSkill, selectedTopic } = getSkillAndTopic(res, skillSlug, topic);
 
     if (!selectedSkill || !selectedTopic) return res.send("Not found");
 
     selectedTopic.coreSkills =
         selectedTopic.coreSkills.filter(c => c !== core);
 
-    res.redirect(`/portfolio/${skill}#skillsSection`);
+    res.redirect(`/portfolio/${skillSlug}#skillsSection`);
 });
 
 
 // add core skill
 router.get("/:topic/addcoreskill", (req, res) => {
-    const { skill, topic } = req.params;
+    const { skillSlug, topic } = req.params;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
-    const selectedTopic = selectedSkill?.topics.find(t => t.topicName === topic);
+    const { selectedSkill, selectedTopic } = getSkillAndTopic(res, skillSlug, topic);
 
     if (!selectedSkill || !selectedTopic) return res.send("Not found");
 
@@ -73,17 +76,16 @@ router.get("/:topic/addcoreskill", (req, res) => {
 });
 
 router.post("/:topic/addcoreskill", (req, res) => {
-    const { skill, topic } = req.params;
+    const { skillSlug, topic } = req.params;
     const coreSkillName = req.body.coreSkill;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
-    const selectedTopic = selectedSkill?.topics.find(t => t.topicName === topic);
+    const { selectedSkill, selectedTopic } = getSkillAndTopic(res, skillSlug, topic);
 
     if (!selectedSkill || !selectedTopic) return res.send("Not found");
 
     selectedTopic.coreSkills.push(coreSkillName);
 
-    res.redirect(`/portfolio/${skill}#skillsSection`);
+    res.redirect(`/portfolio/${skillSlug}#skillsSection`);
 });
 
 
@@ -91,10 +93,9 @@ router.post("/:topic/addcoreskill", (req, res) => {
 
 // edit topic
 router.get("/:topic/edit", (req, res) => {
-    const { skill, topic } = req.params;
+    const { skillSlug, topic } = req.params;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
-    const selectedTopic = selectedSkill?.topics.find(t => t.topicName === topic);
+    const { selectedSkill, selectedTopic } = getSkillAndTopic(res, skillSlug, topic);
 
     if (!selectedSkill || !selectedTopic) return res.send("Not found");
 
@@ -105,37 +106,36 @@ router.get("/:topic/edit", (req, res) => {
 });
 
 router.put("/:topic", (req, res) => {
-    const { skill, topic } = req.params;
+    const { skillSlug, topic } = req.params;
     const newName = req.body.topicName;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
-    const selectedTopic = selectedSkill?.topics.find(t => t.topicName === topic);
+    const { selectedSkill, selectedTopic } = getSkillAndTopic(res, skillSlug, topic);
 
     if (selectedTopic) {
         selectedTopic.topicName = newName;
     }
 
-    res.redirect(`/portfolio/${skill}#skillsSection`);
+    res.redirect(`/portfolio/${skillSlug}#skillsSection`);
 });
 
 // delete topic
 router.delete("/:topic", (req, res) => {
-    const { skill, topic } = req.params;
+    const { skillSlug, topic } = req.params;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
+    const selectedSkill = res.locals.skills.find(s => s.slug === skillSlug);
     if (!selectedSkill) return res.send("Skill not found");
 
     selectedSkill.topics =
         selectedSkill.topics.filter(t => t.topicName !== topic);
 
-    res.redirect(`/portfolio/${skill}#skillsSection`);
+    res.redirect(`/portfolio/${skillSlug}#skillsSection`);
 });
 
 // add topic
 router.get("/addtopics", (req, res) => {
-    const { skill } = req.params;
+    const { skillSlug } = req.params;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
+    const selectedSkill = res.locals.skills.find(s => s.slug === skillSlug);
 
     if (!selectedSkill) {
         return res.status(404).send("Skill not found");
@@ -151,10 +151,10 @@ router.get("/addtopics", (req, res) => {
 });
 
 router.post("/addtopics", (req, res) => {
-    const { skill } = req.params;
+    const { skillSlug } = req.params;
     const topicName = req.body.topic;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
+    const selectedSkill = res.locals.skills.find(s => s.slug === skillSlug);
 
     if (selectedSkill) {
         selectedSkill.topics.push({
@@ -163,7 +163,7 @@ router.post("/addtopics", (req, res) => {
         });
     }
 
-    res.redirect(`/portfolio/${skill}#skillsSection`);
+    res.redirect(`/portfolio/${skillSlug}#skillsSection`);
 });
 
 
@@ -171,9 +171,9 @@ router.post("/addtopics", (req, res) => {
 
 // edit skill
 router.get("/edit", (req, res) => {
-    const { skill } = req.params;
+    const { skillSlug } = req.params;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
+    const selectedSkill = res.locals.skills.find(s => s.slug === skillSlug);
     if (!selectedSkill) return res.send("Skill not found");
 
     res.render("editskill.ejs", {
@@ -185,37 +185,36 @@ router.get("/edit", (req, res) => {
 });
 
 router.post("/edit", (req, res) => {
-    const { skill } = req.params;
+    const { skillSlug } = req.params;
     const newName = req.body.skillName;
 
-    const selectedSkill = res.locals.skills.find(s => s.skillName === skill);
+    const selectedSkill = res.locals.skills.find(s => s.slug === skillSlug);
     if (!selectedSkill) return res.send("Skill not found");
 
     selectedSkill.skillName = newName;
 
-    res.redirect(`/portfolio/${newName}#skillsSection`);
+    res.redirect(`/portfolio/${skillSlug}#skillsSection`);
 });
 
 // delete skill
 router.delete("/delete", (req, res) => {
-    const { skill } = req.params;
+    const { skillSlug } = req.params;
 
     res.locals.skills = res.locals.skills.filter(
-        s => s.skillName !== skill
+        s => s.slug !== skillSlug
     );
 
     res.redirect("/portfolio");
 });
 
 
+// ================= SKILL DETAIL =================
 
-
-// skill detail (KEEP LAST)
-router.get("", (req, res) => {
-    const { skill } = req.params;
+router.get("/", (req, res) => {
+    const { skillSlug } = req.params;
 
     const selectedSkill = res.locals.skills.find(
-        s => s.skillName === skill
+        s => s.slug === skillSlug
     );
 
     if (!selectedSkill) {

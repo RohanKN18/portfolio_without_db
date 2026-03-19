@@ -1,4 +1,5 @@
-<div id="greetingBox">
+<!-- <div id="greetingBox">
+    <a href="/portfolio/editintro" id="editGreetingBtn">Edit</a>
     <div class="greetingRow" id="hiRow">
         <h1>Hi</h1>
     </div>
@@ -17,6 +18,30 @@
             network models. Strong foundation in problem-solving and data structures & algorithms, eager to contribute
             to innovative projects that bridge web development and AI-driven solutions. Thrives in collaborative
             environments and committed to delivering high-quality, impactful software.
+        </h4>
+    </div>
+</div> -->
+
+
+
+<div id="greetingBox">
+    <a href="/portfolio/editintro" id="editGreetingBtn">Edit</a>
+
+    <div class="greetingRow" id="hiRow">
+        <h1><%= greeting.hi %></h1>
+    </div>
+
+    <div class="greetingRow" id="introRow">
+        <h1>I'm <span id="ron"><%= greeting.name %></span></h1>
+    </div>
+
+    <div class="greetingRow" id="extraIntroRow">
+        <h1><%= greeting.title %></h1>
+    </div>
+
+    <div class="greetingRow" id="descriptionRow">
+        <h4>
+            <%= greeting.description %>
         </h4>
     </div>
 </div>
