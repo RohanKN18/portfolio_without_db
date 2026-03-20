@@ -13,4 +13,31 @@ router.post("/login", (req, res) => {
     }
 });
 
+
+
+router.get("/editfooter", (req, res) => {
+    res.render("editfooter.ejs");
+});
+
+
+router.post("/editfooter", (req, res) => {
+
+    const data = res.locals.footerData;
+
+    if (data) {
+        data.contact.email = req.body.email;
+        data.contact.phone = req.body.phone;
+
+        data.socialLinks.forEach((link, index) => {
+            if (req.body.socialLinks[index]) {
+                link.url = req.body.socialLinks[index].url;
+            }
+        });
+
+        data.copyright.year = req.body.year;
+        data.copyright.name = req.body.name;
+    }
+
+    res.redirect("/portfolio");
+});
 export default router;

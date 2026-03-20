@@ -66,3 +66,108 @@ copyright{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+.footerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.footerHeader span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Edit Button */
+#editFooterBtn {
+    background-color: transparent;
+    color: rgb(84,165,84);
+    border: 1px solid rgb(84,165,84);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+#editFooterBtn:hover {
+    background-color: rgb(84,165,84);
+    color: rgb(3, 31, 3);
+    box-shadow: 0 0 8px rgb(84,165,84);
+    transform: scale(1.05);
+}
+
+
+
+
+
+#editFooterForm {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 25px;
+    border: 1px solid rgb(84,165,84);
+    border-radius: 10px;
+    background-color: rgb(3, 31, 3);
+    color: rgb(84,165,84);
+    box-shadow: 0 0 10px rgba(84,165,84,0.3);
+}
+
+#editFooterForm h2,
+#editFooterForm h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.formGroup label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.formGroup input {
+    padding: 8px;
+    border: 1px solid rgb(84,165,84);
+    border-radius: 5px;
+    background: transparent;
+    color: rgb(84,165,84);
+}
+
+.formGroup input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgb(84,165,84);
+}
+
+/* Save Button */
+#saveFooterBtn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(84,165,84);
+    background: transparent;
+    color: rgb(84,165,84);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#saveFooterBtn:hover {
+    background-color: rgb(84,165,84);
+    color: rgb(3, 31, 3);
+    box-shadow: 0 0 10px rgb(84,165,84);
+}

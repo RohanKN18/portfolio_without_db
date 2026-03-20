@@ -1,0 +1,59 @@
+<%- include("includes/head.ejs"); %>
+<body>
+<%- include("includes/backgroundnoanimation.ejs"); %>
+
+<form action="/editfooter" method="POST" id="editFooterForm">
+
+    <h2>Edit Footer</h2>
+
+    <!-- Contact -->
+    <div class="formGroup">
+        <label>Email</label>
+        <input type="email" name="email" value="<%= footerData.contact.email %>" required>
+    </div>
+
+    <div class="formGroup">
+        <label>Phone</label>
+        <input type="text" name="phone" value="<%= footerData.contact.phone %>" required>
+    </div>
+
+    <!-- Social Links -->
+    <h3>Social Links</h3>
+
+    <% footerData.socialLinks.forEach((link, index) => { %>
+        <div class="formGroup">
+            <label><%= link.name %> URL</label>
+            <input 
+                type="text" 
+                name="socialLinks[<%= index %>][url]" 
+                value="<%= link.url %>"
+            >
+        </div>
+
+        <!-- keep name hidden so it doesn't change -->
+        <input 
+            type="hidden" 
+            name="socialLinks[<%= index %>][name]" 
+            value="<%= link.name %>"
+        >
+    <% }) %>
+
+    <!-- Copyright -->
+    <div class="formGroup">
+        <label>Year</label>
+        <input type="number" name="year" value="<%= footerData.copyright.year %>">
+    </div>
+
+    <div class="formGroup">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= footerData.copyright.name %>">
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" id="saveFooterBtn">Save Changes</button>
+
+</form>
+
+<%- include("includes/footer.ejs"); %>
+</body>
+</html>
