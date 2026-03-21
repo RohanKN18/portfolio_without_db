@@ -1,10 +1,10 @@
-<%- include("includes/head.ejs"); %>
+<%- include("../../includes/head.ejs"); %>
 <body style="padding-top:0%;">
-<%- include("includes/backgroundnoanimation.ejs"); %>
+<%- include("../../includes/backgroundnoanimation.ejs"); %>
 <div class="formtopicBox">
 
 <form method="POST"
-      action="/portfolio/<%= selectedSkill.skillName %>/edit"
+      action="/portfolio/skills/<%= selectedSkill.slug %>/edit"
       class="topicForm">
 
     <h1>Edit Skill</h1>

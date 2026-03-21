@@ -1,75 +1,122 @@
 import express from "express";
 const router = express.Router();
 
-// project detail
-router.get("/:projectSlug", (req, res) => {
-    const { projectSlug } = req.params;
+import { getProject } from "../utils/dataHelpers.js";
 
-    const selectedProject = res.locals.projects.find(
-        p => p.projectSlug === projectSlug
-    );
 
-    if (!selectedProject) {
-        return res.status(404).send("Project not found");
-    }
-
-    res.render("projectindetail.ejs", {
-        project: selectedProject,
-        skills: res.locals.skills,
-        education: res.locals.education,
-        projects: res.locals.projects
+// ================= ADD PROJECT =================
+router.get("/addproject", (req, res) => {
+    res.render("admin/project/addproject.ejs", {
+        projects: req.app.locals.projects,
+        skills: req.app.locals.skills,
+        education: req.app.locals.education
     });
 });
 
-// edit page
+router.post("/addproject", (req, res) => {
+    const {
+        projectName, projectSlug, description, image,
+        githubLink, liveLink,
+        languages, frameworks, databases, tools,
+        role, status, startDate, endDate,
+        features, highlights
+    } = req.body;
+
+    req.app.locals.projects.push({
+        projectName,
+        projectSlug,
+        description,
+        image,
+        githubLink,
+        liveLink: liveLink || null,
+
+        techStack: {
+            languages: languages ? languages.split(",").map(x => x.trim()) : [],
+            frameworks: frameworks ? frameworks.split(",").map(x => x.trim()) : [],
+            databases: databases ? databases.split(",").map(x => x.trim()) : [],
+            tools: tools ? tools.split(",").map(x => x.trim()) : []
+        },
+
+        features: features ? features.split(",").map(x => x.trim()) : [],
+        highlights: highlights ? highlights.split(",").map(x => x.trim()) : [],
+
+        role,
+        startDate,
+        endDate,
+        status
+    });
+
+    res.redirect("/portfolio");
+});
+
+
+// ================= EDIT =================
 router.get("/:projectSlug/edit", (req, res) => {
-    const { projectSlug } = req.params;
+    const project = getProject(req, req.params.projectSlug);
 
-    const selectedProject = res.locals.projects.find(
-        p => p.projectSlug === projectSlug
-    );
+    if (!project) return res.status(404).send("Project not found");
 
-    if (!selectedProject) {
-        return res.status(404).send("Project not found");
-    }
-
-    res.render("editproject.ejs", {
-        project: selectedProject
-    });
+    res.render("admin/project/editproject.ejs", { project });
 });
-
 
 router.post("/:projectSlug/edit", (req, res) => {
-    const { projectSlug } = req.params;
+    const project = getProject(req, req.params.projectSlug);
 
-    const project = res.locals.projects.find(
-        p => p.projectSlug === projectSlug
-    );
+    if (!project) return res.status(404).send("Project not found");
 
-    if (!project) return res.send("Project not found");
+    Object.assign(project, {
+        projectName: req.body.projectName,
+        projectSlug: req.body.projectSlug,
+        description: req.body.description,
+        image: req.body.image,
+        githubLink: req.body.githubLink,
+        liveLink: req.body.liveLink,
+        role: req.body.role,
+        status: req.body.status,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate
+    });
 
-    // BASIC FIELDS
-    project.projectName = req.body.projectName;
-    project.projectSlug = req.body.projectSlug;
-    project.description = req.body.description;
-    project.image = req.body.image;
-    project.githubLink = req.body.githubLink;
-    project.liveLink = req.body.liveLink;
-    project.role = req.body.role;
-    project.status = req.body.status;
-    project.startDate = req.body.startDate;
-    project.endDate = req.body.endDate;
+    project.techStack = {
+        languages: req.body.languages?.split(",").map(s => s.trim()) || [],
+        frameworks: req.body.frameworks?.split(",").map(s => s.trim()) || [],
+        databases: req.body.databases?.split(",").map(s => s.trim()) || [],
+        tools: req.body.tools?.split(",").map(s => s.trim()) || []
+    };
 
-    // ARRAY FIELDS
-    project.techStack.languages = req.body.languages.split(",").map(s => s.trim());
-    project.techStack.frameworks = req.body.frameworks.split(",").map(s => s.trim());
-    project.techStack.databases = req.body.databases.split(",").map(s => s.trim());
-    project.techStack.tools = req.body.tools.split(",").map(s => s.trim());
-
-    project.features = req.body.features.split(",").map(s => s.trim());
-    project.highlights = req.body.highlights.split(",").map(s => s.trim());
+    project.features = req.body.features?.split(",").map(s => s.trim()) || [];
+    project.highlights = req.body.highlights?.split(",").map(s => s.trim()) || [];
 
     res.redirect(`/portfolio/projects/${project.projectSlug}`);
+});
+
+
+// ================= DELETE =================
+router.delete("/:projectSlug", (req, res) => {
+    console.log("DELETE HIT");
+
+    const { projectSlug } = req.params;
+
+    req.app.locals.projects = req.app.locals.projects.filter(
+        project => project.projectSlug !== projectSlug
+    );
+
+    res.redirect("/portfolio");
+});
+
+
+// ================= VIEW =================
+router.get("/:projectSlug", (req, res) => {
+    const project = getProject(req, req.params.projectSlug);
+
+    if (!project) return res.status(404).send("Project not found");
+
+    res.render("admin/projectindetail.ejs", {
+        project,
+        skills: req.app.locals.skills,
+        education: req.app.locals.education,
+        projects: req.app.locals.projects
+    });
 });
 
 export default router;

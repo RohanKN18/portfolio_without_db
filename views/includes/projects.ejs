@@ -12,9 +12,10 @@
             <div class="projectCardWrapper">
 
                 <!-- DELETE BUTTON -->
-                <a href="/portfolio/projects/deleteproject/<%= index %>" 
-                   class="deleteProjectBtn"
-                   onclick="return confirm('Delete this project?')">✖</a>
+                 <form method="POST" action="/portfolio/projects/<%= project.projectSlug %>?_method=DELETE">
+    <button type="submit" class="deleteProjectBtn" onclick="return confirm('Delete this project?')">✖</button>
+</form>
+                
 
                 <a href="/portfolio/projects/<%= project.projectSlug %>" class="projectCard">
 

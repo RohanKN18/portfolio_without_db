@@ -1,86 +1,44 @@
+/* =========================================================
+   FOOTER (MAIN COMPONENT)
+========================================================= */
 
-
-
-
-/* 
-footer */
-.footer{
+.footer {
     width: 100%;
     position: relative;
-    margin-top: 10vh;
-    /* background: rgba(0,0,0,0.6); */
-    color: #00ff88;
+
+    margin: 150px auto 0;
+    padding: 40px 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 0;
-    margin-top: 150px;
+
+    color: #00ff88;
     border-top: 1px solid #00ff88;
 
-    scroll-margin-top:15vh;
+    scroll-margin-top: 15vh;
 }
 
-.footerContent{
+
+/* ================= CONTENT ================= */
+.footerContent {
+    width: 100%;
+    max-width: 500px;
+
     text-align: center;
     font-family: monospace;
 }
 
-.socialLinks{
-    margin: 15px 0;
-}
 
-.socialLinks a{
-    margin: 0 15px;
-    text-decoration: none;
-    color: #00ff88;
-    transition: 0.3s;
-}
-
-.socialLinks a:hover{
-    color: white;
-    text-shadow: 0 0 10px #00ff88;
-}
-
-copyright{
-    font-size: 14px;
-    opacity: 0.7;
-}
-@media (max-width: 600px){
-
-    .footer{
-        padding: 30px 10px;
-    }
-
-    .socialLinks a{
-        display: block;
-        margin: 10px 0;
-    }
-
-    .footerContent p{
-        font-size: 14px;
-    }
-}
-.footerContent{
-    max-width: 500px;
-    width: 100%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
+/* =========================================================
+   FOOTER HEADER (TITLE + EDIT BUTTON)
+========================================================= */
 
 .footerHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     margin-bottom: 15px;
 }
 
@@ -89,47 +47,111 @@ copyright{
     font-weight: 600;
 }
 
-/* Edit Button */
+
+/* ================= EDIT BUTTON ================= */
 #editFooterBtn {
-    background-color: transparent;
-    color: rgb(84,165,84);
-    border: 1px solid rgb(84,165,84);
     padding: 6px 12px;
     border-radius: 6px;
-    cursor: pointer;
+
+    background: transparent;
+    border: 1px solid rgb(84,165,84);
+    color: rgb(84,165,84);
+
     font-size: 14px;
-    transition: all 0.3s ease;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-/* Hover Effect */
 #editFooterBtn:hover {
-    background-color: rgb(84,165,84);
-    color: rgb(3, 31, 3);
+    background: rgb(84,165,84);
+    color: rgb(3,31,3);
     box-shadow: 0 0 8px rgb(84,165,84);
     transform: scale(1.05);
 }
 
 
+/* =========================================================
+   SOCIAL LINKS
+========================================================= */
+
+.socialLinks {
+    margin: 15px 0;
+}
+
+.socialLinks a {
+    margin: 0 15px;
+
+    text-decoration: none;
+    color: #00ff88;
+
+    transition: 0.3s;
+}
+
+.socialLinks a:hover {
+    color: white;
+    text-shadow: 0 0 10px #00ff88;
+}
 
 
+/* =========================================================
+   COPYRIGHT TEXT
+========================================================= */
+
+copyright {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px){
+
+    .footer {
+        padding: 30px 10px;
+    }
+
+    .socialLinks a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .footerContent p {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   FOOTER EDIT FORM (ADMIN UI)
+========================================================= */
 
 #editFooterForm {
     max-width: 500px;
     margin: 50px auto;
     padding: 25px;
-    border: 1px solid rgb(84,165,84);
+
     border-radius: 10px;
-    background-color: rgb(3, 31, 3);
+    border: 1px solid rgb(84,165,84);
+
+    background: rgb(3,31,3);
     color: rgb(84,165,84);
+
     box-shadow: 0 0 10px rgba(84,165,84,0.3);
 }
 
+
+/* ================= HEADINGS ================= */
 #editFooterForm h2,
 #editFooterForm h3 {
     text-align: center;
     margin-bottom: 20px;
 }
 
+
+/* ================= FORM GROUP ================= */
 .formGroup {
     display: flex;
     flex-direction: column;
@@ -141,10 +163,14 @@ copyright{
     font-size: 14px;
 }
 
+
+/* ================= INPUT ================= */
 .formGroup input {
     padding: 8px;
-    border: 1px solid rgb(84,165,84);
+
     border-radius: 5px;
+    border: 1px solid rgb(84,165,84);
+
     background: transparent;
     color: rgb(84,165,84);
 }
@@ -154,20 +180,24 @@ copyright{
     box-shadow: 0 0 5px rgb(84,165,84);
 }
 
-/* Save Button */
+
+/* ================= SAVE BUTTON ================= */
 #saveFooterBtn {
     width: 100%;
     padding: 10px;
+
+    border-radius: 6px;
     border: 1px solid rgb(84,165,84);
+
     background: transparent;
     color: rgb(84,165,84);
-    border-radius: 6px;
+
     cursor: pointer;
     transition: 0.3s;
 }
 
 #saveFooterBtn:hover {
-    background-color: rgb(84,165,84);
-    color: rgb(3, 31, 3);
+    background: rgb(84,165,84);
+    color: rgb(3,31,3);
     box-shadow: 0 0 10px rgb(84,165,84);
 }

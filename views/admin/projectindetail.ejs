@@ -1,11 +1,22 @@
-<%- include("includes/head.ejs"); %>
+<%- include("../includes/head.ejs"); %>
 <body>
-<%- include("includes/backgroundnoanimation.ejs"); %>
+<%- include("../includes/backgroundnoanimation.ejs"); %>
 <div id="pageTwo">
   
  
 
 <div id="projectPage">
+
+    <div class="projectHeader">
+
+    <h1 class="projectTitle"><%= project.projectName %></h1>
+
+    <a href="/portfolio/projects/<%= project.projectSlug %>/edit" 
+       class="editProjectBtn">
+        Edit
+    </a>
+
+    </div>
 
     <!-- TITLE -->
     <h1 class="projectTitle"><%= project.projectName %></h1>
@@ -117,7 +128,7 @@
 
 </div>
 <script src="app.js" type="module"></script>
-<%- include("includes/publicfooter.ejs"); %>
-<%- include("includes/jsscript.ejs"); %>
+<%- include("../includes/footer.ejs"); %>
+<%- include("../includes/jsscript.ejs"); %>
 </body>
 </html>

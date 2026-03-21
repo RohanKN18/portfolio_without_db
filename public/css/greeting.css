@@ -1,36 +1,100 @@
+/* =========================================================
+   GREETING SECTION (HOME INTRO)
+========================================================= */
 
-
-
-
-
-
-/* =============================
-   GREETING BOX CONTAINER
-   ============================= */
-#greetingBox{
+/* ================= CONTAINER ================= */
+#greetingBox {
     position: relative;
-    margin: clamp(20px,5vh,60px) auto;
+    margin: clamp(80px, 12vh, 160px) auto;
 
     width: min(90vw, 1100px);
     min-height: 420px;
 
-    /* background-color: rgba(0,0,0,0.65); */
+    padding: clamp(16px, 2vw, 32px);
     border-radius: 20px;
-    padding: clamp(16px,2vw,32px);
 
-    display:flex;
-    flex-direction:column;
-    justify-content:space-evenly;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 
     color: rgb(84,165,84);
     box-shadow: 0 0 25px rgba(0,255,0,0.25);
 }
 
 
-/* =============================
-   ROWS
-   ============================= */
+/* ================= TYPOGRAPHY ================= */
+#hiRow h1 {
+    font-size: clamp(20px, 2.5vw, 36px);
+}
 
+#introRow h1 {
+    font-size: clamp(26px, 3vw, 44px);
+}
+
+#extraIntroRow h1 {
+    font-size: clamp(16px, 2vw, 26px);
+}
+
+#descriptionRow h4 {
+    font-size: clamp(14px, 1.3vw, 18px);
+    line-height: 1.6;
+    color: rgb(150,210,150);
+}
+
+
+/* ================= DESCRIPTION SCROLL ================= */
+#descriptionRow {
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#descriptionRow::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ================= NAME HIGHLIGHT ================= */
+#ron {
+    color: rgb(0,255,0);
+    margin-left: 10px;
+    text-shadow: 0 0 8px rgba(0,255,0,0.7);
+}
+
+
+/* ================= EDIT BUTTON ================= */
+#editGreetingBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 16px;
+    border-radius: 999px;
+
+    border: 2px solid rgb(84,165,84);
+    background: transparent;
+    color: rgb(84,165,84);
+
+    font-size: 13px;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#editGreetingBtn:hover {
+    background: rgb(0,255,0);
+    color: black;
+    box-shadow: 0 0 12px rgb(0,255,0);
+}
+
+
+/* =========================================================
+   GLOBAL SECTION SPACING (SHARED)
+========================================================= */
 
 #outercoverEduc,
 #skillsSection,
@@ -41,158 +105,31 @@
 }
 
 .footer {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 
-/* =============================
-   TYPOGRAPHY (FLUID SCALING)
-   ============================= */
+/* =========================================================
+   EDIT GREETING PAGE (FORM UI)
+========================================================= */
 
-#hiRow h1{
-    font-size: clamp(20px, 2.5vw, 36px);
-}
-
-#introRow h1{
-    font-size: clamp(26px, 3vw, 44px);
-}
-
-#extraIntroRow h1{
-    font-size: clamp(16px, 2vw, 26px);
-}
-
-#descriptionRow h4{
-    font-size: clamp(14px, 1.3vw, 18px);
-    line-height: 1.6;
-    color: rgb(150,210,150);
-}
-
-
-/* =============================
-   DESCRIPTION SCROLL (SAFE)
-   ============================= */
-
-#descriptionRow{
-    overflow-y:auto;
-    scrollbar-width:none;
-}
-
-#descriptionRow::-webkit-scrollbar{
-    display:none;
-}
-
-
-/* =============================
-   NAME HIGHLIGHT
-   ============================= */
-
-#ron{
-    color: rgb(0,255,0);
-    margin-left: 10px;
-    text-shadow: 0 0 8px rgba(0,255,0,0.7);
-}
-
-
-/* =============================
-   MOBILE OPTIMIZATION
-   ============================= */
-
-@media (max-width:600px){
-
-    #greetingBox{
-        border-radius:14px;
-        padding:18px;
-    }
-
-    .greetingRow{
-        text-align:left;
-    }
-}
-
-
-/* Parent positioning */
-#greetingBox{
-    position: relative;
-}
-
-/* Anchor styled as button */
-#editGreetingBtn{
-    position: absolute;
-    top: 12px;
-    right: 12px;
-
-    background: transparent;
-    border: 2px solid rgb(84,165,84);
-    color: rgb(84,165,84);
-
-    padding: 6px 16px;
-    border-radius: 999px;
-
-    font-size: 13px;
-    text-decoration: none; /* remove underline */
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* Hover effect */
-#editGreetingBtn:hover{
-    background: rgb(0,255,0);
-    color: black;
-    box-shadow: 0 0 12px rgb(0,255,0);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
-   BODY (fallback if needed)
-   ========================= */
-body{
-    margin: 0;
-    /* font-family: Arial, Helvetica, sans-serif; */
-    /* font-family: sans-serif; */
-    color: rgb(84,165,84);
-}
-
-
-/* =========================
-   MAIN EDIT CONTAINER
-   ========================= */
-.editContainer{
+/* ================= CONTAINER ================= */
+.editContainer {
     width: min(90vw, 700px);
     margin: clamp(100px, 12vh, 160px) auto;
     padding: 30px;
 
+    border-radius: 20px;
+
     background: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(12px);
 
-    border-radius: 20px;
     box-shadow: 0 0 25px rgba(0,255,0,0.25);
 }
 
 
-/* =========================
-   HEADING
-   ========================= */
-.editContainer h1{
+/* ================= HEADING ================= */
+.editContainer h1 {
     text-align: center;
     margin-bottom: 30px;
 
@@ -201,31 +138,25 @@ body{
 }
 
 
-/* =========================
-   FORM GROUP
-   ========================= */
-.formGroup{
-    margin-bottom: 20px;
+/* ================= FORM GROUP ================= */
+.formGroup {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 
-/* =========================
-   LABEL
-   ========================= */
-.formGroup label{
+/* ================= LABEL ================= */
+.formGroup label {
     margin-bottom: 6px;
     font-size: 14px;
-    color: rgb(120, 200, 120);
+    color: rgb(120,200,120);
 }
 
 
-/* =========================
-   INPUT & TEXTAREA
-   ========================= */
+/* ================= INPUTS ================= */
 .formGroup input,
-.formGroup textarea{
+.formGroup textarea {
     padding: 10px 12px;
     border-radius: 10px;
 
@@ -238,26 +169,22 @@ body{
     transition: 0.3s;
 }
 
-
-/* Focus Glow Effect */
+/* focus glow */
 .formGroup input:focus,
-.formGroup textarea:focus{
+.formGroup textarea:focus {
     border-color: rgb(0,255,0);
     box-shadow: 0 0 10px rgba(0,255,0,0.6);
 }
 
-
-/* TEXTAREA */
-.formGroup textarea{
+/* textarea */
+.formGroup textarea {
     min-height: 130px;
     resize: vertical;
 }
 
 
-/* =========================
-   BUTTON
-   ========================= */
-button{
+/* ================= BUTTON ================= */
+button {
     margin-top: 20px;
     width: 100%;
 
@@ -273,25 +200,43 @@ button{
     transition: 0.3s;
 }
 
-
-/* Hover Glow */
-button:hover{
+button:hover {
     background: rgb(0,255,0);
     color: black;
     box-shadow: 0 0 15px rgb(0,255,0);
 }
 
 
-/* =========================
+/* =========================================================
+   GLOBAL BODY FALLBACK
+========================================================= */
+
+body {
+    margin: 0;
+    color: rgb(84,165,84);
+}
+
+
+/* =========================================================
    RESPONSIVE
-   ========================= */
+========================================================= */
+
 @media (max-width:600px){
 
-    .editContainer{
+    #greetingBox {
+        border-radius: 14px;
+        padding: 18px;
+    }
+
+    .greetingRow {
+        text-align: left;
+    }
+
+    .editContainer {
         padding: 20px;
     }
 
-    .editContainer h1{
+    .editContainer h1 {
         font-size: 20px;
     }
 }

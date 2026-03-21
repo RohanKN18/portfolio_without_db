@@ -1,203 +1,252 @@
+/* =========================================================
+   NAVBAR (MAIN CONTAINER)
+========================================================= */
 
-/* =========================
-   NAVBAR CONTAINER
-   ========================= */
-.navbar{
+.navbar {
     position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
 
-    width: min(92vw,1200px);
-    height: clamp(56px,8vh,80px);
+    width: min(92vw, 1200px);
+    height: clamp(56px, 8vh, 80px);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 clamp(12px, 2vw, 40px);
 
     backdrop-filter: blur(8px);
     border-radius: 16px;
     box-shadow: 0 0 18px rgba(0,255,0,0.25);
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    /* ❌ REMOVE THIS */
-    /* flex-wrap: wrap; */
-
-    padding: 0 clamp(12px,2vw,40px);
-    z-index:999;
+    z-index: 999;
 }
 
 
-/* =========================
-   LEFT NAV LINKS
-   ========================= */
-.nav-left{
-    display:flex;
-    align-items:center;
-    gap: clamp(12px,2vw,36px);
-    flex-wrap:wrap;
+/* =========================================================
+   LEFT NAVIGATION LINKS
+========================================================= */
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 36px);
+    flex-wrap: wrap;
 }
 
-.nav-left a{
+.nav-left a {
     color: rgb(84,165,84);
-    text-decoration:none;
-    font-weight:500;
+    text-decoration: none;
+    font-weight: 500;
     font-size: clamp(14px,1.1vw,18px);
-    white-space:nowrap;
-    transition:.3s;
+    white-space: nowrap;
+    transition: 0.3s;
 }
 
-.nav-left a:hover{
+.nav-left a:hover {
     color: rgb(0,255,0);
-    text-shadow:0 0 10px rgba(0,255,0,.8);
+    text-shadow: 0 0 10px rgba(0,255,0,0.8);
 }
 
 
-/* =========================
-   RIGHT SIDE (LOGIN BUTTON)
-   ========================= */
-.nav-right{
-    display:flex;
-    align-items:center;
-    gap:10px;
+/* =========================================================
+   RIGHT SECTION (LOGIN BUTTON)
+========================================================= */
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.login-btn{
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background: transparent;
     border: 2px solid rgb(84,165,84);
     color: rgb(84,165,84);
 
-    padding: clamp(4px,.5vw,8px) clamp(14px,1.5vw,24px);
+    padding: clamp(4px, .5vw, 8px) clamp(14px, 1.5vw, 24px);
     border-radius: 999px;
 
     font-size: clamp(13px,1vw,16px);
-    cursor:pointer;
-    transition:.3s;
-}
-.login-btn{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.login-btn:hover{
+.login-btn:hover {
     background: rgb(0,255,0);
-    color:black;
-    box-shadow:0 0 12px rgb(0,255,0);
+    color: black;
+    box-shadow: 0 0 12px rgb(0,255,0);
 }
 
 
-/* =========================
+/* =========================================================
+   MOBILE MENU TOGGLE (HAMBURGER)
+========================================================= */
+
+.menuToggle {
+    display: none;
+    font-size: 26px;
+    background: none;
+    border: none;
+    color: #6aff6a;
+    cursor: pointer;
+}
+
+
+/* =========================================================
    TABLET BREAKPOINT
-   ========================= */
-@media (max-width:768px){
+========================================================= */
 
-    .nav-left{
-        gap:18px;
+@media (max-width: 768px){
+
+    .nav-left {
+        gap: 18px;
     }
 
-    .nav-left a{
-        font-size:14px;
-    }
-}
-
-
-/* =========================
-   MOBILE BREAKPOINT
-   ========================= */
-@media (max-width:600px){
-    .navbar{
-        flex-direction:column;
-        height:auto;
-        gap:10px;
-        padding:12px;
-    }
-
-    .nav-left{
-        width:100%;
-        justify-content:center;
-        gap:14px;
-    }
-
-    .nav-right{
-        width:100%;
-        justify-content:center;
-    }
-}
-
-@media (max-width:500px){
-
-    .navbar{
-        height:56px;
-        border-radius:12px;
-    }
-
-    .nav-left{
-        gap:12px;
-    }
-
-    .nav-left a{
-        font-size:13px;
-    }
-
-    .login-btn{
-        padding:5px 14px;
-        font-size:13px;
+    .nav-left a {
+        font-size: 14px;
     }
 }
 
 
+/* =========================================================
+   MOBILE BREAKPOINT (STACKED NAVBAR)
+========================================================= */
 
-.menuToggle{
-  display:none;
-  font-size:26px;
-  background:none;
-  border:none;
-  color:#6aff6a;
-  cursor:pointer;
+@media (max-width: 600px){
+
+    .navbar {
+        flex-direction: row;   /* 👈 keep horizontal */
+        align-items: center;
+        justify-content: space-between;
+
+        height: 56px;          /* 👈 FIXED HEIGHT */
+        padding: 0 14px;       /* horizontal padding only */
+
+        gap: 0;                /* remove vertical spacing */
+    }
+
+    /* LEFT: hamburger */
+    .menuToggle {
+        display: block;
+        order: 1;
+    }
+
+    /* CENTER: hide links (they will open via menu) */
+    .nav-left {
+        position: absolute;
+        top: 56px;             /* below navbar */
+        left: 0;
+
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+
+        background: rgba(0,0,0,0.9);
+        backdrop-filter: blur(10px);
+
+        padding: 16px 0;
+
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+
+        transition: 0.4s;
+    }
+
+    .nav-left.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* RIGHT: login button */
+    .nav-right {
+        order: 3;
+        margin-left: auto;
+    }
+
+    .nav-left {
+        order: 2;
+    }
 }
-@media (max-width:700px){
 
-  .menuToggle{
-    display:block;
-  }
 
-  .nav-left{
-    position:absolute;
-    top:100%;
-    left:0;
-    width:100%;
-    flex-direction:column;
-    align-items:center;
-    gap:18px;
+/* =========================================================
+   SMALL MOBILE OPTIMIZATION
+========================================================= */
 
-    background:rgba(0,0,0,0.9);
-    backdrop-filter:blur(10px);
+@media (max-width: 500px){
 
-    padding:20px 0;
+    .navbar {
+        height: 56px;
+        border-radius: 12px;
+    }
 
-    transform:translateY(-200%);
-    opacity:0;
-    pointer-events:none;
-    transition:.4s;
-  }
+    .nav-left {
+        gap: 12px;
+    }
 
-  .nav-left.active{
-    transform:translateY(0);
-    opacity:1;
-    pointer-events:auto;
-  }
+    .nav-left a {
+        font-size: 13px;
+    }
 
-   .menuToggle{
-    display:block;
-    order: 2; /* 👈 keeps it on right */
-  }
+    .login-btn {
+        padding: 5px 14px;
+        font-size: 13px;
+    }
+}
 
-  .nav-right{
-    order: 3;
-  }
 
-  .nav-left{
-    order: 4;
-  }
+/* =========================================================
+   COLLAPSIBLE MENU (HAMBURGER SYSTEM)
+========================================================= */
 
+@media (max-width: 700px){
+
+    /* show toggle button */
+    .menuToggle {
+        display: block;
+        order: 2; /* keep on right */
+    }
+
+    /* hide nav by default */
+    .nav-left {
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+
+        background: rgba(0,0,0,0.9);
+        backdrop-filter: blur(10px);
+
+        padding: 20px 0;
+
+        transform: translateY(-200%);
+        opacity: 0;
+        pointer-events: none;
+
+        transition: 0.4s;
+    }
+
+    /* active state */
+    .nav-left.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* reorder layout */
+    .nav-right { order: 3; }
+    .nav-left  { order: 4; }
 }

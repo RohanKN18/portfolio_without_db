@@ -1,45 +1,74 @@
-#questionContainer{
+/* =========================================================
+   QUESTION CONTAINER (SECTION LAYOUT)
+========================================================= */
+
+#questionContainer {
     position: absolute;
     top: 60%;
-    height: 25%;
+    left: 0;
+
     width: 100%;
-    /* background-color: red; */
+    height: 25%;
 }
-#question{
+
+
+/* =========================================================
+   QUESTION TEXT WRAPPER
+========================================================= */
+
+#question {
     position: absolute;
-    left: 15%;
-    /* background-color: white; */
-    width: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: min(90vw, 900px);
     height: 100%;
+
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
 }
-#question{
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(90vw, 900px);
-}
+
+
+/* =========================================================
+   WORD STYLING
+========================================================= */
 
 .word {
     display: inline-block;
-    color:rgb(107, 171, 107) ;
+
+    color: rgb(107,171,107);
+
+    font-size: clamp(14px, 2.2vw, 22px);
+    text-align: center;
 }
-.word{
-    display:inline-block;
-    color:rgb(107,171,107);
-    font-size:clamp(14px,2.2vw,22px);
-    text-align:center;
-}
+
+
+/* =========================================================
+   SPACE BETWEEN WORDS
+========================================================= */
 
 .space {
     display: inline-block;
-    width: 4px; /* Adjust width as needed */
+    width: clamp(3px, 1vw, 8px);
 }
-.space{
-    width: clamp(3px,1vw,8px);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #Wone {
     visibility: visible;

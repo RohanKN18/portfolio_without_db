@@ -3,7 +3,7 @@ const router = express.Router();
 
 // GET all portfolio
 router.get("/publicportfolio", (req, res) => {
-    res.render("publicportfolio.ejs", { 
+    res.render("public/publicportfolio.ejs", { 
         projects: res.locals.projects,
         skills: res.locals.skills,
         education: res.locals.education
@@ -20,7 +20,7 @@ router.get("/publicportfolio/projects/:slug", (req, res) => {
 
     if (!project) return res.status(404).send("Project not found");
 
-    res.render("publicprojectdetails.ejs", { project });
+    res.render("public/publicprojectdetails.ejs", { project });
 });
 
 // GET skill detail
@@ -35,7 +35,7 @@ router.get("/publicportfolio/:skill", (req, res) => {
         return res.status(404).send("Skill not found");
     }
 
-    res.render("publicskillindetail.ejs", {
+    res.render("public/publicskillindetail.ejs", {
         projects: res.locals.projects,
         skills: res.locals.skills,
         education: res.locals.education,

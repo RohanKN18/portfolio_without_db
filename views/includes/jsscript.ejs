@@ -178,6 +178,21 @@ const observer1 = new IntersectionObserver(entries=>{
 observer1.observe(skillsSection);
 </script>
 
+<!-- slider for left  -->
+<script>
+const skillsSections = document.getElementById("skills");
+
+const observers = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            skillsSections.classList.add("animate");
+        }
+    });
+}, { threshold: 0.2 });
+
+observers.observe(skillsSections);
+</script>
+
 <!-- late animation for all -->
 <script>
 const sections = document.querySelectorAll(

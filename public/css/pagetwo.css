@@ -1,24 +1,24 @@
+/* =========================================================
+   PAGE TWO (MAIN LAYOUT CONTAINER)
+========================================================= */
 
 #pageTwo {
-    /* display: block; */
-    min-height: 100vh;  /* full viewport height */
-    overflow-x: hidden;  /* hide any accidental horizontal scroll */
+    min-height: 100vh;        /* full viewport height */
+    overflow-x: hidden;       /* prevent horizontal scroll */
 
-    
-    
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex-wrap: nowrap;
-
-
 }
-/* =========================
+
+
+/* =========================================================
    GLOBAL BODY OFFSET
-   ========================= */
-body{
-  padding-top:50px;
+========================================================= */
+
+/* Prevent content from hiding under fixed header/navbar */
+body {
+    padding-top: 50px;
 }
-
-

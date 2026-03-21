@@ -1,9 +1,9 @@
-<%- include("includes/head.ejs"); %>
+<%- include("../../includes/head.ejs"); %>
 <body style="padding-top:0%;">
-<%- include("includes/backgroundnoanimation.ejs"); %>
+<%- include("../../includes/backgroundnoanimation.ejs"); %>
  <div class="formtopicBox">
 
-    <form class="topicForm" method="POST" action="/portfolio/<%= selectedSkill.skillName %>/addtopics">
+    <form class="topicForm" method="POST" action="/portfolio/skills/<%=  selectedSkill.slug  %>/addtopics">
 
         <h1>cheack out the big brain on brett</h1>
 

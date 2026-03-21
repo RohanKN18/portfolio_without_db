@@ -1,39 +1,57 @@
 import express from "express";
 const router = express.Router();
 
+import { generateSlug } from "../utils/slugify.js";
+
+
+// ================= PORTFOLIO =================
+
 // GET portfolio
-router.get("", (req, res) => {
-    res.render("portfolio.ejs", {
-        skills: res.locals.skills,
-        education: res.locals.education,
-        projects: res.locals.projects
-    });
+router.get("/", (req, res) => {
+    res.render("admin/portfolio.ejs");
 });
 
-// ADD skill (form)
+
+// ================= ADD SKILL =================
+
+// GET add skill page
 router.get("/addskill", (req, res) => {
-    res.render("addskill.ejs", {
-        projects: res.locals.projects,
-        skills: res.locals.skills,
-        education: res.locals.education,
-        scrollTo: "skillsSection"
-    });
+    res.render("admin/skill/addskill.ejs");
 });
 
-// ADD skill (post)
-router.post("/addskill", (req, res) => {
-    let newskill = req.body.skill;
 
-    res.locals.skills.push({
-        skillName: newskill,
+// POST add skill
+router.post("/addskill", (req, res) => {
+    const { skill } = req.body;
+
+    // 🔥 prevent empty input
+    if (!skill || !skill.trim()) {
+        return res.send("Skill name is required");
+    }
+
+    // 🔥 generate unique slug
+    let baseSlug = generateSlug(skill);
+    let slug = baseSlug;
+    let count = 1;
+
+    while (req.app.locals.skills.find(s => s.slug === slug)) {
+        slug = `${baseSlug}-${count++}`;
+    }
+
+    const newSkill = {
+        skillName: skill,
+        slug,
         topics: []
-    });
+    };
+
+    req.app.locals.skills.push(newSkill);
 
     res.redirect("/portfolio#skillsSection");
 });
 
+
 router.get("/editintro", (req, res) => {
-    res.render("editintro.ejs", {
+    res.render("admin/intro/editintro.ejs", {
          greeting: res.locals.greeting,
         skills: res.locals.skills,
         education: res.locals.education,
@@ -59,10 +77,11 @@ router.post("/editintro", (req, res) => {
 
 
 router.get("/editeducation", (req, res) => {
-  res.render("editeducation.ejs", {
+  res.render("admin/education/editeducation.ejs", {
     education: res.locals.education
   });
 });
+
 router.post("/editeducation", (req, res) => {
   const updatedEducation = req.body.education || [];
 
@@ -89,7 +108,7 @@ router.get("/editeducation/addeducation", (req, res) => {
   });
 
   // Render same page with updated data
-  res.render("editeducation.ejs", {
+  res.render("admin/education/editeducation.ejs", {
     education: res.locals.education
   });
 });
@@ -105,60 +124,6 @@ router.get("/editeducation/deleteeducation/:index", (req, res) => {
   res.redirect("/portfolio/editeducation");
 });
 
-router.get("/projects/addproject", (req, res) => {
-  res.render("addproject.ejs", {
-    projects: res.locals.projects,
-    skills: res.locals.skills,
-    education: res.locals.education
-  });
-});
-
-router.get("/projects/deleteproject/:index", (req, res) => {
-  const index = parseInt(req.params.index);
-
-  if (!isNaN(index) && index >= 0 && index < res.locals.projects.length) {
-    res.locals.projects.splice(index, 1);
-  }
-
-  res.redirect("/portfolio");
-});
-
-
-router.post("/projects/addproject", (req, res) => {
-  const {
-    projectName, projectSlug, description, image,
-    githubLink, liveLink,
-    languages, frameworks, databases, tools,
-    role, status, startDate, endDate,
-    features, highlights
-  } = req.body;
-
-  res.locals.projects.push({
-    projectName,
-    projectSlug,
-    description,
-    image,
-    githubLink,
-    liveLink: liveLink || null,
-
-    techStack: {
-      languages: languages ? languages.split(",").map(x => x.trim()) : [],
-      frameworks: frameworks ? frameworks.split(",").map(x => x.trim()) : [],
-      databases: databases ? databases.split(",").map(x => x.trim()) : [],
-      tools: tools ? tools.split(",").map(x => x.trim()) : []
-    },
-
-    features: features ? features.split(",").map(x => x.trim()) : [],
-    highlights: highlights ? highlights.split(",").map(x => x.trim()) : [],
-
-    role,
-    startDate,
-    endDate,
-    status
-  });
-
-  res.redirect("/portfolio");
-});
 
 
 export default router;
